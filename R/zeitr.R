@@ -1,3 +1,12 @@
+zeit_client <- function() {
+	# make request
+  req <- zeit_get(path="client")
+  raw <- zeit_parse(req)
+  #reset <- as.POSIXct(raw$reset, origin="1970-01-01")
+  invisible(raw)
+}
+
+
 zeit_content <- function(query, fields=NA, limit=10, offset=0) {
 	# prepare query
 	if(length(query)==1) query <- gsub(" ", "%20", query, fixed=TRUE)
