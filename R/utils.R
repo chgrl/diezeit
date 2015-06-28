@@ -1,7 +1,7 @@
 zeit_get <- function(path, ..., key=zeit_key()) {
 	#auth <- zeit_auth(key)
 	#req <- GET("http://api.zeit.de/", path=path, auth, query=list(...))
-	req <- GET("http://api.zeit.de/", path=path, query=list(api_key = key, ...))
+	req <- httr::GET("http://api.zeit.de/", path=path, query=list(api_key = key, ...))
 	zeit_check(req)
 	return(req)
 }
