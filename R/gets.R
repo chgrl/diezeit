@@ -13,7 +13,7 @@ zeit_client <- function() {
   req <- zeit_get(path="client")
   raw <- zeit_parse(req)
   #reset <- as.POSIXct(raw$reset, origin="1970-01-01")
-  invisible(raw)
+  return(raw)
 }
 
 
