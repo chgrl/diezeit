@@ -20,7 +20,7 @@ zeit_check <- function(req) {
 
 
 zeit_parse <- function(req) {
-	json <- content(req, as="text")
+	json <- httr::content(req, as="text")
 	if(identical(json, "")) stop("Not output to parse", call.=FALSE)
 	if(length(grep("application/json", req$headers$'content-type', fixed=TRUE)) == 0) stop("No JSON to parse", call.=FALSE)
 	jsonlite::fromJSON(json, simplifyVector=FALSE)
