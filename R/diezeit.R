@@ -6,7 +6,7 @@
 #' @name diezeit
 #' @docType package
 #' @seealso \code{\link{zeit_client}} for client information and usage,
-#' \code{\link{zeit_content}} for article search.
+#' \code{\link{zeit_search}} for ZEIT archive search.
 #' @importFrom httr GET
 #' @importFrom jsonlite fromJSON
 #' @aliases diezeit diezeit-package
