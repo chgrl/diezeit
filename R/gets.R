@@ -46,7 +46,7 @@ zeit_search <- function(endpoint, query, fields="all", limit=10, offset=0, print
 	endpoint <- avail.endpoints[pmatch(endpoint, avail.endpoints)]
 	
 	# prepare query
-	query <- paste0(sapply(query, function(x) gsub(" ", "%20", x, fixed=TRUE)), collapse="+")
+	query <- paste0(query, collapse="+")
 	
 	# prepare fields
 	if(endpoint == "author") avail.fields <- c("href", "id", "type", "uri", "value")
