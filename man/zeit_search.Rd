@@ -4,20 +4,25 @@
 \alias{zeit_search}
 \title{Search the ZEIT archive}
 \usage{
-zeit_search(endpoint, query, fields = "all", limit = 10, offset = 0,
+zeit_search(endpoint, query, fields, limit = 10, offset = 0, sort,
   print = TRUE)
 }
 \arguments{
 \item{endpoint}{one of \code{author}, \code{content}, \code{department}, \code{keyword},
 \code{product} or \code{series} -- provides specific search functionalities.}
 
-\item{query}{the main search query; single character value or character vector.}
+\item{query}{the main search query; single string value or vector of strings.}
 
-\item{fields}{partially select output fields; set to \code{"all"} by default.}
+\item{fields}{partially select output fields, as string value or vector of strings for multiple fields.}
 
-\item{limit}{limit the amount of matches to return; set to 10 by default.}
+\item{limit}{limit the amount of matches to return; set to \code{10} by default.}
 
-\item{offset}{offset for the list of matches; set to 0 by default.}
+\item{offset}{offset for the list of matches; set to \code{0} by default.}
+
+\item{sort}{sort search results by any of the returned \code{fields}.
+Vector of two (\code{c([field], [direction])}), giving field and direction keyword.
+Direction keywords are \code{asc} and \code{desc} for an ascending or descending
+sort order respectively. Multiple sort orders are accepted as \code{list} of such vectors.}
 
 \item{print}{if \code{TRUE} (default) the search results are printed.}
 }

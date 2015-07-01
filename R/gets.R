@@ -29,10 +29,14 @@ zeit_client <- function(print=TRUE) {
 #'
 #' @param endpoint one of \code{author}, \code{content}, \code{department}, \code{keyword}, 
 #' \code{product} or \code{series} -- provides specific search functionalities.
-#' @param query the main search query; single character value or character vector.
-#' @param fields partially select output fields; set to \code{"all"} by default.
-#' @param limit limit the amount of matches to return; set to 10 by default.
-#' @param offset offset for the list of matches; set to 0 by default.
+#' @param query the main search query; single string value or vector of strings.
+#' @param fields partially select output fields, as string value or vector of strings for multiple fields.
+#' @param limit limit the amount of matches to return; set to \code{10} by default.
+#' @param offset offset for the list of matches; set to \code{0} by default.
+#' @param sort sort search results by any of the returned \code{fields}. 
+#' Vector of two (\code{c([field], [direction])}), giving field and direction keyword. 
+#' Direction keywords are \code{asc} and \code{desc} for an ascending or descending 
+#' sort order respectively. Multiple sort orders are accepted as \code{list} of such vectors.
 #' @param print if \code{TRUE} (default) the search results are printed.
 #' @return a list of matches to the query.
 #' @export
@@ -40,7 +44,7 @@ zeit_client <- function(print=TRUE) {
 #' \dontrun{
 #' zeit_search("")
 #' }
-zeit_search <- function(endpoint, query, fields="all", limit=10, offset=0, print=TRUE) {
+zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print=TRUE) {
 	# prepare endpoint
 	avail.endpoints <- c("author", "content", "department", "keyword", "product", "series")
 	endpoint <- avail.endpoints[pmatch(endpoint, avail.endpoints)]
@@ -55,12 +59,36 @@ zeit_search <- function(endpoint, query, fields="all", limit=10, offset=0, print
 	else if(endpoint == "keyword") avail.fields <- c("uri", "value", "lexical", "type", "score", "href")
 	else if(endpoint == "product") avail.fields <- c("uri", "value")
 	else if(endpoint == "series") avail.fields <- c("uri", "value", "href")
-  if(fields!="all") fields <- avail.fields[pmatch(fields, avail.fields)]
-  if(length(fields)>1) fields <- paste0(fields, collapse=",")
+	if(!missing(fields)) {
+		fields <- avail.fields[pmatch(fields, avail.fields)]
+		if(length(fields)>1) fields <- paste0(fields, collapse=",")
+	} else fields = NULL
+	
+	# prepare sort
+	if(!missing(sort)) {
+		if(is.list(sort)) {
+			# check sort fields and direction
+			if(!all(sapply(sort, length) == 2)) stop("Cannot resolve sort parameter. Please specify sort as vector 'c([field], [direction])' or list of such vectors.")
+			sort.fields <- sapply(1:length(sort), function(x) sort[[x]][1])
+			check.fields <- match(sort.fields, avail.fields)
+			if(any(is.na(check.fields))) stop("Sort field(s) not available for \'", endpoint, "\': ", sort.fields[which(is.na(check.fields))])
+			sort.dir <- sapply(1:length(sort), function(x) sort[[x]][2])
+			check.dir <- match(sort.dir, c("asc", "desc"))
+			if(any(is.na(check.dir))) stop("Sort direction(s) not available: ", sort.dir[which(is.na(check.dir))])
+			sort <- paste(lapply(sort, function(x) paste(x, collapse=" ")), collapse=", ")
+		} else {
+			
+		}
+	} else sort <- NULL
 	
 	# make request
-  if(fields=="all") req <- zeit_get(path=endpoint, q=query, limit=limit, offset=offset)
-  else req <- zeit_get(path=endpoint, q=query, fields=fields, limit=limit, offset=offset)
+  if(is.null(fields)) {
+  	if(is.null(sort)) req <- zeit_get(path=endpoint, q=query, limit=limit, offset=offset)
+  	else req <- zeit_get(path=endpoint, q=query, limit=limit, offset=offset, sort=sort)
+  } else {
+  	if(is.null(sort)) req <- zeit_get(path=endpoint, q=query, fields=fields, limit=limit, offset=offset)
+  	else req <- zeit_get(path=endpoint, q=query, fields=fields, limit=limit, offset=offset, sort=sort)
+  }
   raw <- zeit_parse(req)
   
   # return
