@@ -4,7 +4,10 @@
 \alias{zeit_client}
 \title{Observe your usage}
 \usage{
-zeit_client()
+zeit_client(print = TRUE)
+}
+\arguments{
+\item{print}{if \code{TRUE} (default), the client information is printed.}
 }
 \value{
 a list of information about the client and API usage

@@ -4,7 +4,8 @@
 \alias{zeit_search}
 \title{Search the ZEIT archive}
 \usage{
-zeit_search(endpoint, query, fields = "all", limit = 10, offset = 0)
+zeit_search(endpoint, query, fields = "all", limit = 10, offset = 0,
+  print = TRUE)
 }
 \arguments{
 \item{endpoint}{one of \code{author}, \code{content}, \code{department}, \code{keyword},
@@ -17,6 +18,8 @@ zeit_search(endpoint, query, fields = "all", limit = 10, offset = 0)
 \item{limit}{limit the amount of matches to return; set to 10 by default.}
 
 \item{offset}{offset for the list of matches; set to 0 by default.}
+
+\item{print}{if \code{TRUE} (default) the search results are printed.}
 }
 \value{
 a list of matches to the query.

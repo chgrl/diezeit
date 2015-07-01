@@ -2,18 +2,22 @@
 #' @description \code{zeit_client} does not provide content per se, 
 #' but lets you get information about your API usage.
 #'
+#' @param print if \code{TRUE} (default), the client information is printed.
 #' @return a list of information about the client and API usage
 #' @export
 #' @examples
 #' \dontrun{
 #' zeit_client()
 #' }
-zeit_client <- function() {
+zeit_client <- function(print=TRUE) {
 	# make request
   req <- zeit_get(path="client")
   raw <- zeit_parse(req)
   #reset <- as.POSIXct(raw$reset, origin="1970-01-01")
-  return(raw)
+  
+  # return
+  if(print) print(raw)
+  invisible(raw)
 }
 
 
@@ -29,13 +33,14 @@ zeit_client <- function() {
 #' @param fields partially select output fields; set to \code{"all"} by default.
 #' @param limit limit the amount of matches to return; set to 10 by default.
 #' @param offset offset for the list of matches; set to 0 by default.
+#' @param print if \code{TRUE} (default) the search results are printed.
 #' @return a list of matches to the query.
 #' @export
 #' @examples
 #' \dontrun{
 #' zeit_search("")
 #' }
-zeit_search <- function(endpoint, query, fields="all", limit=10, offset=0) {
+zeit_search <- function(endpoint, query, fields="all", limit=10, offset=0, print=TRUE) {
 	# prepare endpoint
 	avail.endpoints <- c("author", "content", "department", "keyword", "product", "series")
 	endpoint <- avail.endpoints[pmatch(endpoint, avail.endpoints)]
@@ -57,5 +62,8 @@ zeit_search <- function(endpoint, query, fields="all", limit=10, offset=0) {
   if(fields=="all") req <- zeit_get(path=endpoint, q=query, limit=limit, offset=offset)
   else req <- zeit_get(path=endpoint, q=query, fields=fields, limit=limit, offset=offset)
   raw <- zeit_parse(req)
-  return(raw)
+  
+  # return
+  if(print) print(raw)
+  invisible(raw)
 }
