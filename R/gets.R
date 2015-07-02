@@ -38,7 +38,25 @@ zeit_client <- function(print=TRUE) {
 #' Direction keywords are \code{asc} and \code{desc} for an ascending or descending 
 #' sort order respectively. Multiple sort orders are accepted as \code{list} of such vectors.
 #' @param print if \code{TRUE} (default) the search results are printed.
-#' @return a list of matches to the query.
+#' @return A list of matches to the query.
+#' @details \emph{Endpoints}
+#' 
+#' The API is structured into several endpoints that provide specific functionalities:
+#' \tabular{lll}{
+#' \tab author \tab search all authors \cr
+#' \tab content \tab search for content \cr
+#' \tab department \tab search all departments \cr
+#' \tab keyword \tab search all keywords \cr
+#' \tab product \tab search all products \cr
+#' \tab series \tab search all series
+#' }
+#'
+#' \emph{Query syntax}
+#' 
+#' You can search the entire article text and all meta data simply by setting the query parameter 
+#' to your search phrase. The search uses entire strings "as is". To search for multiple tokens 
+#' use a vector of strings.
+#' @source \url{http://developer.zeit.de/docs/}
 #' @export
 #' @examples
 #' \dontrun{

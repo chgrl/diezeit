@@ -3,6 +3,9 @@
 \name{zeit_search}
 \alias{zeit_search}
 \title{Search the ZEIT archive}
+\source{
+\url{http://developer.zeit.de/docs/}
+}
 \usage{
 zeit_search(endpoint, query, fields, limit = 10, offset = 0, sort,
   print = TRUE)
@@ -27,13 +30,32 @@ sort order respectively. Multiple sort orders are accepted as \code{list} of suc
 \item{print}{if \code{TRUE} (default) the search results are printed.}
 }
 \value{
-a list of matches to the query.
+A list of matches to the query.
 }
 \description{
 \code{zeit_search} exposes a search for ZEIT archive items.
 You can set search queries, paginate, sort and partially select the fields,
 that should be returned. Articles, that match your query, are returned with
 a reduced set of meta data.
+}
+\details{
+\emph{Endpoints}
+
+The API is structured into several endpoints that provide specific functionalities:
+\tabular{lll}{
+\tab author \tab search all authors \cr
+\tab content \tab search for content \cr
+\tab department \tab search all departments \cr
+\tab keyword \tab search all keywords \cr
+\tab product \tab search all products \cr
+\tab series \tab search all series
+}
+
+\emph{Query syntax}
+
+You can search the entire article text and all meta data simply by setting the query parameter
+to your search phrase. The search uses entire strings "as is". To search for multiple tokens
+use a vector of strings.
 }
 \examples{
 \dontrun{
