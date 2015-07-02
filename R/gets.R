@@ -70,7 +70,6 @@ zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print
 	# prepare query
 	if(length(query)>1) query <- sapply(query, function(x) if(length(grep(" ", x, fixed=TRUE))!=0) paste0("\"", x, "\"") else paste(x))
 	query <- paste0(query, collapse="+")
-	str(query)
 	
 	# prepare fields
 	if(endpoint == "author") avail.fields <- c("href", "id", "type", "uri", "value")
