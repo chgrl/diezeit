@@ -56,6 +56,13 @@ The API is structured into several endpoints that provide specific functionaliti
 You can search the entire article text and all meta data simply by setting the query parameter
 to your search phrase. The search uses entire strings "as is". To search for multiple tokens
 use a vector of strings.
+
+All fields of an article can be queried individually by using \code{[field]:[search string]}.
+For example, to get articles that have the word "Kennedy" in their headline, you would
+search for \code{"title:Kennedy"}.
+
+Currently all \code{endpoint}s other than \code{content} only support simple search phrases
+with asterisk (\code{*}) wildcards.
 }
 \examples{
 \dontrun{
