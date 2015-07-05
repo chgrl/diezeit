@@ -1,7 +1,7 @@
 zeit_get_url <- function(path, ..., key=zeit_key()) {
 	#auth <- zeit_auth(key)
 	#req <- GET("http://api.zeit.de/", path=path, auth, query=list(...))
-	req <- httr::GET("http://api.zeit.de/", path=path, query=list(api_key = key, ...))
+	req <- GET("http://api.zeit.de/", path=path, query=list(api_key = key, ...))
 	zeit_check(req)
 	message("Request: ", req$url) # for debugging
 	return(req)
@@ -21,10 +21,10 @@ zeit_check <- function(req) {
 
 
 zeit_parse <- function(req) {
-	json <- httr::content(req, as="text")
+	json <- content(req, as="text")
 	if(identical(json, "")) stop("Not output to parse", call.=FALSE)
 	if(length(grep("application/json", req$headers$'content-type', fixed=TRUE)) == 0) stop("No JSON to parse", call.=FALSE)
-	jsonlite::fromJSON(json, simplifyVector=FALSE)
+	fromJSON(json, simplifyVector=FALSE)
 }
 
 
