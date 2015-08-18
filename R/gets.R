@@ -67,7 +67,17 @@ zeit_client <- function(print=TRUE) {
 #' @export
 #' @examples
 #' \dontrun{
-#' zeit_search("")
+#' # simple content search
+#' zeit_search("content", "bayreuth")
+#' 
+#' # multiple tokens
+#' zeit_search("content", c("bayreuth", "festspiele"))
+#' 
+#' # entire string
+#' zeit_search("content", "bayreuther festspiele")
+#' 
+#' # field query
+#' zeit_search("content", "title:bayreuth")
 #' }
 zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print=TRUE) {
 	# prepare endpoint
