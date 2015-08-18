@@ -86,6 +86,7 @@ zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print
 	
 	# prepare query
 	if(length(query)>1) query <- sapply(query, function(x) if(length(grep(" ", x, fixed=TRUE))!=0) paste0("\"", x, "\"") else paste(x))
+	else if(length(grep(" ", query, fixed=TRUE))!=0) query <- paste0("\"", query, "\"")
 	query <- paste0(query, collapse="+")
 	
 	# prepare fields
