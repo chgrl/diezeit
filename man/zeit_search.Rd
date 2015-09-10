@@ -67,7 +67,8 @@ with asterisk (\code{*}) wildcards.
 \examples{
 \dontrun{
 # simple content search
-zeit_search("content", "bayreuth")
+zeit_search(endpoint="content", query="bayreuth")
+zeit_search("content", "bayreuth") # same same
 
 # multiple tokens
 zeit_search("content", c("bayreuth", "festspiele"))
@@ -77,6 +78,22 @@ zeit_search("content", "bayreuther festspiele")
 
 # field query
 zeit_search("content", "title:bayreuth")
+
+# partial selection
+zeit_search("content", "bayreuth", fields=c("title", "teaser_text"))
+
+# pagination
+zeit_search("content", "bayreuth", limit=1) # just one match
+zeit_search("content", "bayreuth", limit=1, offset=1) # just the second match
+
+# sorting
+zeit_search("content", "bayreuth",
+  sort=c("release_date", "asc")) # sort by date
+zeit_search("content", "bayreuth",
+  sort=list(c("release_date", "desc"), c("title", "asc"))) # sort by date and title
+
+# hide matches
+bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
 }
 }
 

@@ -68,7 +68,8 @@ zeit_client <- function(print=TRUE) {
 #' @examples
 #' \dontrun{
 #' # simple content search
-#' zeit_search("content", "bayreuth")
+#' zeit_search(endpoint="content", query="bayreuth")
+#' zeit_search("content", "bayreuth") # same same
 #' 
 #' # multiple tokens
 #' zeit_search("content", c("bayreuth", "festspiele"))
@@ -78,6 +79,22 @@ zeit_client <- function(print=TRUE) {
 #' 
 #' # field query
 #' zeit_search("content", "title:bayreuth")
+#'
+#' # partial selection
+#' zeit_search("content", "bayreuth", fields=c("title", "teaser_text"))
+#'
+#' # pagination
+#' zeit_search("content", "bayreuth", limit=1) # just one match
+#' zeit_search("content", "bayreuth", limit=1, offset=1) # just the second match
+#'
+#' # sorting
+#' zeit_search("content", "bayreuth", 
+#'   sort=c("release_date", "asc")) # sort by date
+#' zeit_search("content", "bayreuth", 
+#'   sort=list(c("release_date", "desc"), c("title", "asc"))) # sort by date and title
+#'
+#' # hide matches
+#' bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
 #' }
 zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print=TRUE) {
 	# prepare endpoint
@@ -114,7 +131,7 @@ zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print
 			if(any(is.na(check.dir))) stop("Sort direction(s) not available: ", sort.dir[which(is.na(check.dir))])
 			sort <- paste(lapply(sort, function(x) paste(x, collapse=" ")), collapse=", ")
 		} else {
-			
+			 
 		}
 	} else sort <- NULL
 	
