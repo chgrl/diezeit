@@ -131,7 +131,7 @@ zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print
 			if(any(is.na(check.dir))) stop("Sort direction(s) not available: ", sort.dir[which(is.na(check.dir))])
 			sort <- paste(lapply(sort, function(x) paste(x, collapse=" ")), collapse=", ")
 		} else {
-			 
+			sort <- paste(sort, collapse=" ")
 		}
 	} else sort <- NULL
 	
