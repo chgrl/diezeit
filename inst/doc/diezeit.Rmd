@@ -82,7 +82,7 @@ zeit_search("content", "bayreuth", fields=c("title", "teaser_text"))
 
 Search results are limited to 10 matches by default. You can increase this value with the `limit` 
 parameter. To iterate over the resultset, repeat your request with the `offset` parameter set to 
-multiples of the limit.
+multiples of the `limit.
 
 ```{r}
 zeit_search("content", "bayreuth", limit=1) # just one match
@@ -91,7 +91,7 @@ zeit_search("content", "bayreuth", limit=1, offset=1) # just the second match
 
 Search results, namely those of the /content endpoint, can be sorted using the `sort` parameter. 
 Any of the returned fields are sortable. Direction keywords are `asc` and `desc` for an ascending 
-or descending sort order respectively. Multiple sort orders are accepted as a comma-separated `list`.
+or descending sort order respectively. Multiple sort orders are accepted as a comma-separated list.
 
 ```{r}
 zeit_search("content", "bayreuth", 
