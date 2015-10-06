@@ -65,7 +65,7 @@ To search for multiple tokens use a vector of strings.
 zeit_search("content", "bayreuther festspiele")
 ```
 
-All fields of an article can be queried individually by using '`field]:[search string]`.
+All fields of an article can be queried individually by using `[field]:[search string]`.
 For example, to get articles that have the word "Bayreuth" in their headline, you would
 search for:
 
@@ -109,7 +109,7 @@ bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
 
 #### Occurrences of German State Capitals in DIE ZEIT
 
-Prepare the vectors of state capital names, latitude and longitude
+Prepare the vectors of state capital names, latitude and longitude.
 
 ```{r}
 cap <- c("Berlin", "Bremen", "Dresden", "Düsseldorf", "Erfurt",
@@ -123,7 +123,7 @@ lon <- c(13.383333, 8.8, 13.733333, 6.783333, 11.033333,
   13.066667, 7, 11.416667, 9.183333, 8.24)
 ```
 
-Get data from DIE ZEIT. Search for ZEIT articles containing "Berlin"
+Get data from DIE ZEIT. Search for ZEIT articles containing just "Berlin".
 
 ```{r}
 berlin <- zeit_search("content", "Berlin", print=FALSE)
@@ -135,20 +135,20 @@ Get the number of articles found:
 berlin$found
 ```
 
-And now the same for all state capitals
+And now the same for all state capitals.
 
 ```{r}
 found.l <- lapply(cap, function(x) zeit_search("content", x, print=FALSE)$found)
 found <- unlist(found.l)
 ```
 
-Normalize the numbers
+Normalize the numbers.
 
 ```{r}
 found.norm <- found/max(found)
 ```
 
-Plot a bubble chart
+Finally plot a bubble chart.
 
 ```{r}
 cols <- rainbow(16, alpha=.8)
