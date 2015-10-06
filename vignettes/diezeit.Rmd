@@ -1,0 +1,162 @@
+<!--
+%\VignetteEngine{knitr::rmarkdown}
+%\VignetteIndexEntry{diezeit vignette}
+%\VignetteEncoding{UTF-8}
+-->
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE, 
+  message = FALSE
+)
+```
+
+
+
+Introduction to `diezeit`
+======
+
+### About the package
+
+`diezeit` is an R wrapper for the ZEIT ONLINE Content API, available at http://developer.zeit.de. 
+It gives access to articles and corresponding metadata from the ZEIT archive dating back to 1946 
+and from ZEIT ONLINE. The API can be used for free for non-commercial use cases. A personal API 
+key is required for usage. 
+For the terms of use see http://developer.zeit.de/licence (German only at the moment).
+
+### Package install
+
+`diezeit` is available on GitHub. To install it directly from R the `devtools`-package is required.
+
+```{r}
+if(packageVersion("devtools") < 1.6) {
+  install.packages("devtools")
+}
+devtools::install_github("chgrl/diezeit")
+```
+
+### Load the package
+
+```{r}
+library(diezeit)
+```
+
+
+### Search the ZEIT archive
+
+You can search the entire article text and all meta data simply by setting the `query` parameter
+to your search phrase.
+
+```{r}
+zeit_search(endpoint="content", query="bayreuth")
+```
+
+The search uses entire strings "as is".
+
+```{r}
+zeit_search("content", c("bayreuth", "festspiele"))
+```
+
+To search for multiple tokens use a vector of strings.
+
+```{r}
+zeit_search("content", "bayreuther festspiele")
+```
+
+All fields of an article can be queried individually by using '`field]:[search string]`.
+For example, to get articles that have the word "Bayreuth" in their headline, you would
+search for:
+
+```{r}
+zeit_search("content", "title:bayreuth")
+```
+
+By default, the API returns all available fields for your request. To speed things up, you can 
+specify which fields the server should return using the `fields` paramter.
+
+```{r}
+zeit_search("content", "bayreuth", fields=c("title", "teaser_text"))
+```
+
+Search results are limited to 10 matches by default. You can increase this value with the `limit` 
+parameter. To iterate over the resultset, repeat your request with the `offset` parameter set to 
+multiples of the limit.
+
+```{r}
+zeit_search("content", "bayreuth", limit=1) # just one match
+zeit_search("content", "bayreuth", limit=1, offset=1) # just the second match
+```
+
+Search results, namely those of the /content endpoint, can be sorted using the `sort` parameter. 
+Any of the returned fields are sortable. Direction keywords are `asc` and `desc` for an ascending 
+or descending sort order respectively. Multiple sort orders are accepted as a comma-separated `list`.
+
+```{r}
+zeit_search("content", "bayreuth", 
+  sort=c("release_date", "asc")) # sort by date
+zeit_search("content", "bayreuth", 
+  sort=list(c("release_date", "desc"), c("title", "asc"))) # sort by date and title
+```
+
+You may hide the search output by setting `print` to `FALSE`.
+
+```{r}
+bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
+```
+
+
+#### Occurrences of German State Capitals in DIE ZEIT
+
+Prepare the vectors of state capital names, latitude and longitude
+
+```{r}
+cap <- c("Berlin", "Bremen", "Dresden", "Düsseldorf", "Erfurt",
+  "Hamburg", "Hannover", "Kiel", "Magdeburg", "Mainz", "München",
+  "Potsdam", "Saarbrücken", "Schwerin", "Stuttgart", "Wiesbaden")
+lat <- c(52.516667, 53.083333, 51.033333, 51.233333, 50.983333,
+  53.565278, 52.366667, 54.333333, 52.133333, 50, 48.133333,
+  52.4, 49.233333, 53.633333, 48.783333, 50.08) 
+lon <- c(13.383333, 8.8, 13.733333, 6.783333, 11.033333,
+  10.001389, 9.716667, 10.133333, 11.616667, 8.266667, 11.566667,
+  13.066667, 7, 11.416667, 9.183333, 8.24)
+```
+
+Get data from DIE ZEIT. Search for ZEIT articles containing "Berlin"
+
+```{r}
+berlin <- zeit_search("content", "Berlin", print=FALSE)
+```
+
+Get the number of articles found:
+
+```{r}
+berlin$found
+```
+
+And now the same for all state capitals
+
+```{r}
+found.l <- lapply(cap, function(x) zeit_search("content", x, print=FALSE)$found)
+found <- unlist(found.l)
+```
+
+Normalize the numbers
+
+```{r}
+found.norm <- found/max(found)
+```
+
+Plot a bubble chart
+
+```{r}
+cols <- rainbow(16, alpha=.8)
+symbols(lon, lat, circles=8*found.norm, fg=cols, lwd=2, 
+	main="Occurrences of German State Capitals in DIE ZEIT",
+  xlim=c(6, 16), ylim=c(46, 56), xlab="", ylab="", bty="n")
+h <- c(1,2,3,4,6,7,8,11,15)	# high occurrence capitals - just for readability
+text(lon[h], lat[h], cap[h], col=cols[h])
+text(lon[-c(h,16)], lat[-c(h,16)], cap[-c(h,16)], col=cols[-c(h,16)], pos=1)
+text(lon[16], lat[16], cap[16], col=cols[16], pos=3)
+```

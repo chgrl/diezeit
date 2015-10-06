@@ -2,9 +2,11 @@ Package: diezeit
 Type: Package
 Title: R Interface to the ZEIT ONLINE Content API
 Version: 0.1-0
-Date: 2015-06-28
+Date: 2015-10-05
 Author: Christian Graul
 Maintainer: Christian Graul <christian.graul@gmail.com>
-Description: A wrapper for the ZEIT ONLINE Content API, available at <http://developer.zeit.de>. The package gives access to articles and corresponding metadata from the ZEIT archive and from ZEIT ONLINE. A personal API key is required for usage.
+Description: A wrapper for the ZEIT ONLINE Content API, available at <http://developer.zeit.de>. 'diezeit' gives access to articles and corresponding metadata from the ZEIT archive and from ZEIT ONLINE. A personal API key is required for usage.
 License: MIT + file LICENSE
+VignetteBuilder: knitr
 Imports: brew, grDevices, httr, jsonlite, methods, utils
+Suggests: devtools (>= 1.6), knitr
