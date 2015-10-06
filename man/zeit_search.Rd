@@ -94,6 +94,9 @@ zeit_search("content", "bayreuth",
 
 # hide matches
 bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
+
+# author search
+zeit_search(endpoint="author", query="max")
 }
 }
 

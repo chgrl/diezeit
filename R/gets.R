@@ -95,6 +95,9 @@ zeit_client <- function(print=TRUE) {
 #'
 #' # hide matches
 #' bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
+#'
+#' # author search
+#' zeit_search(endpoint="author", query="max")
 #' }
 zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print=TRUE) {
 	# prepare endpoint
