@@ -9,6 +9,16 @@ function(libname, pkgname) {
     packageStartupMessage(" ")
 }
 
+
+#' @title View changes notes.
+#' @description \code{changes} brings up the NEWS file of the package. 
+#'
+#' @param pkg Set to the default "diezeit". Other packages make no sense.
+#' @export
+#' @examples
+#' \dontrun{
+#' changes()
+#' }
 changes <- 
 function(pkg="diezeit") {
     if(pkg=="diezeit") file.show(file.path(system.file(package="diezeit"), "NEWS"))
