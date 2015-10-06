@@ -3,7 +3,7 @@ language: r
 sudo: required
 
 env:
-  - warnings_are_errors: true
+  - warnings_are_errors: false
 
 r_github_packages:
   - jimhester/covr
