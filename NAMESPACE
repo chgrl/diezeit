@@ -3,6 +3,7 @@
 export(zeit_client)
 export(zeit_get)
 export(zeit_search)
+export(changes)
 importFrom(httr,GET)
 importFrom(httr,content)
 importFrom(jsonlite,fromJSON)
