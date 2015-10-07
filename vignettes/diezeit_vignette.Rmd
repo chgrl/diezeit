@@ -1,8 +1,12 @@
-<!--
-%\VignetteEngine{knitr::rmarkdown}
-%\VignetteIndexEntry{diezeit vignette}
-%\VignetteEncoding{UTF-8}
--->
+---
+title: "Introduction to diezeit"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to diezeit}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(
@@ -30,7 +34,7 @@ For the terms of use see http://developer.zeit.de/licence (German only at the mo
 
 `diezeit` is available on GitHub. To install it directly from R the `devtools`-package is required.
 
-```{r}
+```{r eval=FALSE}
 if(packageVersion("devtools") < 1.6) {
   install.packages("devtools")
 }

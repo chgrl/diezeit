@@ -1,0 +1,2430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Introduction to <code>diezeit</code></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>Introduction to <code>diezeit</code></h1>
+
+<h3>About the package</h3>
+
+<p><code>diezeit</code> is an R wrapper for the ZEIT ONLINE Content API, available at <a href="http://developer.zeit.de">http://developer.zeit.de</a>. 
+It gives access to articles and corresponding metadata from the ZEIT archive dating back to 1946 
+and from ZEIT ONLINE. The API can be used for free for non-commercial use cases. A personal API 
+key is required for usage. 
+For the terms of use see <a href="http://developer.zeit.de/licence">http://developer.zeit.de/licence</a> (German only at the moment).</p>
+
+<h3>Package install</h3>
+
+<p><code>diezeit</code> is available on GitHub. To install it directly from R the <code>devtools</code>-package is required.</p>
+
+<pre><code class="r">if(packageVersion(&quot;devtools&quot;) &lt; 1.6) {
+  install.packages(&quot;devtools&quot;)
+}
+devtools::install_github(&quot;chgrl/diezeit&quot;)
+</code></pre>
+
+<h3>Load the package</h3>
+
+<pre><code class="r">library(diezeit)
+</code></pre>
+
+<h3>Search the ZEIT archive</h3>
+
+<p>You can search the entire article text and all meta data simply by setting the <code>query</code> parameter
+to your search phrase.</p>
+
+<pre><code class="r">zeit_search(endpoint=&quot;content&quot;, query=&quot;bayreuth&quot;)
+#&gt; $matches
+#&gt; $matches[[1]]
+#&gt; $matches[[1]]$subtitle
+#&gt; [1] &quot;Der heißlaufende Streit um Namenspatrone (nicht nur) in Deutschland – und was dahintersteckt. Beobachtungen&quot;
+#&gt; 
+#&gt; $matches[[1]]$uuid
+#&gt; [1] &quot;5RQOFFRriS05dw4DfL2YEa&quot;
+#&gt; 
+#&gt; $matches[[1]]$title
+#&gt; [1] &quot;Straßenkampf&quot;
+#&gt; 
+#&gt; $matches[[1]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/38/deutschland-strassennamen-namenspatrone&quot;
+#&gt; 
+#&gt; $matches[[1]]$release_date
+#&gt; [1] &quot;2015-10-06T08:33:09Z&quot;
+#&gt; 
+#&gt; $matches[[1]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/5RQOFFRriS05dw4DfL2YEa&quot;
+#&gt; 
+#&gt; $matches[[1]]$snippet
+#&gt; [1] &quot; weitläufigen Platz vor der alten Musikhalle zu widmen, der seit der Nazizeit Karl-Muck-Platz hieß. Wenig später erst stellte sich heraus, dass Muck, ein heute weitgehend vergessener Kapellmeister, in &lt;em&gt;Bayreuth&lt;/em&gt;&quot;
+#&gt; 
+#&gt; $matches[[1]]$supertitle
+#&gt; [1] &quot;Straßennamen&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_text
+#&gt; [1] &quot;Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_title
+#&gt; [1] &quot;Von Adolf-Hitler-Plätzen und Rosa-Luxemburg-Alleen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[2]]
+#&gt; $matches[[2]]$subtitle
+#&gt; [1] &quot;Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden&quot;
+#&gt; 
+#&gt; $matches[[2]]$uuid
+#&gt; [1] &quot;3Ed7KYJOO2MXu5SQtnudQA&quot;
+#&gt; 
+#&gt; $matches[[2]]$title
+#&gt; [1] &quot;Und Recht und Freibier&quot;
+#&gt; 
+#&gt; $matches[[2]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/40/3-10-1990-chronik-des-tages&quot;
+#&gt; 
+#&gt; $matches[[2]]$release_date
+#&gt; [1] &quot;2015-10-01T13:30:49Z&quot;
+#&gt; 
+#&gt; $matches[[2]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3Ed7KYJOO2MXu5SQtnudQA&quot;
+#&gt; 
+#&gt; $matches[[2]]$snippet
+#&gt; [1] &quot; Nachmittag einen Sitzstreik auf. In &lt;em&gt;Bayreuth&lt;/em&gt; und Bernau am Chiemsee demonstrieren Gefängnisinsassen, im schwäbischen Kaisheim und in München-Stadelheim brechen kleinere Revolten aus. In der Hamburger&quot;
+#&gt; 
+#&gt; $matches[[2]]$supertitle
+#&gt; [1] &quot;3. Oktober 1990&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_text
+#&gt; [1] &quot;Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_title
+#&gt; [1] &quot;Und Recht und Freibier&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[3]]
+#&gt; $matches[[3]]$subtitle
+#&gt; [1] &quot;Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete.&quot;
+#&gt; 
+#&gt; $matches[[3]]$uuid
+#&gt; [1] &quot;3io4OEbgWI4BTXIrvQmCZD&quot;
+#&gt; 
+#&gt; $matches[[3]]$title
+#&gt; [1] &quot;Verführer der Deutschen&quot;
+#&gt; 
+#&gt; $matches[[3]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/38/herfried-muenkler-houston-stewart-chamberlain&quot;
+#&gt; 
+#&gt; $matches[[3]]$release_date
+#&gt; [1] &quot;2015-10-01T01:34:01Z&quot;
+#&gt; 
+#&gt; $matches[[3]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3io4OEbgWI4BTXIrvQmCZD&quot;
+#&gt; 
+#&gt; $matches[[3]]$snippet
+#&gt; [1] &quot; politikwissenschaftlicher Sicht in den letzten zwei Jahrzehnten mit Wagner beschäftigt hat, ist unübersehbar aus Chamberlains Verbindung mit &lt;em&gt;Bayreuth&lt;/em&gt; und der dort nach Wagners Tod entwickelten Ideologie erwachsen. Nach&quot;
+#&gt; 
+#&gt; $matches[[3]]$supertitle
+#&gt; [1] &quot;\&quot;Houston Stewart Chamberlain\&quot;&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_text
+#&gt; [1] &quot;Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete.&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_title
+#&gt; [1] &quot;Verführer der Deutschen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[4]]
+#&gt; $matches[[4]]$subtitle
+#&gt; [1] &quot;Wie mir träumte, ich sei Ethik- und Achtungsminister.&quot;
+#&gt; 
+#&gt; $matches[[4]]$uuid
+#&gt; [1] &quot;17OoeUkLg0YwKcyojdwLjp&quot;
+#&gt; 
+#&gt; $matches[[4]]$title
+#&gt; [1] &quot;Mit Merkels Hubschrauber über Sachsen&quot;
+#&gt; 
+#&gt; $matches[[4]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/36/moritz-rinke-sachsen-emmanuel-levinas&quot;
+#&gt; 
+#&gt; $matches[[4]]$release_date
+#&gt; [1] &quot;2015-09-17T01:09:28Z&quot;
+#&gt; 
+#&gt; $matches[[4]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/17OoeUkLg0YwKcyojdwLjp&quot;
+#&gt; 
+#&gt; $matches[[4]]$snippet
+#&gt; [1] &quot; irritierten Bundeskanzlerin durch, die eigentlich mit ihrem Hubschrauber nach &lt;em&gt;Bayreuth&lt;/em&gt; wollte. Je weniger Bildung, umso anfälliger sind die Menschen für schlichte Erklärungen, mache ich der Kanzlerin deutlich&quot;
+#&gt; 
+#&gt; $matches[[4]]$supertitle
+#&gt; [1] &quot;Ethik&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_text
+#&gt; [1] &quot;Wie mir träumte, ich sei Ethik- und Achtungsminister.&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_title
+#&gt; [1] &quot;Mit Merkels Hubschrauber über Sachsen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[5]]
+#&gt; $matches[[5]]$subtitle
+#&gt; [1] &quot;Eine Reise zu den Festspielen&quot;
+#&gt; 
+#&gt; $matches[[5]]$uuid
+#&gt; [1] &quot;1azq6iOsx2DgMPdEjpvXkZ&quot;
+#&gt; 
+#&gt; $matches[[5]]$title
+#&gt; [1] &quot;Bayreuther Assoziationen&quot;
+#&gt; 
+#&gt; $matches[[5]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/32/bayreuth-wagner-festspiele-peter-sloterdijk&quot;
+#&gt; 
+#&gt; $matches[[5]]$release_date
+#&gt; [1] &quot;2015-08-21T08:57:55Z&quot;
+#&gt; 
+#&gt; $matches[[5]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1azq6iOsx2DgMPdEjpvXkZ&quot;
+#&gt; 
+#&gt; $matches[[5]]$snippet
+#&gt; [1] &quot; Außerordentliche an &lt;em&gt;Bayreuth&lt;/em&gt; ist wohl, dass hier fast ausschließlich Vorbereitete das Festspielhaus betreten. Die erste Fanfare ertönt. Das Publikum strömt zu den Toiletten. Wagner und die physiologischen&quot;
+#&gt; 
+#&gt; $matches[[5]]$supertitle
+#&gt; [1] &quot;Wagner-Festspiele&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_text
+#&gt; [1] &quot;Richard Wagners Opern sind natürlich eine Zumutung, seine Kultur ist die der Unterwerfung. Sie fordert Geduld, Kunstglauben und Mitmenschlichkeit heraus.&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_title
+#&gt; [1] &quot;Bayreuther Assoziationen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[6]]
+#&gt; $matches[[6]]$subtitle
+#&gt; [1] &quot;Albert Ostermaiers Nibelungen-Dichtung \&quot;Gemetzel\&quot; wird vor dem Wormser Dom aufgeführt.&quot;
+#&gt; 
+#&gt; $matches[[6]]$uuid
+#&gt; [1] &quot;7vMNqYPNewxaJdvOo0Ht0r&quot;
+#&gt; 
+#&gt; $matches[[6]]$title
+#&gt; [1] &quot;Action! Mord! Blutbad!&quot;
+#&gt; 
+#&gt; $matches[[6]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/32/nibelungen-festspiele-worms-gemetzel&quot;
+#&gt; 
+#&gt; $matches[[6]]$release_date
+#&gt; [1] &quot;2015-08-20T01:45:02Z&quot;
+#&gt; 
+#&gt; $matches[[6]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/7vMNqYPNewxaJdvOo0Ht0r&quot;
+#&gt; 
+#&gt; $matches[[6]]$snippet
+#&gt; [1] &quot; breiten Bühne zwei hochragende Gestängetürme, martialisch bestückt mit Waffengerät, Beutegut, Leitern im Innern. Offenbar Kampfwagen. Erdacht hat sie Aleksandar Denić, der ja gerade in &lt;em&gt;Bayreuth&lt;/em&gt; Frank&quot;
+#&gt; 
+#&gt; $matches[[6]]$supertitle
+#&gt; [1] &quot;Nibelungen-Festspiele&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_text
+#&gt; [1] &quot;Albert Ostermaiers Nibelungen-Dichtung \&quot;Gemetzel\&quot; wird vor dem Wormser Dom aufgeführt.&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_title
+#&gt; [1] &quot;Action! Mord! Blutbad!&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[7]]
+#&gt; $matches[[7]]$subtitle
+#&gt; [1] &quot;Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \&quot;Tristan\&quot;.&quot;
+#&gt; 
+#&gt; $matches[[7]]$uuid
+#&gt; [1] &quot;6m8EMIolNkCqNFk6TCROIv&quot;
+#&gt; 
+#&gt; $matches[[7]]$title
+#&gt; [1] &quot;Zelle mit Meeresblick&quot;
+#&gt; 
+#&gt; $matches[[7]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/31/tristan-isolde-oper-bayreuth&quot;
+#&gt; 
+#&gt; $matches[[7]]$release_date
+#&gt; [1] &quot;2015-08-13T01:27:33Z&quot;
+#&gt; 
+#&gt; $matches[[7]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/6m8EMIolNkCqNFk6TCROIv&quot;
+#&gt; 
+#&gt; $matches[[7]]$snippet
+#&gt; [1] &quot;Welches Auto der Dirigent fährt, welcher Handtasche die Regisseurin ihre Zigaretten entnimmt, das alles scheint wichtig zu sein in &lt;em&gt;Bayreuth&lt;/em&gt;, und das türkisfarbene Kostüm der Bundeskanzlerin sowieso&quot;
+#&gt; 
+#&gt; $matches[[7]]$supertitle
+#&gt; [1] &quot;Tristan und Isolde&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_text
+#&gt; [1] &quot;Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \&quot;Tristan\&quot;.&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_title
+#&gt; [1] &quot;Zelle mit Meeresblick&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[8]]
+#&gt; $matches[[8]]$subtitle
+#&gt; [1] &quot;Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch 1975 hielt der Regisseur Hans-Jürgen Syberberg Bilder daraus fest. Hier zeigen wir sie erstmals.&quot;
+#&gt; 
+#&gt; $matches[[8]]$uuid
+#&gt; [1] &quot;1sRgadMwUk0eO8AniNz9I&quot;
+#&gt; 
+#&gt; $matches[[8]]$title
+#&gt; [1] &quot;Tee mit dem Biedermann&quot;
+#&gt; 
+#&gt; $matches[[8]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/31/bayreuth-festspiele-hitler-winifred-film&quot;
+#&gt; 
+#&gt; $matches[[8]]$release_date
+#&gt; [1] &quot;2015-08-13T00:24:03Z&quot;
+#&gt; 
+#&gt; $matches[[8]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1sRgadMwUk0eO8AniNz9I&quot;
+#&gt; 
+#&gt; $matches[[8]]$snippet
+#&gt; [1] &quot;Adolf Hitler in &lt;em&gt;Bayreuth&lt;/em&gt;, wie die Welt ihn noch nicht gesehen hat. Mit weichen, vor Zärtlichkeit fast verschwimmenden Gesichtszügen; im Tête-à-Tête mit Wieland Wagner, seinem erklärten Liebling unter&quot;
+#&gt; 
+#&gt; $matches[[8]]$supertitle
+#&gt; [1] &quot;Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_text
+#&gt; [1] &quot;Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen.&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_title
+#&gt; [1] &quot;Zum Tee mit Hitler&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[9]]
+#&gt; $matches[[9]]$subtitle
+#&gt; [1] &quot;Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm.&quot;
+#&gt; 
+#&gt; $matches[[9]]$uuid
+#&gt; [1] &quot;4MN9cCoAS05p5brCdufg45&quot;
+#&gt; 
+#&gt; $matches[[9]]$title
+#&gt; [1] &quot;Kampfjet in Bayern abgestürzt&quot;
+#&gt; 
+#&gt; $matches[[9]]$href
+#&gt; [1] &quot;http://www.zeit.de/gesellschaft/zeitgeschehen/2015-08/flugzeug-absturz-militaerjet-oberfranken&quot;
+#&gt; 
+#&gt; $matches[[9]]$release_date
+#&gt; [1] &quot;2015-08-11T11:14:31Z&quot;
+#&gt; 
+#&gt; $matches[[9]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/4MN9cCoAS05p5brCdufg45&quot;
+#&gt; 
+#&gt; $matches[[9]]$snippet
+#&gt; [1] &quot;Ein US-amerikanischer Militärjet ist in Oberfranken abgestürzt. Das Flugzeug stürzte gegen 9.30 Uhr über einem Waldgebiet im Gemeindebereich von Creußen im Grenzgebiet der Landkreise &lt;em&gt;Bayreuth&lt;/em&gt; und&quot;
+#&gt; 
+#&gt; $matches[[9]]$supertitle
+#&gt; [1] &quot;US-Militär&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_text
+#&gt; [1] &quot;Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm.&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_title
+#&gt; [1] &quot;Kampfjet in Bayern abgestürzt&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[10]]
+#&gt; $matches[[10]]$subtitle
+#&gt; [1] &quot;Musikfestivals sind laut und dreckig? Nicht so das A Summer&#39;s Tale nahe Hamburg. Es hat mit seiner Premiere eine neue Zielgruppe erschlossen: die High-End-Alternativen.&quot;
+#&gt; 
+#&gt; $matches[[10]]$uuid
+#&gt; [1] &quot;3T45htOktXKpSvAX66lbdp&quot;
+#&gt; 
+#&gt; $matches[[10]]$title
+#&gt; [1] &quot;Lieber Family-Yoga als Schlammrutschen&quot;
+#&gt; 
+#&gt; $matches[[10]]$href
+#&gt; [1] &quot;http://www.zeit.de/hamburg/kultur/2015-08/a-summers-tale-musik-festival&quot;
+#&gt; 
+#&gt; $matches[[10]]$release_date
+#&gt; [1] &quot;2015-08-10T10:41:56Z&quot;
+#&gt; 
+#&gt; $matches[[10]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3T45htOktXKpSvAX66lbdp&quot;
+#&gt; 
+#&gt; $matches[[10]]$snippet
+#&gt; [1] &quot; mit dem Rock &#39;n&#39; Roll vergleichbarer Freiluftpartys weniger gemeinsam hat als mit den Wagner-Festspielen in &lt;em&gt;Bayreuth&lt;/em&gt;.\nSommermärchenlandbewohner schlafen offenbar weniger mit Dosenbier im Wurfzelt als im&quot;
+#&gt; 
+#&gt; $matches[[10]]$supertitle
+#&gt; [1] &quot;A Summer&#39;s Tale&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_text
+#&gt; [1] &quot;Musikfestivals sind laut und dreckig? Nicht so das A Summer&#39;s Tale nahe Hamburg. Es hat mit seiner Premiere eine neue Zielgruppe erschlossen: die High-End-Alternativen.&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_title
+#&gt; [1] &quot;Lieber Family-Yoga als Schlammrutschen&quot;
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $found
+#&gt; [1] 1566
+#&gt; 
+#&gt; $limit
+#&gt; [1] 10
+#&gt; 
+#&gt; $offset
+#&gt; [1] 0
+</code></pre>
+
+<p>The search uses entire strings &ldquo;as is&rdquo;.</p>
+
+<pre><code class="r">zeit_search(&quot;content&quot;, c(&quot;bayreuth&quot;, &quot;festspiele&quot;))
+#&gt; $matches
+#&gt; $matches[[1]]
+#&gt; $matches[[1]]$subtitle
+#&gt; [1] &quot;Der heißlaufende Streit um Namenspatrone (nicht nur) in Deutschland – und was dahintersteckt. Beobachtungen&quot;
+#&gt; 
+#&gt; $matches[[1]]$uuid
+#&gt; [1] &quot;5RQOFFRriS05dw4DfL2YEa&quot;
+#&gt; 
+#&gt; $matches[[1]]$title
+#&gt; [1] &quot;Straßenkampf&quot;
+#&gt; 
+#&gt; $matches[[1]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/38/deutschland-strassennamen-namenspatrone&quot;
+#&gt; 
+#&gt; $matches[[1]]$release_date
+#&gt; [1] &quot;2015-10-06T08:33:09Z&quot;
+#&gt; 
+#&gt; $matches[[1]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/5RQOFFRriS05dw4DfL2YEa&quot;
+#&gt; 
+#&gt; $matches[[1]]$snippet
+#&gt; [1] &quot; weitläufigen Platz vor der alten Musikhalle zu widmen, der seit der Nazizeit Karl-Muck-Platz hieß. Wenig später erst stellte sich heraus, dass Muck, ein heute weitgehend vergessener Kapellmeister, in &lt;em&gt;Bayreuth&lt;/em&gt;&quot;
+#&gt; 
+#&gt; $matches[[1]]$supertitle
+#&gt; [1] &quot;Straßennamen&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_text
+#&gt; [1] &quot;Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_title
+#&gt; [1] &quot;Von Adolf-Hitler-Plätzen und Rosa-Luxemburg-Alleen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[2]]
+#&gt; $matches[[2]]$subtitle
+#&gt; [1] &quot;Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden&quot;
+#&gt; 
+#&gt; $matches[[2]]$uuid
+#&gt; [1] &quot;3Ed7KYJOO2MXu5SQtnudQA&quot;
+#&gt; 
+#&gt; $matches[[2]]$title
+#&gt; [1] &quot;Und Recht und Freibier&quot;
+#&gt; 
+#&gt; $matches[[2]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/40/3-10-1990-chronik-des-tages&quot;
+#&gt; 
+#&gt; $matches[[2]]$release_date
+#&gt; [1] &quot;2015-10-01T13:30:49Z&quot;
+#&gt; 
+#&gt; $matches[[2]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3Ed7KYJOO2MXu5SQtnudQA&quot;
+#&gt; 
+#&gt; $matches[[2]]$snippet
+#&gt; [1] &quot; Nachmittag einen Sitzstreik auf. In &lt;em&gt;Bayreuth&lt;/em&gt; und Bernau am Chiemsee demonstrieren Gefängnisinsassen, im schwäbischen Kaisheim und in München-Stadelheim brechen kleinere Revolten aus. In der Hamburger&quot;
+#&gt; 
+#&gt; $matches[[2]]$supertitle
+#&gt; [1] &quot;3. Oktober 1990&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_text
+#&gt; [1] &quot;Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_title
+#&gt; [1] &quot;Und Recht und Freibier&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[3]]
+#&gt; $matches[[3]]$subtitle
+#&gt; [1] &quot;Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete.&quot;
+#&gt; 
+#&gt; $matches[[3]]$uuid
+#&gt; [1] &quot;3io4OEbgWI4BTXIrvQmCZD&quot;
+#&gt; 
+#&gt; $matches[[3]]$title
+#&gt; [1] &quot;Verführer der Deutschen&quot;
+#&gt; 
+#&gt; $matches[[3]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/38/herfried-muenkler-houston-stewart-chamberlain&quot;
+#&gt; 
+#&gt; $matches[[3]]$release_date
+#&gt; [1] &quot;2015-10-01T01:34:01Z&quot;
+#&gt; 
+#&gt; $matches[[3]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3io4OEbgWI4BTXIrvQmCZD&quot;
+#&gt; 
+#&gt; $matches[[3]]$snippet
+#&gt; [1] &quot; politikwissenschaftlicher Sicht in den letzten zwei Jahrzehnten mit Wagner beschäftigt hat, ist unübersehbar aus Chamberlains Verbindung mit &lt;em&gt;Bayreuth&lt;/em&gt; und der dort nach Wagners Tod entwickelten Ideologie erwachsen. Nach&quot;
+#&gt; 
+#&gt; $matches[[3]]$supertitle
+#&gt; [1] &quot;\&quot;Houston Stewart Chamberlain\&quot;&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_text
+#&gt; [1] &quot;Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete.&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_title
+#&gt; [1] &quot;Verführer der Deutschen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[4]]
+#&gt; $matches[[4]]$subtitle
+#&gt; [1] &quot;Wie mir träumte, ich sei Ethik- und Achtungsminister.&quot;
+#&gt; 
+#&gt; $matches[[4]]$uuid
+#&gt; [1] &quot;17OoeUkLg0YwKcyojdwLjp&quot;
+#&gt; 
+#&gt; $matches[[4]]$title
+#&gt; [1] &quot;Mit Merkels Hubschrauber über Sachsen&quot;
+#&gt; 
+#&gt; $matches[[4]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/36/moritz-rinke-sachsen-emmanuel-levinas&quot;
+#&gt; 
+#&gt; $matches[[4]]$release_date
+#&gt; [1] &quot;2015-09-17T01:09:28Z&quot;
+#&gt; 
+#&gt; $matches[[4]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/17OoeUkLg0YwKcyojdwLjp&quot;
+#&gt; 
+#&gt; $matches[[4]]$snippet
+#&gt; [1] &quot; irritierten Bundeskanzlerin durch, die eigentlich mit ihrem Hubschrauber nach &lt;em&gt;Bayreuth&lt;/em&gt; wollte. Je weniger Bildung, umso anfälliger sind die Menschen für schlichte Erklärungen, mache ich der Kanzlerin deutlich&quot;
+#&gt; 
+#&gt; $matches[[4]]$supertitle
+#&gt; [1] &quot;Ethik&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_text
+#&gt; [1] &quot;Wie mir träumte, ich sei Ethik- und Achtungsminister.&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_title
+#&gt; [1] &quot;Mit Merkels Hubschrauber über Sachsen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[5]]
+#&gt; $matches[[5]]$subtitle
+#&gt; [1] &quot;Eine Reise zu den Festspielen&quot;
+#&gt; 
+#&gt; $matches[[5]]$uuid
+#&gt; [1] &quot;1azq6iOsx2DgMPdEjpvXkZ&quot;
+#&gt; 
+#&gt; $matches[[5]]$title
+#&gt; [1] &quot;Bayreuther Assoziationen&quot;
+#&gt; 
+#&gt; $matches[[5]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/32/bayreuth-wagner-festspiele-peter-sloterdijk&quot;
+#&gt; 
+#&gt; $matches[[5]]$release_date
+#&gt; [1] &quot;2015-08-21T08:57:55Z&quot;
+#&gt; 
+#&gt; $matches[[5]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1azq6iOsx2DgMPdEjpvXkZ&quot;
+#&gt; 
+#&gt; $matches[[5]]$snippet
+#&gt; [1] &quot;, was nötig ist, um die Mutter aller &lt;em&gt;Festspiele&lt;/em&gt; zu besuchen.\nDies eine Mal sollst du darauf verzichten, über die Verfestspielung der Kultur zu lästern, sosehr es auch an der Zeit wäre, zu diesem Ärgernis das&quot;
+#&gt; 
+#&gt; $matches[[5]]$supertitle
+#&gt; [1] &quot;Wagner-Festspiele&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_text
+#&gt; [1] &quot;Richard Wagners Opern sind natürlich eine Zumutung, seine Kultur ist die der Unterwerfung. Sie fordert Geduld, Kunstglauben und Mitmenschlichkeit heraus.&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_title
+#&gt; [1] &quot;Bayreuther Assoziationen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[6]]
+#&gt; $matches[[6]]$subtitle
+#&gt; [1] &quot;Albert Ostermaiers Nibelungen-Dichtung \&quot;Gemetzel\&quot; wird vor dem Wormser Dom aufgeführt.&quot;
+#&gt; 
+#&gt; $matches[[6]]$uuid
+#&gt; [1] &quot;7vMNqYPNewxaJdvOo0Ht0r&quot;
+#&gt; 
+#&gt; $matches[[6]]$title
+#&gt; [1] &quot;Action! Mord! Blutbad!&quot;
+#&gt; 
+#&gt; $matches[[6]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/32/nibelungen-festspiele-worms-gemetzel&quot;
+#&gt; 
+#&gt; $matches[[6]]$release_date
+#&gt; [1] &quot;2015-08-20T01:45:02Z&quot;
+#&gt; 
+#&gt; $matches[[6]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/7vMNqYPNewxaJdvOo0Ht0r&quot;
+#&gt; 
+#&gt; $matches[[6]]$snippet
+#&gt; [1] &quot; reich an Action, Mord und Blutbad jedenfalls.\nSeit im Jahr 2002 die Stadt Worms ihre Nibelungen-&lt;em&gt;Festspiele&lt;/em&gt; etabliert hat – immer mit Film- und Bühnenstars –, war man kühn um Abwechslung bemüht: gleiches&quot;
+#&gt; 
+#&gt; $matches[[6]]$supertitle
+#&gt; [1] &quot;Nibelungen-Festspiele&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_text
+#&gt; [1] &quot;Albert Ostermaiers Nibelungen-Dichtung \&quot;Gemetzel\&quot; wird vor dem Wormser Dom aufgeführt.&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_title
+#&gt; [1] &quot;Action! Mord! Blutbad!&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[7]]
+#&gt; $matches[[7]]$subtitle
+#&gt; [1] &quot;Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \&quot;Tristan\&quot;.&quot;
+#&gt; 
+#&gt; $matches[[7]]$uuid
+#&gt; [1] &quot;6m8EMIolNkCqNFk6TCROIv&quot;
+#&gt; 
+#&gt; $matches[[7]]$title
+#&gt; [1] &quot;Zelle mit Meeresblick&quot;
+#&gt; 
+#&gt; $matches[[7]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/31/tristan-isolde-oper-bayreuth&quot;
+#&gt; 
+#&gt; $matches[[7]]$release_date
+#&gt; [1] &quot;2015-08-13T01:27:33Z&quot;
+#&gt; 
+#&gt; $matches[[7]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/6m8EMIolNkCqNFk6TCROIv&quot;
+#&gt; 
+#&gt; $matches[[7]]$snippet
+#&gt; [1] &quot;Welches Auto der Dirigent fährt, welcher Handtasche die Regisseurin ihre Zigaretten entnimmt, das alles scheint wichtig zu sein in &lt;em&gt;Bayreuth&lt;/em&gt;, und das türkisfarbene Kostüm der Bundeskanzlerin sowieso&quot;
+#&gt; 
+#&gt; $matches[[7]]$supertitle
+#&gt; [1] &quot;Tristan und Isolde&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_text
+#&gt; [1] &quot;Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \&quot;Tristan\&quot;.&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_title
+#&gt; [1] &quot;Zelle mit Meeresblick&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[8]]
+#&gt; $matches[[8]]$subtitle
+#&gt; [1] &quot;Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch 1975 hielt der Regisseur Hans-Jürgen Syberberg Bilder daraus fest. Hier zeigen wir sie erstmals.&quot;
+#&gt; 
+#&gt; $matches[[8]]$uuid
+#&gt; [1] &quot;1sRgadMwUk0eO8AniNz9I&quot;
+#&gt; 
+#&gt; $matches[[8]]$title
+#&gt; [1] &quot;Tee mit dem Biedermann&quot;
+#&gt; 
+#&gt; $matches[[8]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/31/bayreuth-festspiele-hitler-winifred-film&quot;
+#&gt; 
+#&gt; $matches[[8]]$release_date
+#&gt; [1] &quot;2015-08-13T00:24:03Z&quot;
+#&gt; 
+#&gt; $matches[[8]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1sRgadMwUk0eO8AniNz9I&quot;
+#&gt; 
+#&gt; $matches[[8]]$snippet
+#&gt; [1] &quot;Adolf Hitler in &lt;em&gt;Bayreuth&lt;/em&gt;, wie die Welt ihn noch nicht gesehen hat. Mit weichen, vor Zärtlichkeit fast verschwimmenden Gesichtszügen; im Tête-à-Tête mit Wieland Wagner, seinem erklärten Liebling unter&quot;
+#&gt; 
+#&gt; $matches[[8]]$supertitle
+#&gt; [1] &quot;Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_text
+#&gt; [1] &quot;Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen.&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_title
+#&gt; [1] &quot;Zum Tee mit Hitler&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[9]]
+#&gt; $matches[[9]]$subtitle
+#&gt; [1] &quot;Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm.&quot;
+#&gt; 
+#&gt; $matches[[9]]$uuid
+#&gt; [1] &quot;4MN9cCoAS05p5brCdufg45&quot;
+#&gt; 
+#&gt; $matches[[9]]$title
+#&gt; [1] &quot;Kampfjet in Bayern abgestürzt&quot;
+#&gt; 
+#&gt; $matches[[9]]$href
+#&gt; [1] &quot;http://www.zeit.de/gesellschaft/zeitgeschehen/2015-08/flugzeug-absturz-militaerjet-oberfranken&quot;
+#&gt; 
+#&gt; $matches[[9]]$release_date
+#&gt; [1] &quot;2015-08-11T11:14:31Z&quot;
+#&gt; 
+#&gt; $matches[[9]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/4MN9cCoAS05p5brCdufg45&quot;
+#&gt; 
+#&gt; $matches[[9]]$snippet
+#&gt; [1] &quot;Ein US-amerikanischer Militärjet ist in Oberfranken abgestürzt. Das Flugzeug stürzte gegen 9.30 Uhr über einem Waldgebiet im Gemeindebereich von Creußen im Grenzgebiet der Landkreise &lt;em&gt;Bayreuth&lt;/em&gt; und&quot;
+#&gt; 
+#&gt; $matches[[9]]$supertitle
+#&gt; [1] &quot;US-Militär&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_text
+#&gt; [1] &quot;Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm.&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_title
+#&gt; [1] &quot;Kampfjet in Bayern abgestürzt&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[10]]
+#&gt; $matches[[10]]$subtitle
+#&gt; [1] &quot;Musikfestivals sind laut und dreckig? Nicht so das A Summer&#39;s Tale nahe Hamburg. Es hat mit seiner Premiere eine neue Zielgruppe erschlossen: die High-End-Alternativen.&quot;
+#&gt; 
+#&gt; $matches[[10]]$uuid
+#&gt; [1] &quot;3T45htOktXKpSvAX66lbdp&quot;
+#&gt; 
+#&gt; $matches[[10]]$title
+#&gt; [1] &quot;Lieber Family-Yoga als Schlammrutschen&quot;
+#&gt; 
+#&gt; $matches[[10]]$href
+#&gt; [1] &quot;http://www.zeit.de/hamburg/kultur/2015-08/a-summers-tale-musik-festival&quot;
+#&gt; 
+#&gt; $matches[[10]]$release_date
+#&gt; [1] &quot;2015-08-10T10:41:56Z&quot;
+#&gt; 
+#&gt; $matches[[10]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3T45htOktXKpSvAX66lbdp&quot;
+#&gt; 
+#&gt; $matches[[10]]$snippet
+#&gt; [1] &quot; mit dem Rock &#39;n&#39; Roll vergleichbarer Freiluftpartys weniger gemeinsam hat als mit den Wagner-Festspielen in &lt;em&gt;Bayreuth&lt;/em&gt;.\nSommermärchenlandbewohner schlafen offenbar weniger mit Dosenbier im Wurfzelt als im&quot;
+#&gt; 
+#&gt; $matches[[10]]$supertitle
+#&gt; [1] &quot;A Summer&#39;s Tale&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_text
+#&gt; [1] &quot;Musikfestivals sind laut und dreckig? Nicht so das A Summer&#39;s Tale nahe Hamburg. Es hat mit seiner Premiere eine neue Zielgruppe erschlossen: die High-End-Alternativen.&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_title
+#&gt; [1] &quot;Lieber Family-Yoga als Schlammrutschen&quot;
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $found
+#&gt; [1] 2623
+#&gt; 
+#&gt; $limit
+#&gt; [1] 10
+#&gt; 
+#&gt; $offset
+#&gt; [1] 0
+</code></pre>
+
+<p>To search for multiple tokens use a vector of strings.</p>
+
+<pre><code class="r">zeit_search(&quot;content&quot;, &quot;bayreuther festspiele&quot;)
+#&gt; $matches
+#&gt; $matches[[1]]
+#&gt; $matches[[1]]$subtitle
+#&gt; [1] &quot;Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch 1975 hielt der Regisseur Hans-Jürgen Syberberg Bilder daraus fest. Hier zeigen wir sie erstmals.&quot;
+#&gt; 
+#&gt; $matches[[1]]$uuid
+#&gt; [1] &quot;1sRgadMwUk0eO8AniNz9I&quot;
+#&gt; 
+#&gt; $matches[[1]]$title
+#&gt; [1] &quot;Tee mit dem Biedermann&quot;
+#&gt; 
+#&gt; $matches[[1]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/31/bayreuth-festspiele-hitler-winifred-film&quot;
+#&gt; 
+#&gt; $matches[[1]]$release_date
+#&gt; [1] &quot;2015-08-13T00:24:03Z&quot;
+#&gt; 
+#&gt; $matches[[1]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1sRgadMwUk0eO8AniNz9I&quot;
+#&gt; 
+#&gt; $matches[[1]]$snippet
+#&gt; [1] &quot;, Requiem für einen jungfräulichen König (1972) oder Hitler, ein Film aus Deutschland (1977) früh an deutschen Mythen abgearbeitet hat. 1975, ein Jahr vor dem 100. Geburtstag der &lt;em&gt;Bayreuther&lt;/em&gt; &lt;em&gt;Festspiele&lt;/em&gt;, drehte&quot;
+#&gt; 
+#&gt; $matches[[1]]$supertitle
+#&gt; [1] &quot;Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_text
+#&gt; [1] &quot;Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen.&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_title
+#&gt; [1] &quot;Zum Tee mit Hitler&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[2]]
+#&gt; $matches[[2]]$subtitle
+#&gt; [1] &quot;Christian Thielemann darf sich mit einem neuen Titel schmücken. Dafür ist ihm seine Isolde abgesprungen. Und was hat das mit den Berliner Philharmonikern zu tun?&quot;
+#&gt; 
+#&gt; $matches[[2]]$uuid
+#&gt; [1] &quot;1EsZprDHI0bIweeyEDcpG6&quot;
+#&gt; 
+#&gt; $matches[[2]]$title
+#&gt; [1] &quot;Thielemann wird Musikdirektor in Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[2]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/musik/2015-06/bayreuth-christian-thielemann-anja-kampe&quot;
+#&gt; 
+#&gt; $matches[[2]]$release_date
+#&gt; [1] &quot;2015-06-29T15:50:30Z&quot;
+#&gt; 
+#&gt; $matches[[2]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1EsZprDHI0bIweeyEDcpG6&quot;
+#&gt; 
+#&gt; $matches[[2]]$snippet
+#&gt; [1] &quot; geschlagen geben. Nun darf er sich immerhin offiziell Musikdirektor der &lt;em&gt;Bayreuther&lt;/em&gt; &lt;em&gt;Festspiele&lt;/em&gt; nennen. Die Gesellschafter der Festspiele hätten Thielemann kürzlich mit einem entsprechenden Vertrag ausgestattet&quot;
+#&gt; 
+#&gt; $matches[[2]]$supertitle
+#&gt; [1] &quot;Wagner-Festspiele&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_text
+#&gt; [1] &quot;Christian Thielemann darf sich mit einem neuen Titel schmücken. Dafür ist ihm seine Isolde abgesprungen. Und was hat das mit den Berliner Philharmonikern zu tun?&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_title
+#&gt; [1] &quot;Thielemann wird Musikdirektor in Bayreuth&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[3]]
+#&gt; $matches[[3]]$subtitle
+#&gt; [1] &quot;Simon Rattles Nachfolger ist eine Überraschung: Der stille, feinsinnige, hochromantische Kirill Petrenko steigt aus dem Operngraben ans Chefpult der Philharmoniker.&quot;
+#&gt; 
+#&gt; $matches[[3]]$uuid
+#&gt; [1] &quot;6rqhZwFkwEIa7wtfLy0R6p&quot;
+#&gt; 
+#&gt; $matches[[3]]$title
+#&gt; [1] &quot;Maestro ohne Mythos&quot;
+#&gt; 
+#&gt; $matches[[3]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/musik/2015-06/berliner-philharmoniker-kirill-petrenko-nachfolge-rattle&quot;
+#&gt; 
+#&gt; $matches[[3]]$release_date
+#&gt; [1] &quot;2015-06-22T14:38:37Z&quot;
+#&gt; 
+#&gt; $matches[[3]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/6rqhZwFkwEIa7wtfLy0R6p&quot;
+#&gt; 
+#&gt; $matches[[3]]$snippet
+#&gt; [1] &quot; auch während der Proben nicht gern redet, \&quot;den unprofessionellen und völlig würdelosen Umgang der &lt;em&gt;Bayreuther&lt;/em&gt; &lt;em&gt;Festspiele&lt;/em&gt; mit der Festspielleiterin Eva Wagner-Pasquier und dem Darsteller Lance Ryan&quot;
+#&gt; 
+#&gt; $matches[[3]]$supertitle
+#&gt; [1] &quot;Berliner Philharmoniker&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_text
+#&gt; [1] &quot;Simon Rattles Nachfolger ist eine Überraschung: Der stille, feinsinnige, hochromantische Kirill Petrenko steigt aus dem Operngraben ans Chefpult der Philharmoniker.&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_title
+#&gt; [1] &quot;Maestro ohne Mythos&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[4]]
+#&gt; $matches[[4]]$subtitle
+#&gt; [1] &quot;Die Berliner Philharmoniker haben sich für Kirill Petrenko als neuen Dirigenten entschieden. Der Chef der Bayerischen Staatsoper soll 2018 das Pult übernehmen.&quot;
+#&gt; 
+#&gt; $matches[[4]]$uuid
+#&gt; [1] &quot;CO0eiGJiLohGEfXuRnUE6&quot;
+#&gt; 
+#&gt; $matches[[4]]$title
+#&gt; [1] &quot;Kirill Petrenko wird Nachfolger von Simon Rattle&quot;
+#&gt; 
+#&gt; $matches[[4]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/musik/2015-06/simon-rattle-nachfolger-kirill-petrenko&quot;
+#&gt; 
+#&gt; $matches[[4]]$release_date
+#&gt; [1] &quot;2015-06-22T08:49:27Z&quot;
+#&gt; 
+#&gt; $matches[[4]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/CO0eiGJiLohGEfXuRnUE6&quot;
+#&gt; 
+#&gt; $matches[[4]]$snippet
+#&gt; [1] &quot; würdelosen\&quot; Umgang der &lt;em&gt;Bayreuther&lt;/em&gt; &lt;em&gt;Festspiele&lt;/em&gt; mit ihrer künstlerischen Festspielleiterin Eva Wagner-Pasquier und dem Darsteller Lance Ryan \&quot;zutiefst irritiert\&quot; zeigte.\nPetrenko dirigiert in diesem Sommer zum&quot;
+#&gt; 
+#&gt; $matches[[4]]$supertitle
+#&gt; [1] &quot;Berliner Philharmoniker&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_text
+#&gt; [1] &quot;Die Berliner Philharmoniker haben sich für Kirill Petrenko als neuen Dirigenten entschieden. Der Chef der Bayerischen Staatsoper soll 2018 das Pult übernehmen.&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_title
+#&gt; [1] &quot;Kirill Petrenko wird Nachfolger von Simon Rattle&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[5]]
+#&gt; $matches[[5]]$subtitle
+#&gt; [1] &quot;Warum Bayreuth erneut einen Regisseur verliert&quot;
+#&gt; 
+#&gt; $matches[[5]]$uuid
+#&gt; [1] &quot;6DwtoodYdrhKo0k8bqGQSo&quot;
+#&gt; 
+#&gt; $matches[[5]]$title
+#&gt; [1] &quot;Miese durch Meese&quot;
+#&gt; 
+#&gt; $matches[[5]]$href
+#&gt; [1] &quot;http://www.zeit.de/2014/48/bayreuther-festspiele-regisseur-jonathan-meese&quot;
+#&gt; 
+#&gt; $matches[[5]]$release_date
+#&gt; [1] &quot;2014-12-04T02:20:26Z&quot;
+#&gt; 
+#&gt; $matches[[5]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/6DwtoodYdrhKo0k8bqGQSo&quot;
+#&gt; 
+#&gt; $matches[[5]]$snippet
+#&gt; [1] &quot;Die &lt;em&gt;Bayreuther&lt;/em&gt; &lt;em&gt;Festspiele&lt;/em&gt; des 21. Jahrhunderts engagieren Künstler nach dem Lotterieprinzip. Gern verpflichten sie fachfremde Regisseure und sorgen damit für das Raunen des Feuilletons (wie bei Lars&quot;
+#&gt; 
+#&gt; $matches[[5]]$supertitle
+#&gt; [1] &quot;Bayreuther Festspiele&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_text
+#&gt; [1] &quot;Warum Bayreuth erneut einen Regisseur verliert&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_title
+#&gt; [1] &quot;Miese durch Meese&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[6]]
+#&gt; $matches[[6]]$subtitle
+#&gt; [1] &quot;Der Künstler wird nicht Wagners \&quot;Parsifal\&quot; in Bayreuth inszenieren. Seine Pläne für Bühnenbild und Kostüme waren der Festspielleitung zu teuer.&quot;
+#&gt; 
+#&gt; $matches[[6]]$uuid
+#&gt; [1] &quot;2HU3NqEKZoCid2DjhNQOSi&quot;
+#&gt; 
+#&gt; $matches[[6]]$title
+#&gt; [1] &quot;Festspiele trennen sich von Jonathan Meese&quot;
+#&gt; 
+#&gt; $matches[[6]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/musik/2014-11/jonathan-meese-parsifal-vertragsbeendigung&quot;
+#&gt; 
+#&gt; $matches[[6]]$release_date
+#&gt; [1] &quot;2014-11-14T16:40:48Z&quot;
+#&gt; 
+#&gt; $matches[[6]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/2HU3NqEKZoCid2DjhNQOSi&quot;
+#&gt; 
+#&gt; $matches[[6]]$snippet
+#&gt; [1] &quot;Die &lt;em&gt;Bayreuther&lt;/em&gt; &lt;em&gt;Festspiele&lt;/em&gt; trennen sich von Jonathan Meese. Das Konzept des Künstlers für die Neuinszenierung der Wagner-Oper Parsifal 2016 sei nicht finanzierbar, teilten die Festspiele mit. Der&quot;
+#&gt; 
+#&gt; $matches[[6]]$supertitle
+#&gt; [1] &quot;Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_text
+#&gt; [1] &quot;Der Künstler wird nicht Wagners \&quot;Parsifal\&quot; in Bayreuth inszenieren. Seine Pläne für Bühnenbild und Kostüme waren der Festspielleitung zu teuer.&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_title
+#&gt; [1] &quot;Festspiele trennen sich von Jonathan Meese&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[7]]
+#&gt; $matches[[7]]$subtitle
+#&gt; [1] &quot;Die Salzburger Festspiele beginnen mit einem einfallslosen \&quot;Don Giovanni\&quot; und der Uraufführung einer Oper über das Leben der jüdischen Künstlerin Charlotte Salomon.&quot;
+#&gt; 
+#&gt; $matches[[7]]$uuid
+#&gt; [1] &quot;2YtTt6khhgAONcU1jT5vKd&quot;
+#&gt; 
+#&gt; $matches[[7]]$title
+#&gt; [1] &quot;Wozu noch singen?&quot;
+#&gt; 
+#&gt; $matches[[7]]$href
+#&gt; [1] &quot;http://www.zeit.de/2014/32/salzburger-festspiele&quot;
+#&gt; 
+#&gt; $matches[[7]]$release_date
+#&gt; [1] &quot;2014-07-31T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[7]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/2YtTt6khhgAONcU1jT5vKd&quot;
+#&gt; 
+#&gt; $matches[[7]]$snippet
+#&gt; [1] &quot; &lt;em&gt;Bayreuther&lt;/em&gt; &lt;em&gt;Festspiele&lt;/em&gt; ihre in Sachen Wagner, daran ändern auch musikalische Höchstleistungen wenig.\nSängerisch ist dieser Don Giovanni exquisit besetzt. Ildebrando D’Arcangelo in der Titelpartie gibt mit&quot;
+#&gt; 
+#&gt; $matches[[7]]$supertitle
+#&gt; [1] &quot;Salzburger Festspiele&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_text
+#&gt; [1] &quot;Die Salzburger Festspiele beginnen mit einem einfallslosen \&quot;Don Giovanni\&quot; und der Uraufführung einer Oper über das Leben der jüdischen Künstlerin Charlotte Salomon.&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_title
+#&gt; [1] &quot;Wozu noch singen?&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[8]]
+#&gt; $matches[[8]]$subtitle
+#&gt; [1] &quot;Der verstorbene Dieter Hildebrandt wurde zum SPD-Sommerfest eingeladen. Böser E-Mail-Verteiler! Wir haben unseren aktiviert und erstaunliche Rücksendungen erhalten.&quot;
+#&gt; 
+#&gt; $matches[[8]]$uuid
+#&gt; [1] &quot;3gpCNFznDesM0eUq4Uq7cx&quot;
+#&gt; 
+#&gt; $matches[[8]]$title
+#&gt; [1] &quot;Mit posthumen Grüßen&quot;
+#&gt; 
+#&gt; $matches[[8]]$href
+#&gt; [1] &quot;http://www.zeit.de/zeit-magazin/leben/2014-07/dieter-hildebrandt-einladung-spd-fest&quot;
+#&gt; 
+#&gt; $matches[[8]]$release_date
+#&gt; [1] &quot;2014-07-31T04:47:22Z&quot;
+#&gt; 
+#&gt; $matches[[8]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3gpCNFznDesM0eUq4Uq7cx&quot;
+#&gt; 
+#&gt; $matches[[8]]$snippet
+#&gt; [1] &quot; Ihnen im Auftrag der Intendanz der &lt;em&gt;Bayreuther&lt;/em&gt; &lt;em&gt;Festspiele&lt;/em&gt;. Als wir gerade Ihre interessante DVD-Box Herr der Ringe I-III gesichtet haben, fragten wir uns, ob Sie nicht ein glühender Wagnerianer sind&quot;
+#&gt; 
+#&gt; $matches[[8]]$supertitle
+#&gt; [1] &quot;Gesellschaftskritik&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_text
+#&gt; [1] &quot;Der verstorbene Dieter Hildebrandt wurde zum SPD-Sommerfest eingeladen. Böser E-Mail-Verteiler! Wir haben unseren aktiviert und erstaunliche Rücksendungen erhalten.&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_title
+#&gt; [1] &quot;Mit posthumen Grüßen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[9]]
+#&gt; $matches[[9]]$subtitle
+#&gt; [1] &quot;Er hat die Kunst niemals im Stich gelassen und war so kämpferisch wie klug: Zum Tod des großen Opernintendanten Gerard Mortier&quot;
+#&gt; 
+#&gt; $matches[[9]]$uuid
+#&gt; [1] &quot;65TdPUFnCmDl3d7MUjtZlv&quot;
+#&gt; 
+#&gt; $matches[[9]]$title
+#&gt; [1] &quot;Ein listenreicher Odysseus&quot;
+#&gt; 
+#&gt; $matches[[9]]$href
+#&gt; [1] &quot;http://www.zeit.de/2014/12/nachruf-gerard-mortier&quot;
+#&gt; 
+#&gt; $matches[[9]]$release_date
+#&gt; [1] &quot;2014-03-13T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[9]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/65TdPUFnCmDl3d7MUjtZlv&quot;
+#&gt; 
+#&gt; $matches[[9]]$snippet
+#&gt; [1] &quot; Glauben an eine Menschwerdung durch Theaterkunst hielt er sogar dann die Treue, wenn ihm eine Träger-Institution dafür ungeeignet erschien – wie die &lt;em&gt;Bayreuther&lt;/em&gt; &lt;em&gt;Festspiele&lt;/em&gt;. Als 2008 die Entscheidung über die&quot;
+#&gt; 
+#&gt; $matches[[9]]$supertitle
+#&gt; [1] &quot;Nachruf Gerard Mortier&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_text
+#&gt; [1] &quot;Er hat die Kunst niemals im Stich gelassen und war so kämpferisch wie klug: Zum Tod des großen Opernintendanten Gerard Mortier&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_title
+#&gt; [1] &quot;Ein listenreicher Odysseus&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[10]]
+#&gt; $matches[[10]]$subtitle
+#&gt; [1] &quot;Eva Wagner-Pasquier wird ihren Vertrag als Leiterin der Bayreuther Festspiele nicht verlängern. Sie teilt den Posten mit ihrer Schwester Katharina Wagner seit 2008.&quot;
+#&gt; 
+#&gt; $matches[[10]]$uuid
+#&gt; [1] &quot;149GnyB0lnpqr8ZvCzs5wc&quot;
+#&gt; 
+#&gt; $matches[[10]]$title
+#&gt; [1] &quot;Wagner-Pasquier verlässt Festspielleitung&quot;
+#&gt; 
+#&gt; $matches[[10]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/2014-02/wagner-pasquier-bayreuth-festspiele&quot;
+#&gt; 
+#&gt; $matches[[10]]$release_date
+#&gt; [1] &quot;2014-02-21T09:08:41Z&quot;
+#&gt; 
+#&gt; $matches[[10]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/149GnyB0lnpqr8ZvCzs5wc&quot;
+#&gt; 
+#&gt; $matches[[10]]$snippet
+#&gt; [1] &quot;Eva Wagner-Pasquier wird nach einem Bericht des Nordbayerischen Kuriers aus der Leitung der &lt;em&gt;Bayreuther&lt;/em&gt; &lt;em&gt;Festspiele&lt;/em&gt; ausscheiden. \&quot;Ich habe die Gesellschafter gebeten, mich ab September 2015 als&quot;
+#&gt; 
+#&gt; $matches[[10]]$supertitle
+#&gt; [1] &quot;Bayreuther Festspiele&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_text
+#&gt; [1] &quot;Eva Wagner-Pasquier wird ihren Vertrag als Leiterin der Bayreuther Festspiele nicht verlängern. Sie teilt den Posten mit ihrer Schwester Katharina Wagner seit 2008.&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_title
+#&gt; [1] &quot;Wagner-Pasquier verlässt Festspielleitung&quot;
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $found
+#&gt; [1] 181
+#&gt; 
+#&gt; $limit
+#&gt; [1] 10
+#&gt; 
+#&gt; $offset
+#&gt; [1] 0
+</code></pre>
+
+<p>All fields of an article can be queried individually by using <code>[field]:[search string]</code>.
+For example, to get articles that have the word &ldquo;Bayreuth&rdquo; in their headline, you would
+search for:</p>
+
+<pre><code class="r">zeit_search(&quot;content&quot;, &quot;title:bayreuth&quot;)
+#&gt; $matches
+#&gt; $matches[[1]]
+#&gt; $matches[[1]]$subtitle
+#&gt; [1] &quot;Warum Eva Wagner-Pasquier vom Grünen Hügel verjagt werden soll.&quot;
+#&gt; 
+#&gt; $matches[[1]]$uuid
+#&gt; [1] &quot;5tFXlJZbtkuuNqDEQMGKWx&quot;
+#&gt; 
+#&gt; $matches[[1]]$title
+#&gt; [1] &quot;Bayreuth, wie es leibt und lebt&quot;
+#&gt; 
+#&gt; $matches[[1]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/24/bayreuther-festspiele-eva-wagner-pasquier&quot;
+#&gt; 
+#&gt; $matches[[1]]$release_date
+#&gt; [1] &quot;2015-07-10T13:24:08Z&quot;
+#&gt; 
+#&gt; $matches[[1]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/5tFXlJZbtkuuNqDEQMGKWx&quot;
+#&gt; 
+#&gt; $matches[[1]]$snippet
+#&gt; [1] &quot; Theater auf dem Grünen Hügel von &lt;em&gt;Bayreuth&lt;/em&gt; 50 Tage vor Eröffnung der Festspiele gegeben wird. Erster Aufzug: Festspielleiterin Katharina Wagner und ihr Intimus, der Dirigent und Bayreuther Musikdirektor&quot;
+#&gt; 
+#&gt; $matches[[1]]$supertitle
+#&gt; [1] &quot;Bayreuther Festspiele&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_text
+#&gt; [1] &quot;Warum Eva Wagner-Pasquier vom Grünen Hügel verjagt werden soll.&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_title
+#&gt; [1] &quot;Bayreuth, wie es leibt und lebt&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[2]]
+#&gt; $matches[[2]]$subtitle
+#&gt; [1] &quot;Christian Thielemann darf sich mit einem neuen Titel schmücken. Dafür ist ihm seine Isolde abgesprungen. Und was hat das mit den Berliner Philharmonikern zu tun?&quot;
+#&gt; 
+#&gt; $matches[[2]]$uuid
+#&gt; [1] &quot;1EsZprDHI0bIweeyEDcpG6&quot;
+#&gt; 
+#&gt; $matches[[2]]$title
+#&gt; [1] &quot;Thielemann wird Musikdirektor in Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[2]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/musik/2015-06/bayreuth-christian-thielemann-anja-kampe&quot;
+#&gt; 
+#&gt; $matches[[2]]$release_date
+#&gt; [1] &quot;2015-06-29T15:50:30Z&quot;
+#&gt; 
+#&gt; $matches[[2]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1EsZprDHI0bIweeyEDcpG6&quot;
+#&gt; 
+#&gt; $matches[[2]]$snippet
+#&gt; [1] &quot;, Evelyn Herlitzius springt ein und wurde am Montag zu den ersten Proben in &lt;em&gt;Bayreuth&lt;/em&gt; erwartet.\nDer Wechsel in der Titelpartie wenige Wochen vor der Premiere wurde von heftigen Spekulationen begleitet, da die&quot;
+#&gt; 
+#&gt; $matches[[2]]$supertitle
+#&gt; [1] &quot;Wagner-Festspiele&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_text
+#&gt; [1] &quot;Christian Thielemann darf sich mit einem neuen Titel schmücken. Dafür ist ihm seine Isolde abgesprungen. Und was hat das mit den Berliner Philharmonikern zu tun?&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_title
+#&gt; [1] &quot;Thielemann wird Musikdirektor in Bayreuth&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[3]]
+#&gt; $matches[[3]]$subtitle
+#&gt; [1] &quot;Unser Wagnerblogger muss den \&quot;Holländer\&quot; erstmal verarbeiten – im Zug zurück nach Berlin. Jetzt wollen die letzten mittelgroßen Fragen beantwortet werden.&quot;
+#&gt; 
+#&gt; $matches[[3]]$uuid
+#&gt; [1] &quot;3Dcbm6NDm7JK9aXF4Clatp&quot;
+#&gt; 
+#&gt; $matches[[3]]$title
+#&gt; [1] &quot;Ein Rollkoffer verlässt Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[3]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/musik/2014-07/bayreuther-festspiele-2014-live&quot;
+#&gt; 
+#&gt; $matches[[3]]$release_date
+#&gt; [1] &quot;2014-07-25T16:11:57Z&quot;
+#&gt; 
+#&gt; $matches[[3]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3Dcbm6NDm7JK9aXF4Clatp&quot;
+#&gt; 
+#&gt; $matches[[3]]$snippet
+#&gt; [1] &quot;Über Richard Wagner kann man ja schon gar nichts mehr sagen. Aber jetzt ist man hier: &lt;em&gt;Bayreuth&lt;/em&gt;. Stadt des Meisters, wie ihn seine Fans nennen, die sich wiederum Wagnerianer nennen, was im&quot;
+#&gt; 
+#&gt; $matches[[3]]$supertitle
+#&gt; [1] &quot;Bayreuther Festspiele&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_text
+#&gt; [1] &quot;Unser Wagnerblogger muss den \&quot;Holländer\&quot; erstmal verarbeiten – im Zug zurück nach Berlin. Jetzt wollen die letzten mittelgroßen Fragen beantwortet werden.&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_title
+#&gt; [1] &quot;Ein Rollkoffer verlässt Bayreuth&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[4]]
+#&gt; $matches[[4]]$uuid
+#&gt; [1] &quot;5LaDxNSsPcstnVfb608m02&quot;
+#&gt; 
+#&gt; $matches[[4]]$title
+#&gt; [1] &quot;Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[4]]$release_date
+#&gt; [1] &quot;2013-11-22T11:29:24Z&quot;
+#&gt; 
+#&gt; $matches[[4]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/5LaDxNSsPcstnVfb608m02&quot;
+#&gt; 
+#&gt; $matches[[4]]$snippet
+#&gt; [1] &quot; Holländer zum Beispiel oder Tristan und Isolde. Um seine Werke richtig in Szene zu setzen, ließ Wagner in &lt;em&gt;Bayreuth&lt;/em&gt; ein Festspielhaus bauen. 1876 wurde es eingeweiht, und noch heute gibt es dort in jedem&quot;
+#&gt; 
+#&gt; $matches[[4]]$href
+#&gt; [1] &quot;http://www.zeit.de/2008/31/KI-31-wochenstichwort&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[5]]
+#&gt; $matches[[5]]$subtitle
+#&gt; [1] &quot;Die Festspiele sind verkommen zur Mimikry ihrer selbst. Wagner präsentiert sich 2013 wie eine Mischung aus Gartenzwerg und Denkmal, findet Christine Lemke-Matwey.&quot;
+#&gt; 
+#&gt; $matches[[5]]$uuid
+#&gt; [1] &quot;52gj3PQLlUTFT9ivaqwG5S&quot;
+#&gt; 
+#&gt; $matches[[5]]$title
+#&gt; [1] &quot;Bröckelndes Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[5]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/musik/2013-07/wagner-festspiele-bayreuth&quot;
+#&gt; 
+#&gt; $matches[[5]]$release_date
+#&gt; [1] &quot;2013-07-26T05:38:52Z&quot;
+#&gt; 
+#&gt; $matches[[5]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/52gj3PQLlUTFT9ivaqwG5S&quot;
+#&gt; 
+#&gt; $matches[[5]]$snippet
+#&gt; [1] &quot;&lt;em&gt;Bayreuth&lt;/em&gt; ist traditionell der Ort, an dem der Besucher nicht lange um die Erklärung der Welt ringen muss: Die passenden Metaphern dazu fallen ihm wie reife Zwetschgen in den Schoß.\n2013 fängt das mit&quot;
+#&gt; 
+#&gt; $matches[[5]]$supertitle
+#&gt; [1] &quot;Kolumne Fünf vor 8:00&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_text
+#&gt; [1] &quot;Die Festspiele sind verkommen zur Mimikry ihrer selbst. Wagner präsentiert sich 2013 wie eine Mischung aus Gartenzwerg und Denkmal, findet Christine Lemke-Matwey.&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_title
+#&gt; [1] &quot;Bröckelndes Bayreuth&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[6]]
+#&gt; $matches[[6]]$subtitle
+#&gt; [1] &quot;Jeden Sommer das gleiche Ritual: Großes Schaulaufen der Prominenten vor dem Festspielhaus. Wir haben einige Stammgäste gefragt, was sie auf den roten Teppich führt.&quot;
+#&gt; 
+#&gt; $matches[[6]]$uuid
+#&gt; [1] &quot;4JLV60SFjX4An6yxVhGKbj&quot;
+#&gt; 
+#&gt; $matches[[6]]$title
+#&gt; [1] &quot;Warum Bayreuth?&quot;
+#&gt; 
+#&gt; $matches[[6]]$href
+#&gt; [1] &quot;http://www.zeit.de/2013/02/Richard-Wagner-Bayreuth-Prominente&quot;
+#&gt; 
+#&gt; $matches[[6]]$release_date
+#&gt; [1] &quot;2013-01-03T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[6]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/4JLV60SFjX4An6yxVhGKbj&quot;
+#&gt; 
+#&gt; $matches[[6]]$snippet
+#&gt; [1] &quot; Ehrenvorsitzender der FDP\nIm vergangenen Jahr hatten mich die Einladung meines bayerischen Amtskollegen Horst Seehofer und Der Fliegende Holländer nach &lt;em&gt;Bayreuth&lt;/em&gt; geführt. Ich habe damals alle Vorurteile über die&quot;
+#&gt; 
+#&gt; $matches[[6]]$supertitle
+#&gt; [1] &quot;Bayreuther Festspiele&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_text
+#&gt; [1] &quot;Jeden Sommer das gleiche Ritual: Großes Schaulaufen vor dem Bayreuther Festspielhaus. Prominente Gäste erzählen, was sie auch 2013 wieder auf den roten Teppich führt.&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_title
+#&gt; [1] &quot;Warum Bayreuth, Herr Genscher?&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[7]]
+#&gt; $matches[[7]]$subtitle
+#&gt; [1] &quot;Damit die Festspiele das Versprechen einlösen, das die Musik Wagners gibt, genügt es nicht, an dieser oder jener Inszenierungsschraube zu drehen. Die Aufführungspraxis muss sich ändern.&quot;
+#&gt; 
+#&gt; $matches[[7]]$uuid
+#&gt; [1] &quot;4b6r427qPv40nIvETL3bYH&quot;
+#&gt; 
+#&gt; $matches[[7]]$title
+#&gt; [1] &quot;Befreit Bayreuth!&quot;
+#&gt; 
+#&gt; $matches[[7]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/musik/2012-08/navid-kermani-bayreuth&quot;
+#&gt; 
+#&gt; $matches[[7]]$release_date
+#&gt; [1] &quot;2012-08-16T16:31:05Z&quot;
+#&gt; 
+#&gt; $matches[[7]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/4b6r427qPv40nIvETL3bYH&quot;
+#&gt; 
+#&gt; $matches[[7]]$snippet
+#&gt; [1] &quot;Um meinen Eindruck von den Festspielen zu schildern, muss ich mit der Vorgeschichte meines Besuchs beginnen. Zu nichts Geringerem ruft der vorliegende Text nämlich auf, als &lt;em&gt;Bayreuth&lt;/em&gt; von den Ketten zu&quot;
+#&gt; 
+#&gt; $matches[[7]]$supertitle
+#&gt; [1] &quot;Navid Kermani&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_text
+#&gt; [1] &quot;Können die Wagner-Festspiele ewig so weitermachen? Der Schriftsteller Navid Kermani ärgert sich über die Afferei auf der Bühne und fordert eine neue Aufführungspraxis.&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_title
+#&gt; [1] &quot;Befreit Bayreuth!&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[8]]
+#&gt; $matches[[8]]$subtitle
+#&gt; [1] &quot;Nach Jonathan Meese, Michel Houellebecq und Patti Smith hat der Schriftsteller Navid Kermani in diesem Jahr für uns die Bayreuther Festspiele besucht. Und eine Erfahrung gemacht: Die Musik ist gewaltig, das Schauspiel auf der Bühne kann aber nicht mit ihr mithalten. Wann lösen sich die Wagner- Aufführungen endlich von ihren eingefahrenen Dogmen?&quot;
+#&gt; 
+#&gt; $matches[[8]]$uuid
+#&gt; [1] &quot;77i5H8QSSTcWitIyvRDzOy&quot;
+#&gt; 
+#&gt; $matches[[8]]$title
+#&gt; [1] &quot;Befreit Bayreuth!&quot;
+#&gt; 
+#&gt; $matches[[8]]$href
+#&gt; [1] &quot;http://www.zeit.de/2012/34/Bayreuther-Festspiele-Navid-Kermani&quot;
+#&gt; 
+#&gt; $matches[[8]]$release_date
+#&gt; [1] &quot;2012-08-16T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[8]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/77i5H8QSSTcWitIyvRDzOy&quot;
+#&gt; 
+#&gt; $matches[[8]]$snippet
+#&gt; [1] &quot;Um meinen Eindruck von den Festspielen zu schildern, muss ich mit der Vorgeschichte meines Besuchs beginnen. Zu nichts Geringerem ruft der vorliegende Text nämlich auf, als &lt;em&gt;Bayreuth&lt;/em&gt; von den Ketten zu&quot;
+#&gt; 
+#&gt; $matches[[8]]$supertitle
+#&gt; [1] &quot;Festspiele&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_text
+#&gt; [1] &quot;Nach Jonathan Meese, Michel Houellebecq und Patti Smith hat der Schriftsteller Navid Kermani in diesem Jahr für uns die Bayreuther Festspiele besucht.&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_title
+#&gt; [1] &quot;Befreit Bayreuth!&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[9]]
+#&gt; $matches[[9]]$subtitle
+#&gt; [1] &quot;Kurz vor der Eröffnung der diesjährigen Wagner-Festspiele gibt die Leitung die Pläne für 2016 bekannt. Und weist Kritik an ihrer Vergangenheitsbewältigung zurück.&quot;
+#&gt; 
+#&gt; $matches[[9]]$uuid
+#&gt; [1] &quot;3W1ILDThwI1CBxigwXf6Kh&quot;
+#&gt; 
+#&gt; $matches[[9]]$title
+#&gt; [1] &quot;Jonathan Meese führt Regie in Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[9]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/2012-07/bayreuth-meese-inszenierung&quot;
+#&gt; 
+#&gt; $matches[[9]]$release_date
+#&gt; [1] &quot;2012-07-25T15:18:34Z&quot;
+#&gt; 
+#&gt; $matches[[9]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3W1ILDThwI1CBxigwXf6Kh&quot;
+#&gt; 
+#&gt; $matches[[9]]$snippet
+#&gt; [1] &quot;Der viel diskutierte Künstler Jonathan Meese soll 2016 in &lt;em&gt;Bayreuth&lt;/em&gt; die Oper Parsifal inszenieren. Die Festspielleiterinnen Katharina Wagner und Eva Wagner-Pasquier verkündeten die überraschende&quot;
+#&gt; 
+#&gt; $matches[[9]]$supertitle
+#&gt; [1] &quot;Wagner-Festspiele&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_text
+#&gt; [1] &quot;Kurz vor der Eröffnung der diesjährigen Wagner-Festspiele gibt die Leitung die Pläne für 2016 bekannt. Und weist Kritik an ihrer Vergangenheitsbewältigung zurück.&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_title
+#&gt; [1] &quot;Jonathan Meese führt Regie in Bayreuth&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[10]]
+#&gt; $matches[[10]]$subtitle
+#&gt; [1] &quot;Samuel Youn übernimmt die Titelpartie der Oper \&quot;Der fliegende Holländer\&quot; in Bayreuth. Er ersetzt Evgeny Nikitin, der wegen einer Hakenkreuz-Tätowierung verzichten musste.&quot;
+#&gt; 
+#&gt; $matches[[10]]$uuid
+#&gt; [1] &quot;7FNKGhVfX3DihsvL2jqjCb&quot;
+#&gt; 
+#&gt; $matches[[10]]$title
+#&gt; [1] &quot;Bayreuth nominiert Ersatz für russischen Skandal-Sänger&quot;
+#&gt; 
+#&gt; $matches[[10]]$href
+#&gt; [1] &quot;http://www.zeit.de/kultur/musik/2012-07/nikitin-hakenkreuz-bayreuth&quot;
+#&gt; 
+#&gt; $matches[[10]]$release_date
+#&gt; [1] &quot;2012-07-22T11:55:32Z&quot;
+#&gt; 
+#&gt; $matches[[10]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/7FNKGhVfX3DihsvL2jqjCb&quot;
+#&gt; 
+#&gt; $matches[[10]]$snippet
+#&gt; [1] &quot; in &lt;em&gt;Bayreuth&lt;/em&gt; bis zum 24. August eingeplant. Er war am Samstag bereits bei der Generalprobe eingesprungen.\nDer Beitrag in Aspekte hatte Evgeny Nikitin in Archiv-Filmaufnahmen aus den 90er-Jahren als Schlagzeuger&quot;
+#&gt; 
+#&gt; $matches[[10]]$supertitle
+#&gt; [1] &quot;Wagner-Festspiele&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_text
+#&gt; [1] &quot;Samuel Youn übernimmt die Titelpartie der Oper \&quot;Der fliegende Holländer\&quot; in Bayreuth. Er ersetzt Evgeny Nikitin, der wegen einer Hakenkreuz-Tätowierung verzichten musste.&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_title
+#&gt; [1] &quot;Bayreuth nominiert Ersatz für russischen Skandal-Sänger&quot;
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $found
+#&gt; [1] 65
+#&gt; 
+#&gt; $limit
+#&gt; [1] 10
+#&gt; 
+#&gt; $offset
+#&gt; [1] 0
+</code></pre>
+
+<p>By default, the API returns all available fields for your request. To speed things up, you can 
+specify which fields the server should return using the <code>fields</code> paramter.</p>
+
+<pre><code class="r">zeit_search(&quot;content&quot;, &quot;bayreuth&quot;, fields=c(&quot;title&quot;, &quot;teaser_text&quot;))
+#&gt; $matches
+#&gt; $matches[[1]]
+#&gt; $matches[[1]]$title
+#&gt; [1] &quot;Straßenkampf&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_text
+#&gt; [1] &quot;Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[2]]
+#&gt; $matches[[2]]$title
+#&gt; [1] &quot;Und Recht und Freibier&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_text
+#&gt; [1] &quot;Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[3]]
+#&gt; $matches[[3]]$title
+#&gt; [1] &quot;Verführer der Deutschen&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_text
+#&gt; [1] &quot;Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete.&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[4]]
+#&gt; $matches[[4]]$title
+#&gt; [1] &quot;Mit Merkels Hubschrauber über Sachsen&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_text
+#&gt; [1] &quot;Wie mir träumte, ich sei Ethik- und Achtungsminister.&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[5]]
+#&gt; $matches[[5]]$title
+#&gt; [1] &quot;Bayreuther Assoziationen&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_text
+#&gt; [1] &quot;Richard Wagners Opern sind natürlich eine Zumutung, seine Kultur ist die der Unterwerfung. Sie fordert Geduld, Kunstglauben und Mitmenschlichkeit heraus.&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[6]]
+#&gt; $matches[[6]]$title
+#&gt; [1] &quot;Action! Mord! Blutbad!&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_text
+#&gt; [1] &quot;Albert Ostermaiers Nibelungen-Dichtung \&quot;Gemetzel\&quot; wird vor dem Wormser Dom aufgeführt.&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[7]]
+#&gt; $matches[[7]]$title
+#&gt; [1] &quot;Zelle mit Meeresblick&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_text
+#&gt; [1] &quot;Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \&quot;Tristan\&quot;.&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[8]]
+#&gt; $matches[[8]]$title
+#&gt; [1] &quot;Tee mit dem Biedermann&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_text
+#&gt; [1] &quot;Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen.&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[9]]
+#&gt; $matches[[9]]$title
+#&gt; [1] &quot;Kampfjet in Bayern abgestürzt&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_text
+#&gt; [1] &quot;Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm.&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[10]]
+#&gt; $matches[[10]]$title
+#&gt; [1] &quot;Lieber Family-Yoga als Schlammrutschen&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_text
+#&gt; [1] &quot;Musikfestivals sind laut und dreckig? Nicht so das A Summer&#39;s Tale nahe Hamburg. Es hat mit seiner Premiere eine neue Zielgruppe erschlossen: die High-End-Alternativen.&quot;
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $found
+#&gt; [1] 1566
+#&gt; 
+#&gt; $limit
+#&gt; [1] 10
+#&gt; 
+#&gt; $offset
+#&gt; [1] 0
+</code></pre>
+
+<p>Search results are limited to 10 matches by default. You can increase this value with the <code>limit</code> 
+parameter. To iterate over the resultset, repeat your request with the <code>offset</code> parameter set to 
+multiples of the limit.</p>
+
+<pre><code class="r">zeit_search(&quot;content&quot;, &quot;bayreuth&quot;, limit=1) # just one match
+#&gt; $matches
+#&gt; $matches[[1]]
+#&gt; $matches[[1]]$subtitle
+#&gt; [1] &quot;Der heißlaufende Streit um Namenspatrone (nicht nur) in Deutschland – und was dahintersteckt. Beobachtungen&quot;
+#&gt; 
+#&gt; $matches[[1]]$uuid
+#&gt; [1] &quot;5RQOFFRriS05dw4DfL2YEa&quot;
+#&gt; 
+#&gt; $matches[[1]]$title
+#&gt; [1] &quot;Straßenkampf&quot;
+#&gt; 
+#&gt; $matches[[1]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/38/deutschland-strassennamen-namenspatrone&quot;
+#&gt; 
+#&gt; $matches[[1]]$release_date
+#&gt; [1] &quot;2015-10-06T08:33:09Z&quot;
+#&gt; 
+#&gt; $matches[[1]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/5RQOFFRriS05dw4DfL2YEa&quot;
+#&gt; 
+#&gt; $matches[[1]]$snippet
+#&gt; [1] &quot; weitläufigen Platz vor der alten Musikhalle zu widmen, der seit der Nazizeit Karl-Muck-Platz hieß. Wenig später erst stellte sich heraus, dass Muck, ein heute weitgehend vergessener Kapellmeister, in &lt;em&gt;Bayreuth&lt;/em&gt;&quot;
+#&gt; 
+#&gt; $matches[[1]]$supertitle
+#&gt; [1] &quot;Straßennamen&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_text
+#&gt; [1] &quot;Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_title
+#&gt; [1] &quot;Von Adolf-Hitler-Plätzen und Rosa-Luxemburg-Alleen&quot;
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $found
+#&gt; [1] 1566
+#&gt; 
+#&gt; $limit
+#&gt; [1] 1
+#&gt; 
+#&gt; $offset
+#&gt; [1] 0
+zeit_search(&quot;content&quot;, &quot;bayreuth&quot;, limit=1, offset=1) # just the second match
+#&gt; $matches
+#&gt; $matches[[1]]
+#&gt; $matches[[1]]$subtitle
+#&gt; [1] &quot;Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden&quot;
+#&gt; 
+#&gt; $matches[[1]]$uuid
+#&gt; [1] &quot;3Ed7KYJOO2MXu5SQtnudQA&quot;
+#&gt; 
+#&gt; $matches[[1]]$title
+#&gt; [1] &quot;Und Recht und Freibier&quot;
+#&gt; 
+#&gt; $matches[[1]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/40/3-10-1990-chronik-des-tages&quot;
+#&gt; 
+#&gt; $matches[[1]]$release_date
+#&gt; [1] &quot;2015-10-01T13:30:49Z&quot;
+#&gt; 
+#&gt; $matches[[1]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3Ed7KYJOO2MXu5SQtnudQA&quot;
+#&gt; 
+#&gt; $matches[[1]]$snippet
+#&gt; [1] &quot; Nachmittag einen Sitzstreik auf. In &lt;em&gt;Bayreuth&lt;/em&gt; und Bernau am Chiemsee demonstrieren Gefängnisinsassen, im schwäbischen Kaisheim und in München-Stadelheim brechen kleinere Revolten aus. In der Hamburger&quot;
+#&gt; 
+#&gt; $matches[[1]]$supertitle
+#&gt; [1] &quot;3. Oktober 1990&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_text
+#&gt; [1] &quot;Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_title
+#&gt; [1] &quot;Und Recht und Freibier&quot;
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $found
+#&gt; [1] 1566
+#&gt; 
+#&gt; $limit
+#&gt; [1] 1
+#&gt; 
+#&gt; $offset
+#&gt; [1] 1
+</code></pre>
+
+<p>Search results, namely those of the /content endpoint, can be sorted using the <code>sort</code> parameter. 
+Any of the returned fields are sortable. Direction keywords are <code>asc</code> and <code>desc</code> for an ascending 
+or descending sort order respectively. Multiple sort orders are accepted as a comma-separated list.</p>
+
+<pre><code class="r">zeit_search(&quot;content&quot;, &quot;bayreuth&quot;, 
+  sort=c(&quot;release_date&quot;, &quot;asc&quot;)) # sort by date
+#&gt; $matches
+#&gt; $matches[[1]]
+#&gt; $matches[[1]]$uuid
+#&gt; [1] &quot;4UE3wNiy574fYRgzE047Te&quot;
+#&gt; 
+#&gt; $matches[[1]]$title
+#&gt; [1] &quot;Kurze Wirtschaftsmeldungen&quot;
+#&gt; 
+#&gt; $matches[[1]]$release_date
+#&gt; [1] &quot;1946-10-31T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[1]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/4UE3wNiy574fYRgzE047Te&quot;
+#&gt; 
+#&gt; $matches[[1]]$snippet
+#&gt; [1] &quot; Breslau befinden sich jetzt bei der Landesversicherungsanstalt in &lt;em&gt;Bayreuth&lt;/em&gt;.\nIn Bayern wurden bei allen Geflügelhaltern 50 v. H. der Gänse, Enten und Puten zur Versorgung der Krankenhäuser, Alters- und&quot;
+#&gt; 
+#&gt; $matches[[1]]$href
+#&gt; [1] &quot;http://www.zeit.de/1946/37/kurze-wirtschaftsmeldungen&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_text
+#&gt; [1] &quot;Die mittelrheinische Konservenindustrie kann Infolge des Gemüse- und Obstmangels ihr Kontingent, das sich auf ein Drittel der Kapazität beläuft, nicht ausnutzen.&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_title
+#&gt; [1] &quot;Kurze Wirtschaftsmeldungen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[2]]
+#&gt; $matches[[2]]$uuid
+#&gt; [1] &quot;7hgLz9BjRdfotanVCdvSVN&quot;
+#&gt; 
+#&gt; $matches[[2]]$title
+#&gt; [1] &quot;Ein Besuch bei Jean Paul&quot;
+#&gt; 
+#&gt; $matches[[2]]$release_date
+#&gt; [1] &quot;1946-12-12T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[2]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/7hgLz9BjRdfotanVCdvSVN&quot;
+#&gt; 
+#&gt; $matches[[2]]$snippet
+#&gt; [1] &quot; veröffentlichen daraus die Begegnung des schwedischen Dichters mit Jean Paul.\nAm26 November 1817, abends 8Uhr, erreichten wir &lt;em&gt;Bayreuth&lt;/em&gt; und restaurierten uns nach vielen Muhen und Nachtwachen: mit einem&quot;
+#&gt; 
+#&gt; $matches[[2]]$href
+#&gt; [1] &quot;http://www.zeit.de/1946/43/ein-besuch-bei-jean-paul&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_text
+#&gt; [1] &quot;Bei Hans Dulk in Hamburg erscheint demnächst von Christel Matthias Schröder neu herausgegeben das Buch „Menschen und Städte\&quot; des schwedischen Romantikers Per Daniel Amadeus Atterbom (1790 1855).&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_title
+#&gt; [1] &quot;Ein Besuch bei Jean Paul&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[3]]
+#&gt; $matches[[3]]$subtitle
+#&gt; [1] &quot;Ein Vermächtnis Gerhart Hauptmanns&quot;
+#&gt; 
+#&gt; $matches[[3]]$uuid
+#&gt; [1] &quot;2DkoeQbv6EJCBxqqJ3ylo5&quot;
+#&gt; 
+#&gt; $matches[[3]]$title
+#&gt; [1] &quot;Prosperos Wiederkehr&quot;
+#&gt; 
+#&gt; $matches[[3]]$release_date
+#&gt; [1] &quot;1947-01-23T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[3]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/2DkoeQbv6EJCBxqqJ3ylo5&quot;
+#&gt; 
+#&gt; $matches[[3]]$snippet
+#&gt; [1] &quot;. Erich Ebermayer auf Schloß Körnitz bei &lt;em&gt;Bayreuth&lt;/em&gt; und Hauptmanns letzter Privatsekretär Dr. C. F. W. Behl, der seit dem vorigen Jahr Landgerichtspräsident von Schweinfurth ist und gegenwärtig, wie übrigens&quot;
+#&gt; 
+#&gt; $matches[[3]]$href
+#&gt; [1] &quot;http://www.zeit.de/1947/04/prosperos-wiederkehr&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_text
+#&gt; [1] &quot;Ein Teil von Gerhart Hauptmanns Nachlaß, der gegen Ende 1944 nach Dresden gebracht worden war, wo er bei einem Luftangriff schweren Schaden erlitt, ist zur Zeit auf drei Orte verteilt, während sich das Wiesensteiner Archiv in Müggelheim bei Berlin unter der Obhut der Schriftsteller Gertraut Pohl und Johannes R.&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_title
+#&gt; [1] &quot;Prosperos Wiederkehr&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[4]]
+#&gt; $matches[[4]]$uuid
+#&gt; [1] &quot;1kU0RKV7mce4JxGSPx2jDf&quot;
+#&gt; 
+#&gt; $matches[[4]]$title
+#&gt; [1] &quot;Gablonz in Kauf beuren&quot;
+#&gt; 
+#&gt; $matches[[4]]$release_date
+#&gt; [1] &quot;1947-01-30T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[4]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1kU0RKV7mce4JxGSPx2jDf&quot;
+#&gt; 
+#&gt; $matches[[4]]$snippet
+#&gt; [1] &quot; deutschen Markt erobert und erzielte alleinim Dezember 1946 einen Umsatz von 1,5 Millionen RM.\nDas Bestreben der Kaufbeuren-Gablonzer wie des im Raum &lt;em&gt;Bayreuth&lt;/em&gt; untergebrachten Sudetendeutschen richtet sich&quot;
+#&gt; 
+#&gt; $matches[[4]]$href
+#&gt; [1] &quot;http://www.zeit.de/1947/05/bablonz-in-kauf-beuren&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_text
+#&gt; [1] &quot;Die Tschechoslowakei traf mit ihrer Ausweisung der Deutschen auch 7000 Gablonzer Bijouteriewaren-Arbeiter. Diese sahen sich als Vertriebene, gemeinsam mit den übrigen Ausgewiesenen, all ihrer Habe und Produktionsmittel beraubt, Ihre handwerklichen Fähigkeiten jedoch, das künstlerische Können und Organisations.&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_title
+#&gt; [1] &quot;Gablonz in Kauf beuren&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[5]]
+#&gt; $matches[[5]]$subtitle
+#&gt; [1] &quot;Versuch eines musikalischen Läuterungsverfahrens&quot;
+#&gt; 
+#&gt; $matches[[5]]$uuid
+#&gt; [1] &quot;mBocuIt6BQlRul8cmsMdM&quot;
+#&gt; 
+#&gt; $matches[[5]]$title
+#&gt; [1] &quot;Richard Wagner in uns sellbst&quot;
+#&gt; 
+#&gt; $matches[[5]]$release_date
+#&gt; [1] &quot;1947-03-27T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[5]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/mBocuIt6BQlRul8cmsMdM&quot;
+#&gt; 
+#&gt; $matches[[5]]$snippet
+#&gt; [1] &quot;Von Josef Marein\nDas Grab des großen Mannes von &lt;em&gt;Bayreuth&lt;/em&gt; ist lange, lange schön geschlossen. Und all die Jahre nach des Künstlers Erdenwallen wie bei seinen Lebzeiten schon, sind soviele Bücher über&quot;
+#&gt; 
+#&gt; $matches[[5]]$href
+#&gt; [1] &quot;http://www.zeit.de/1947/13/richard-wagner-in-uns-selbst&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_text
+#&gt; [1] &quot;Das Grab des großen Mannes von Bayreuth ist lange, lange schön geschlossen. Und all die Jahre nach des Künstlers Erdenwallen wie bei seinen Lebzeiten schon, sind soviele Bücher über Wesen und Werk der Meisters geschrieben und gedruckt worden, daß man ganze Straßen damit pflastern könnte.&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_title
+#&gt; [1] &quot;Richard Wagner in uns sellbst&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[6]]
+#&gt; $matches[[6]]$uuid
+#&gt; [1] &quot;GntpMhpyjnTP3qdYH6IiZ&quot;
+#&gt; 
+#&gt; $matches[[6]]$title
+#&gt; [1] &quot;Die Gablonzer – ein Aktivposten&quot;
+#&gt; 
+#&gt; $matches[[6]]$release_date
+#&gt; [1] &quot;1947-08-21T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[6]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/GntpMhpyjnTP3qdYH6IiZ&quot;
+#&gt; 
+#&gt; $matches[[6]]$snippet
+#&gt; [1] &quot;, in der amerikanischen Zone in Kaufbeuren, &lt;em&gt;Bayreuth&lt;/em&gt;-Warmensteinach, Homburg/Hessen, Burgtann, Vohenstrauß und Neustadt/Zwiesel sowie auch in der russischen Besatzungszone neue Zentren von Fachkräften&quot;
+#&gt; 
+#&gt; $matches[[6]]$href
+#&gt; [1] &quot;http://www.zeit.de/1947/34/die-gablonzer-ein-aktivposten&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_text
+#&gt; [1] &quot;Die Gablonzer und Haida-Steinschönauer Exportindustrien nahmen sowohl innerhalb der Tschechoslowakei als auch später in der deutschen Wirtschaft eine Sonderstellung ein.&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_title
+#&gt; [1] &quot;Die Gablonzer – ein Aktivposten&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[7]]
+#&gt; $matches[[7]]$subtitle
+#&gt; [1] &quot;Betrachtungen zu einem Memoirenbuch&quot;
+#&gt; 
+#&gt; $matches[[7]]$uuid
+#&gt; [1] &quot;5kNIMAwMKSUeHiYaCUoI5n&quot;
+#&gt; 
+#&gt; $matches[[7]]$title
+#&gt; [1] &quot;Politik als Schicksal des Geistes&quot;
+#&gt; 
+#&gt; $matches[[7]]$release_date
+#&gt; [1] &quot;1948-01-29T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[7]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/5kNIMAwMKSUeHiYaCUoI5n&quot;
+#&gt; 
+#&gt; $matches[[7]]$snippet
+#&gt; [1] &quot; seiner Konzertfahrt durch Deutschland und bei seinen Besuchen in &lt;em&gt;Bayreuth&lt;/em&gt; genügsam über das Wesen der Subalternisierung des Geistes belehrt, echter Vertreter künstlerischer Souveränität jenen Schatten zu&quot;
+#&gt; 
+#&gt; $matches[[7]]$href
+#&gt; [1] &quot;http://www.zeit.de/1948/05/politik-als-schicksal-des-geistes&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_text
+#&gt; [1] &quot;Zweifellos war es der Geist eines neuen Zeitalters der durch den Mund Napoleons I. sprach, als dieser den Begriff des Schicksals spöttisch verwarf und feststellte: „Die Politik ist das Schicksal.&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_title
+#&gt; [1] &quot;Politik als Schicksal des Geistes&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[8]]
+#&gt; $matches[[8]]$uuid
+#&gt; [1] &quot;3RZtKCFpK1qaXf66xyEFt3&quot;
+#&gt; 
+#&gt; $matches[[8]]$title
+#&gt; [1] &quot;Bayreuth heute und morgen?&quot;
+#&gt; 
+#&gt; $matches[[8]]$release_date
+#&gt; [1] &quot;1948-03-18T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[8]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3RZtKCFpK1qaXf66xyEFt3&quot;
+#&gt; 
+#&gt; $matches[[8]]$snippet
+#&gt; [1] &quot; &lt;em&gt;Bayreuth&lt;/em&gt; wieder zur Stadt der guten Theater- und Musikpflege und zur Stadt des Fremdenverkehrs zu machen bestrebt ist. Erste Aufführungen Mozartscher Opern im MarkgräflichenOpernhaus, diesem vielleicht&quot;
+#&gt; 
+#&gt; $matches[[8]]$href
+#&gt; [1] &quot;http://www.zeit.de/1948/12/bayreuth-heute-und-morgen&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_text
+#&gt; [1] &quot;Schon auf dem Bahnhofsplatz umfaßt der Blick schmerzhaft das Alltägliche, Wüste, Erwartungslose: die häßliche Monotonie der Zerstörung In Schutt lange Häuserzeilen und Fabriken, das ehemalige markgräfliche Jägerhaus; und die ehemalige markgräfliche Reiterkaserne.&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_title
+#&gt; [1] &quot;Bayreuth heute und morgen?&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[9]]
+#&gt; $matches[[9]]$uuid
+#&gt; [1] &quot;708g3vOyBS7Ksc2eTrv3rQ&quot;
+#&gt; 
+#&gt; $matches[[9]]$title
+#&gt; [1] &quot;Notizen&quot;
+#&gt; 
+#&gt; $matches[[9]]$release_date
+#&gt; [1] &quot;1948-03-25T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[9]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/708g3vOyBS7Ksc2eTrv3rQ&quot;
+#&gt; 
+#&gt; $matches[[9]]$snippet
+#&gt; [1] &quot; in &lt;em&gt;Bayreuth&lt;/em&gt; vorgesehen ist, hat der Komponist seine Teilnahme zugesugt. Igor Strawinskij, der seit vielen Jahren nicht mehr in Europa war, wird außerdem Gastspiele in Frankreich, Italien, Belgien, Holland&quot;
+#&gt; 
+#&gt; $matches[[9]]$href
+#&gt; [1] &quot;http://www.zeit.de/1948/13/notizen&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_text
+#&gt; [1] &quot;Der bisherige Lehrbeauftragte an der Universität Halle Dr. phil. Leo Koller, wurde jetzt zum Professor mit vollem Lehrauftrag für den neugeschaffenen Lehrstuhl für Geschichtsphilosophie in Halle ernannt.&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_title
+#&gt; [1] &quot;Notizen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[10]]
+#&gt; $matches[[10]]$subtitle
+#&gt; [1] &quot;&quot;
+#&gt; 
+#&gt; $matches[[10]]$uuid
+#&gt; [1] &quot;1oz5hdVbZKm4f734wTpUAt&quot;
+#&gt; 
+#&gt; $matches[[10]]$title
+#&gt; [1] &quot;Berliner Musiktage 1948&quot;
+#&gt; 
+#&gt; $matches[[10]]$release_date
+#&gt; [1] &quot;1948-06-03T06:00:00Z&quot;
+#&gt; 
+#&gt; $matches[[10]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1oz5hdVbZKm4f734wTpUAt&quot;
+#&gt; 
+#&gt; $matches[[10]]$snippet
+#&gt; [1] &quot; Fortschrittlichkeit kundzutun: Donaueschingen, Godesberg, Sondershausen, &lt;em&gt;Bayreuth&lt;/em&gt;, Darmstadt, Krefeld, Frankfurt, Köln, Münster. Auch Berlin befindet sich mit den vom Magistrat zum zweitenmal veranstalteten „Musiktagen&quot;
+#&gt; 
+#&gt; $matches[[10]]$href
+#&gt; [1] &quot;http://www.zeit.de/1948/23/berliner-musiktage-1948&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_text
+#&gt; [1] &quot;Die neue deutsche Musik kann sich in diesem Sommer in zahlreiche Nester setzen, die ihr in allen Zonen bereitet werden. Städte aller Größenordnungen rivalisieren miteinander, ihre musikalische Fortschrittlichkeit kundzutun: Donaueschingen, Godesberg, Sondershausen, Bayreuth, Darmstadt, Krefeld, Frankfurt, Köln, Münster.&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_title
+#&gt; [1] &quot;Berliner Musiktage 1948&quot;
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $found
+#&gt; [1] 1566
+#&gt; 
+#&gt; $limit
+#&gt; [1] 10
+#&gt; 
+#&gt; $offset
+#&gt; [1] 0
+zeit_search(&quot;content&quot;, &quot;bayreuth&quot;, 
+  sort=list(c(&quot;release_date&quot;, &quot;desc&quot;), c(&quot;title&quot;, &quot;asc&quot;))) # sort by date and title
+#&gt; $matches
+#&gt; $matches[[1]]
+#&gt; $matches[[1]]$subtitle
+#&gt; [1] &quot;Der heißlaufende Streit um Namenspatrone (nicht nur) in Deutschland – und was dahintersteckt. Beobachtungen&quot;
+#&gt; 
+#&gt; $matches[[1]]$uuid
+#&gt; [1] &quot;5RQOFFRriS05dw4DfL2YEa&quot;
+#&gt; 
+#&gt; $matches[[1]]$title
+#&gt; [1] &quot;Straßenkampf&quot;
+#&gt; 
+#&gt; $matches[[1]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/38/deutschland-strassennamen-namenspatrone&quot;
+#&gt; 
+#&gt; $matches[[1]]$release_date
+#&gt; [1] &quot;2015-10-06T08:33:09Z&quot;
+#&gt; 
+#&gt; $matches[[1]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/5RQOFFRriS05dw4DfL2YEa&quot;
+#&gt; 
+#&gt; $matches[[1]]$snippet
+#&gt; [1] &quot; weitläufigen Platz vor der alten Musikhalle zu widmen, der seit der Nazizeit Karl-Muck-Platz hieß. Wenig später erst stellte sich heraus, dass Muck, ein heute weitgehend vergessener Kapellmeister, in &lt;em&gt;Bayreuth&lt;/em&gt;&quot;
+#&gt; 
+#&gt; $matches[[1]]$supertitle
+#&gt; [1] &quot;Straßennamen&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_text
+#&gt; [1] &quot;Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?&quot;
+#&gt; 
+#&gt; $matches[[1]]$teaser_title
+#&gt; [1] &quot;Von Adolf-Hitler-Plätzen und Rosa-Luxemburg-Alleen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[2]]
+#&gt; $matches[[2]]$subtitle
+#&gt; [1] &quot;Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden&quot;
+#&gt; 
+#&gt; $matches[[2]]$uuid
+#&gt; [1] &quot;3Ed7KYJOO2MXu5SQtnudQA&quot;
+#&gt; 
+#&gt; $matches[[2]]$title
+#&gt; [1] &quot;Und Recht und Freibier&quot;
+#&gt; 
+#&gt; $matches[[2]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/40/3-10-1990-chronik-des-tages&quot;
+#&gt; 
+#&gt; $matches[[2]]$release_date
+#&gt; [1] &quot;2015-10-01T13:30:49Z&quot;
+#&gt; 
+#&gt; $matches[[2]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3Ed7KYJOO2MXu5SQtnudQA&quot;
+#&gt; 
+#&gt; $matches[[2]]$snippet
+#&gt; [1] &quot; Nachmittag einen Sitzstreik auf. In &lt;em&gt;Bayreuth&lt;/em&gt; und Bernau am Chiemsee demonstrieren Gefängnisinsassen, im schwäbischen Kaisheim und in München-Stadelheim brechen kleinere Revolten aus. In der Hamburger&quot;
+#&gt; 
+#&gt; $matches[[2]]$supertitle
+#&gt; [1] &quot;3. Oktober 1990&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_text
+#&gt; [1] &quot;Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden&quot;
+#&gt; 
+#&gt; $matches[[2]]$teaser_title
+#&gt; [1] &quot;Und Recht und Freibier&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[3]]
+#&gt; $matches[[3]]$subtitle
+#&gt; [1] &quot;Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete.&quot;
+#&gt; 
+#&gt; $matches[[3]]$uuid
+#&gt; [1] &quot;3io4OEbgWI4BTXIrvQmCZD&quot;
+#&gt; 
+#&gt; $matches[[3]]$title
+#&gt; [1] &quot;Verführer der Deutschen&quot;
+#&gt; 
+#&gt; $matches[[3]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/38/herfried-muenkler-houston-stewart-chamberlain&quot;
+#&gt; 
+#&gt; $matches[[3]]$release_date
+#&gt; [1] &quot;2015-10-01T01:34:01Z&quot;
+#&gt; 
+#&gt; $matches[[3]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3io4OEbgWI4BTXIrvQmCZD&quot;
+#&gt; 
+#&gt; $matches[[3]]$snippet
+#&gt; [1] &quot; politikwissenschaftlicher Sicht in den letzten zwei Jahrzehnten mit Wagner beschäftigt hat, ist unübersehbar aus Chamberlains Verbindung mit &lt;em&gt;Bayreuth&lt;/em&gt; und der dort nach Wagners Tod entwickelten Ideologie erwachsen. Nach&quot;
+#&gt; 
+#&gt; $matches[[3]]$supertitle
+#&gt; [1] &quot;\&quot;Houston Stewart Chamberlain\&quot;&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_text
+#&gt; [1] &quot;Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete.&quot;
+#&gt; 
+#&gt; $matches[[3]]$teaser_title
+#&gt; [1] &quot;Verführer der Deutschen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[4]]
+#&gt; $matches[[4]]$subtitle
+#&gt; [1] &quot;Wie mir träumte, ich sei Ethik- und Achtungsminister.&quot;
+#&gt; 
+#&gt; $matches[[4]]$uuid
+#&gt; [1] &quot;17OoeUkLg0YwKcyojdwLjp&quot;
+#&gt; 
+#&gt; $matches[[4]]$title
+#&gt; [1] &quot;Mit Merkels Hubschrauber über Sachsen&quot;
+#&gt; 
+#&gt; $matches[[4]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/36/moritz-rinke-sachsen-emmanuel-levinas&quot;
+#&gt; 
+#&gt; $matches[[4]]$release_date
+#&gt; [1] &quot;2015-09-17T01:09:28Z&quot;
+#&gt; 
+#&gt; $matches[[4]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/17OoeUkLg0YwKcyojdwLjp&quot;
+#&gt; 
+#&gt; $matches[[4]]$snippet
+#&gt; [1] &quot; irritierten Bundeskanzlerin durch, die eigentlich mit ihrem Hubschrauber nach &lt;em&gt;Bayreuth&lt;/em&gt; wollte. Je weniger Bildung, umso anfälliger sind die Menschen für schlichte Erklärungen, mache ich der Kanzlerin deutlich&quot;
+#&gt; 
+#&gt; $matches[[4]]$supertitle
+#&gt; [1] &quot;Ethik&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_text
+#&gt; [1] &quot;Wie mir träumte, ich sei Ethik- und Achtungsminister.&quot;
+#&gt; 
+#&gt; $matches[[4]]$teaser_title
+#&gt; [1] &quot;Mit Merkels Hubschrauber über Sachsen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[5]]
+#&gt; $matches[[5]]$subtitle
+#&gt; [1] &quot;Eine Reise zu den Festspielen&quot;
+#&gt; 
+#&gt; $matches[[5]]$uuid
+#&gt; [1] &quot;1azq6iOsx2DgMPdEjpvXkZ&quot;
+#&gt; 
+#&gt; $matches[[5]]$title
+#&gt; [1] &quot;Bayreuther Assoziationen&quot;
+#&gt; 
+#&gt; $matches[[5]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/32/bayreuth-wagner-festspiele-peter-sloterdijk&quot;
+#&gt; 
+#&gt; $matches[[5]]$release_date
+#&gt; [1] &quot;2015-08-21T08:57:55Z&quot;
+#&gt; 
+#&gt; $matches[[5]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1azq6iOsx2DgMPdEjpvXkZ&quot;
+#&gt; 
+#&gt; $matches[[5]]$snippet
+#&gt; [1] &quot; Außerordentliche an &lt;em&gt;Bayreuth&lt;/em&gt; ist wohl, dass hier fast ausschließlich Vorbereitete das Festspielhaus betreten. Die erste Fanfare ertönt. Das Publikum strömt zu den Toiletten. Wagner und die physiologischen&quot;
+#&gt; 
+#&gt; $matches[[5]]$supertitle
+#&gt; [1] &quot;Wagner-Festspiele&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_text
+#&gt; [1] &quot;Richard Wagners Opern sind natürlich eine Zumutung, seine Kultur ist die der Unterwerfung. Sie fordert Geduld, Kunstglauben und Mitmenschlichkeit heraus.&quot;
+#&gt; 
+#&gt; $matches[[5]]$teaser_title
+#&gt; [1] &quot;Bayreuther Assoziationen&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[6]]
+#&gt; $matches[[6]]$subtitle
+#&gt; [1] &quot;Albert Ostermaiers Nibelungen-Dichtung \&quot;Gemetzel\&quot; wird vor dem Wormser Dom aufgeführt.&quot;
+#&gt; 
+#&gt; $matches[[6]]$uuid
+#&gt; [1] &quot;7vMNqYPNewxaJdvOo0Ht0r&quot;
+#&gt; 
+#&gt; $matches[[6]]$title
+#&gt; [1] &quot;Action! Mord! Blutbad!&quot;
+#&gt; 
+#&gt; $matches[[6]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/32/nibelungen-festspiele-worms-gemetzel&quot;
+#&gt; 
+#&gt; $matches[[6]]$release_date
+#&gt; [1] &quot;2015-08-20T01:45:02Z&quot;
+#&gt; 
+#&gt; $matches[[6]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/7vMNqYPNewxaJdvOo0Ht0r&quot;
+#&gt; 
+#&gt; $matches[[6]]$snippet
+#&gt; [1] &quot; breiten Bühne zwei hochragende Gestängetürme, martialisch bestückt mit Waffengerät, Beutegut, Leitern im Innern. Offenbar Kampfwagen. Erdacht hat sie Aleksandar Denić, der ja gerade in &lt;em&gt;Bayreuth&lt;/em&gt; Frank&quot;
+#&gt; 
+#&gt; $matches[[6]]$supertitle
+#&gt; [1] &quot;Nibelungen-Festspiele&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_text
+#&gt; [1] &quot;Albert Ostermaiers Nibelungen-Dichtung \&quot;Gemetzel\&quot; wird vor dem Wormser Dom aufgeführt.&quot;
+#&gt; 
+#&gt; $matches[[6]]$teaser_title
+#&gt; [1] &quot;Action! Mord! Blutbad!&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[7]]
+#&gt; $matches[[7]]$subtitle
+#&gt; [1] &quot;Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \&quot;Tristan\&quot;.&quot;
+#&gt; 
+#&gt; $matches[[7]]$uuid
+#&gt; [1] &quot;6m8EMIolNkCqNFk6TCROIv&quot;
+#&gt; 
+#&gt; $matches[[7]]$title
+#&gt; [1] &quot;Zelle mit Meeresblick&quot;
+#&gt; 
+#&gt; $matches[[7]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/31/tristan-isolde-oper-bayreuth&quot;
+#&gt; 
+#&gt; $matches[[7]]$release_date
+#&gt; [1] &quot;2015-08-13T01:27:33Z&quot;
+#&gt; 
+#&gt; $matches[[7]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/6m8EMIolNkCqNFk6TCROIv&quot;
+#&gt; 
+#&gt; $matches[[7]]$snippet
+#&gt; [1] &quot;Welches Auto der Dirigent fährt, welcher Handtasche die Regisseurin ihre Zigaretten entnimmt, das alles scheint wichtig zu sein in &lt;em&gt;Bayreuth&lt;/em&gt;, und das türkisfarbene Kostüm der Bundeskanzlerin sowieso&quot;
+#&gt; 
+#&gt; $matches[[7]]$supertitle
+#&gt; [1] &quot;Tristan und Isolde&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_text
+#&gt; [1] &quot;Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \&quot;Tristan\&quot;.&quot;
+#&gt; 
+#&gt; $matches[[7]]$teaser_title
+#&gt; [1] &quot;Zelle mit Meeresblick&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[8]]
+#&gt; $matches[[8]]$subtitle
+#&gt; [1] &quot;Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch 1975 hielt der Regisseur Hans-Jürgen Syberberg Bilder daraus fest. Hier zeigen wir sie erstmals.&quot;
+#&gt; 
+#&gt; $matches[[8]]$uuid
+#&gt; [1] &quot;1sRgadMwUk0eO8AniNz9I&quot;
+#&gt; 
+#&gt; $matches[[8]]$title
+#&gt; [1] &quot;Tee mit dem Biedermann&quot;
+#&gt; 
+#&gt; $matches[[8]]$href
+#&gt; [1] &quot;http://www.zeit.de/2015/31/bayreuth-festspiele-hitler-winifred-film&quot;
+#&gt; 
+#&gt; $matches[[8]]$release_date
+#&gt; [1] &quot;2015-08-13T00:24:03Z&quot;
+#&gt; 
+#&gt; $matches[[8]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/1sRgadMwUk0eO8AniNz9I&quot;
+#&gt; 
+#&gt; $matches[[8]]$snippet
+#&gt; [1] &quot;Adolf Hitler in &lt;em&gt;Bayreuth&lt;/em&gt;, wie die Welt ihn noch nicht gesehen hat. Mit weichen, vor Zärtlichkeit fast verschwimmenden Gesichtszügen; im Tête-à-Tête mit Wieland Wagner, seinem erklärten Liebling unter&quot;
+#&gt; 
+#&gt; $matches[[8]]$supertitle
+#&gt; [1] &quot;Bayreuth&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_text
+#&gt; [1] &quot;Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen.&quot;
+#&gt; 
+#&gt; $matches[[8]]$teaser_title
+#&gt; [1] &quot;Zum Tee mit Hitler&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[9]]
+#&gt; $matches[[9]]$subtitle
+#&gt; [1] &quot;Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm.&quot;
+#&gt; 
+#&gt; $matches[[9]]$uuid
+#&gt; [1] &quot;4MN9cCoAS05p5brCdufg45&quot;
+#&gt; 
+#&gt; $matches[[9]]$title
+#&gt; [1] &quot;Kampfjet in Bayern abgestürzt&quot;
+#&gt; 
+#&gt; $matches[[9]]$href
+#&gt; [1] &quot;http://www.zeit.de/gesellschaft/zeitgeschehen/2015-08/flugzeug-absturz-militaerjet-oberfranken&quot;
+#&gt; 
+#&gt; $matches[[9]]$release_date
+#&gt; [1] &quot;2015-08-11T11:14:31Z&quot;
+#&gt; 
+#&gt; $matches[[9]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/4MN9cCoAS05p5brCdufg45&quot;
+#&gt; 
+#&gt; $matches[[9]]$snippet
+#&gt; [1] &quot;Ein US-amerikanischer Militärjet ist in Oberfranken abgestürzt. Das Flugzeug stürzte gegen 9.30 Uhr über einem Waldgebiet im Gemeindebereich von Creußen im Grenzgebiet der Landkreise &lt;em&gt;Bayreuth&lt;/em&gt; und&quot;
+#&gt; 
+#&gt; $matches[[9]]$supertitle
+#&gt; [1] &quot;US-Militär&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_text
+#&gt; [1] &quot;Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm.&quot;
+#&gt; 
+#&gt; $matches[[9]]$teaser_title
+#&gt; [1] &quot;Kampfjet in Bayern abgestürzt&quot;
+#&gt; 
+#&gt; 
+#&gt; $matches[[10]]
+#&gt; $matches[[10]]$subtitle
+#&gt; [1] &quot;Musikfestivals sind laut und dreckig? Nicht so das A Summer&#39;s Tale nahe Hamburg. Es hat mit seiner Premiere eine neue Zielgruppe erschlossen: die High-End-Alternativen.&quot;
+#&gt; 
+#&gt; $matches[[10]]$uuid
+#&gt; [1] &quot;3T45htOktXKpSvAX66lbdp&quot;
+#&gt; 
+#&gt; $matches[[10]]$title
+#&gt; [1] &quot;Lieber Family-Yoga als Schlammrutschen&quot;
+#&gt; 
+#&gt; $matches[[10]]$href
+#&gt; [1] &quot;http://www.zeit.de/hamburg/kultur/2015-08/a-summers-tale-musik-festival&quot;
+#&gt; 
+#&gt; $matches[[10]]$release_date
+#&gt; [1] &quot;2015-08-10T10:41:56Z&quot;
+#&gt; 
+#&gt; $matches[[10]]$uri
+#&gt; [1] &quot;http://api.zeit.de/content/3T45htOktXKpSvAX66lbdp&quot;
+#&gt; 
+#&gt; $matches[[10]]$snippet
+#&gt; [1] &quot; mit dem Rock &#39;n&#39; Roll vergleichbarer Freiluftpartys weniger gemeinsam hat als mit den Wagner-Festspielen in &lt;em&gt;Bayreuth&lt;/em&gt;.\nSommermärchenlandbewohner schlafen offenbar weniger mit Dosenbier im Wurfzelt als im&quot;
+#&gt; 
+#&gt; $matches[[10]]$supertitle
+#&gt; [1] &quot;A Summer&#39;s Tale&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_text
+#&gt; [1] &quot;Musikfestivals sind laut und dreckig? Nicht so das A Summer&#39;s Tale nahe Hamburg. Es hat mit seiner Premiere eine neue Zielgruppe erschlossen: die High-End-Alternativen.&quot;
+#&gt; 
+#&gt; $matches[[10]]$teaser_title
+#&gt; [1] &quot;Lieber Family-Yoga als Schlammrutschen&quot;
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $found
+#&gt; [1] 1566
+#&gt; 
+#&gt; $limit
+#&gt; [1] 10
+#&gt; 
+#&gt; $offset
+#&gt; [1] 0
+</code></pre>
+
+<p>You may hide the search output by setting <code>print</code> to <code>FALSE</code>.</p>
+
+<pre><code class="r">bt.matches &lt;- zeit_search(&quot;content&quot;, &quot;bayreuth&quot;, print=FALSE)
+</code></pre>
+
+<h4>Occurrences of German State Capitals in DIE ZEIT</h4>
+
+<p>Prepare the vectors of state capital names, latitude and longitude.</p>
+
+<pre><code class="r">cap &lt;- c(&quot;Berlin&quot;, &quot;Bremen&quot;, &quot;Dresden&quot;, &quot;Düsseldorf&quot;, &quot;Erfurt&quot;,
+  &quot;Hamburg&quot;, &quot;Hannover&quot;, &quot;Kiel&quot;, &quot;Magdeburg&quot;, &quot;Mainz&quot;, &quot;München&quot;,
+  &quot;Potsdam&quot;, &quot;Saarbrücken&quot;, &quot;Schwerin&quot;, &quot;Stuttgart&quot;, &quot;Wiesbaden&quot;)
+lat &lt;- c(52.516667, 53.083333, 51.033333, 51.233333, 50.983333,
+  53.565278, 52.366667, 54.333333, 52.133333, 50, 48.133333,
+  52.4, 49.233333, 53.633333, 48.783333, 50.08) 
+lon &lt;- c(13.383333, 8.8, 13.733333, 6.783333, 11.033333,
+  10.001389, 9.716667, 10.133333, 11.616667, 8.266667, 11.566667,
+  13.066667, 7, 11.416667, 9.183333, 8.24)
+</code></pre>
+
+<p>Get data from DIE ZEIT. Search for ZEIT articles containing just &ldquo;Berlin&rdquo;.</p>
+
+<pre><code class="r">berlin &lt;- zeit_search(&quot;content&quot;, &quot;Berlin&quot;, print=FALSE)
+</code></pre>
+
+<p>Get the number of articles found:</p>
+
+<pre><code class="r">berlin$found
+#&gt; [1] 66962
+</code></pre>
+
+<p>And now the same for all state capitals.</p>
+
+<pre><code class="r">found.l &lt;- lapply(cap, function(x) zeit_search(&quot;content&quot;, x, print=FALSE)$found)
+found &lt;- unlist(found.l)
+</code></pre>
+
+<p>Normalize the numbers.</p>
+
+<pre><code class="r">found.norm &lt;- found/max(found)
+</code></pre>
+
+<p>Finally plot a bubble chart.</p>
+
+<pre><code class="r">cols &lt;- rainbow(16, alpha=.8)
+symbols(lon, lat, circles=8*found.norm, fg=cols, lwd=2, 
+    main=&quot;Occurrences of German State Capitals in DIE ZEIT&quot;,
+  xlim=c(6, 16), ylim=c(46, 56), xlab=&quot;&quot;, ylab=&quot;&quot;, bty=&quot;n&quot;)
+h &lt;- c(1,2,3,4,6,7,8,11,15) # high occurrence capitals - just for readability
+text(lon[h], lat[h], cap[h], col=cols[h])
+text(lon[-c(h,16)], lat[-c(h,16)], cap[-c(h,16)], col=cols[-c(h,16)], pos=1)
+text(lon[16], lat[16], cap[16], col=cols[16], pos=3)
+</code></pre>
+
+<p><img src="data:image/png;base64,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MtEHDRo0wB577BGd5Y6nTJmCGTNmbJGvDP22jjrqKEyaNAmzZs2KWUaZKiOK7s/EiRMxf/58lx/rX9u2baFkRAR4M41KEYHFixf7xxxzjK9bEZ34AvVffvnlUuxZ2Wx65syZPidW2ffi0UcfjQnEihUrfDKS7HLBvatdu7b/+eefx7wmFTMHDRrk82WcY5w1atTw33rrrezhLFu2zL/88sv9hx56KDuvoANOZv2uXbv6nDQUVDTf848//rhftWrVHP3T/XvppZfyvS7ek5UqVXJtkMm5S4vS/9x1bG0f4r2eTDoHTsEzW7lyZV/3edOmTa5KfQbnli5d6vI4ac3OC84Fn3p/xaJLL700z2s4aXCXnH322XmWUf3r1693/QraUn9ivS+D8/q8+eabY3WnTOaZBM8nojSpV69e+PDDD9GoUSNcccUV7nPcuHF48skncfrpp6NevXpOKizNPpaltiUJkmE5KfWVV14BmccWw1++fDm6deuGb775BnvuuSfOOussJ5G89tpr+Oyzz3DBBRc4bUzFihW3uDaVMn799VfceOONTsq75ppr0KJFC7z++usQLmeeeSYOP/xwVKlSBbfffjuGDh3qUmHHx5c0OJkqbPGY5d555x1ceOGFIOPETTfdhFatWkF5b7/9trsHnEC431PMi+PM1Pg3btzo7rMuTUT/4+wCcvch3uuD8tJy6F2j8fzxxx944YUX3H3m5BR9+/YNisX8FM65tTd6LmLR8ccf756Z4Ny6deswcOBA6HOXXXYJst2nJHVphnJTuXLlJITmyD733HNx4IEHujxO5JwGTfcjyNtrr71ylC/LX4zBl+LdHzt2rGPuYiJiLI0bN3a9Oe2007Dddtvh+uuvB2fB+P33312+1IF6uapsw4YNHePXD0XqLlF+52UCePfdd7HDDjuge/furvz48ePx9ddf46CDDnImgcmTJ2PUqFHuh/Ljjz861dn5558PHUvVdtJJJ4ESk2v74osvBmf6GD58OH777Tdsv/326NmzZ/YL9c8//wSlPOy9995OZf3mm286FZ8mLTvttJNrv6A+6/zatWvzbEPnpR7XC11Meeedd3Yq9YLUcxo3pWz8999/TrV4yimnONXyV1995fAN2n366adByVRfc9Bzzz3nmLteJF9++SWk6hSdc8457p7ou9SIwYtGL1HdN2prsOuuu0KT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4PUdEAEREAEREIEEJCAFn4CdqiaJgAiIgAiIQGAV/M6dO5n8gtkvJCIgAiIgAiIgArkmEAgFv2TJElx22WWYPn26ly/+qquuQs2aNVGxYkVceeWVTIjBjBgSERABERABERCBqAkEQsHff//9qF+/Pg4++GC88MIL2MudLWbPno1ffvkFW7ZswUMPPRR1g3SiCIiACIiACIgA94EIAoRvv/0W8+bNQ/HixfHpp59i+PDhqFu3rlc1U+7XX399EKqpOoiACIiACIhA3BAIhAXfvHlzDB482IPWtWtXjB49Og3gyJEj0axZs7T3eiECIiACIiACIpAzgUDsB79w4UKcfvrp3px706ZNMXToULRu3RohbjW1efNmmIVfqxZ3nMiDaD/4PMDTpSIgAiIgAnFHIBAu+iZNmmDOnDn46quvMH/+fG8+vlKlSp7lftppp3E/6eiqOWLECK+MrHphwYIFaNWqVVaH9JkIiIAIiIAIJByBQFjwWVG1ZXIWPV++PPePjFJWr17tReFndfrWrVtRrVo12GBCIgIiIAIiIAKJTiCwCn7IkCEYP348Xn/99UTvA7VPBERABERABPKdQCAUvAXRrVu3br/GmfVuy+VKly6NHj16YNCgQfsd1xsREAEREAEREIEDEwiEgp84caKX0OaSSy7B5Zdf7tXWlspNnjwZ/fv3R5kyZVC1atUDt0JHREAEREAEREAE9iMQiGVynTt39rLYWSDcbbfdlqbQy5YtiwYNGki579dleiMCIiACIiACOROILjw953LyfIYF09laeFsi16VLFxx55JFISUnJc7kqQAREQAREQASSkUAgLPiM4M8//3yMHTvWm5O3fPQSERABERABERCB3BMIxBx87qutK0RABERABERABLIjEDgLPrvK6pgIiIAIiIAIiEB0BKTgo+Oks0RABERABEQgrghIwcdVd6myIiACIiACIhAdASn46DjpLBEQAREQARGIKwJS8HHVXaqsCIiACIiACERHIDDr4KOrbtGdVadOHe1Lnwv8O3bs8Db+qV+/fi6uSu5TI+malbUx+u/BkiVLvE2kSpUqFf1FSX6m7djZokWLJKeQu+avWbPG2/E0d1cV/dlS8FH2geXLnzBhQpRn67TZs2fjlVdewQsvvCAYURJ4++23vTMj6ZqjvCypT7vppptw3XXXoU2bNknNITeN79q1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REAEREAEYiAgBR8DNF0iAiIgAiIgAkEnIAUf9B5S/URABERABEQgBgJS8DFA0yUiIAIiIAIiEHQCUvBB7yHVTwREQAREQARiICAFHwM0XSICIiACIiACQScgBR/0HlL9REAEREAERCAGAlLwMUDTJSIgAiIgAiIQdAJS8EHvIdVPBERABERABGIgIAUfAzRdIgIiIAIiIAJBJyAFH/QeUv1EQAREQAREIAYCUvAxQNMlIiACIiACIhB0AlLwQe8h1U8EREAEREAEYiAgBR8DNF0iAiIgAiIgAkEnIAUf9B5S/URABERABEQgBgJS8DFA0yUiIAIiIAIiEHQCUvBB7yHVTwREQAREQARiICAFHwM0XSICIiACIiACQScgBR/0HlL9REAEREAERCAGAlLwMUDTJSIgAiIgAiIQdAJS8EHvIdVPBERABERABGIgIAUfAzRdIgIiIAIiIAJBJyAFH/QeUv1EQAREQAREIAYCUvAxQNMlIiACIiACIhB0AlLwQe8h1U8EREAEREAEYiAgBR8DNF0iAiIgAiIgAkEnIAUf9B5S/URABERABEQgBgJS8DFA0yUiIAIiIAIiEHQCUvBB7yHVTwREQAREQARiICAFHwM0XSICIiACIiACQScgBR/0HlL9REAEREAERCAGAlLwMUDTJSIgAiIgAiIQdAJS8EHvIdVPBERABERABGIgIAUfAzRdIgIiIAIiIAJBJyAFH/QeUv1EQAREQAREIAYCUvAxQNMlIiACIiACIhB0AlLwQe8h1U8EREAEREAEYiAgBR8DNF0iAiIgAiIgAkEnIAUf9B5S/URABERABEQgBgJS8DFA0yUiIAIiIAIiEHQC/w+nxLAIWTIHkQAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-17"/> </p>
+
+</body>
+
+</html>
