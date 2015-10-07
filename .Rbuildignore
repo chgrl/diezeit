@@ -1,5 +1,3 @@
-Makefile
-inst/doc
 .travis.yml
 .gitignore
 README.md
