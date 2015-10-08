@@ -13,6 +13,7 @@ A personal API key is required for usage.
 }
 \seealso{
 \code{\link{zeit_client}} for client information and usage,
-\code{\link{zeit_search}} for ZEIT archive search.
+\code{\link{zeit_search}} for ZEIT archive search or \code{\link{zeit_get}}
+to get content from the ZEIT archive.
 }
 
