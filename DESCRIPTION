@@ -8,5 +8,5 @@ Maintainer: Christian Graul <christian.graul@gmail.com>
 Description: A wrapper for the ZEIT ONLINE Content API, available at <http://developer.zeit.de>. 'diezeit' gives access to articles and corresponding metadata from the ZEIT archive and from ZEIT ONLINE. A personal API key is required for usage.
 License: MIT + file LICENSE
 VignetteBuilder: knitr
-Imports: brew, grDevices, httr, jsonlite, methods, utils
-Suggests: devtools (>= 1.6), knitr
+Imports: httr, jsonlite
+Suggests: knitr
