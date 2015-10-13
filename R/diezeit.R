@@ -11,5 +11,9 @@
 #' @importFrom httr GET
 #' @importFrom httr content
 #' @importFrom jsonlite fromJSON
+#' @import brew
+#' @import grDevices
+#' @import methods
+#' @import utils
 #' @aliases diezeit diezeit-package
 NULL
