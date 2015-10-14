@@ -1,21 +1,8 @@
----
-title: "Introduction to diezeit"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Introduction to diezeit}
-  %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
----
-
-```{r echo=FALSE}
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
-  warning = FALSE, 
-  message = FALSE
-)
-```
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{rtimes vignette}
+%\VignetteEncoding{UTF-8}
+-->
 
 
 
@@ -34,7 +21,8 @@ For the terms of use see http://developer.zeit.de/licence (German only at the mo
 
 `diezeit` is available on GitHub. To install it directly from R the `devtools`-package is required.
 
-```{r eval=FALSE}
+
+```r
 if(packageVersion("devtools") < 1.6) {
   install.packages("devtools")
 }
@@ -43,7 +31,8 @@ devtools::install_github("chgrl/diezeit")
 
 ### Load the package
 
-```{r}
+
+```r
 library(diezeit)
 ```
 
@@ -53,60 +42,2162 @@ library(diezeit)
 You can search the entire article text and all meta data simply by setting the `query` parameter
 to your search phrase.
 
-```{r}
+
+```r
 zeit_search(endpoint="content", query="bayreuth")
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$subtitle
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität"
+#> 
+#> $matches[[1]]$uuid
+#> [1] "6koVP1iuVDyvRkzWmSz2nG"
+#> 
+#> $matches[[1]]$title
+#> [1] "Köpfe ab!"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/2015/39/oper-skandal-urheberrecht-zensur"
+#> 
+#> $matches[[1]]$release_date
+#> [1] "2015-10-08T02:00:19Z"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/content/6koVP1iuVDyvRkzWmSz2nG"
+#> 
+#> $matches[[1]]$snippet
+#> [1] " geradezu ergebnisoffen, oft haben sie Geschichte gemacht wie die Ring-Inszenierung von Patrice Chéreau, 1976 in <em>Bayreuth</em> mit Wutgeheul und Morddrohungen begrüßt – und ein Jahr später schon Kult.\nEtlichen"
+#> 
+#> $matches[[1]]$supertitle
+#> [1] "Opernregie"
+#> 
+#> $matches[[1]]$teaser_text
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität."
+#> 
+#> $matches[[1]]$teaser_title
+#> [1] "Köpfe ab? Köpfe ab!"
+#> 
+#> 
+#> $matches[[2]]
+#> $matches[[2]]$subtitle
+#> [1] "Der heißlaufende Streit um Namenspatrone (nicht nur) in Deutschland – und was dahintersteckt. Beobachtungen"
+#> 
+#> $matches[[2]]$uuid
+#> [1] "5RQOFFRriS05dw4DfL2YEa"
+#> 
+#> $matches[[2]]$title
+#> [1] "Straßenkampf"
+#> 
+#> $matches[[2]]$href
+#> [1] "http://www.zeit.de/2015/38/deutschland-strassennamen-namenspatrone"
+#> 
+#> $matches[[2]]$release_date
+#> [1] "2015-10-06T08:33:09Z"
+#> 
+#> $matches[[2]]$uri
+#> [1] "http://api.zeit.de/content/5RQOFFRriS05dw4DfL2YEa"
+#> 
+#> $matches[[2]]$snippet
+#> [1] " weitläufigen Platz vor der alten Musikhalle zu widmen, der seit der Nazizeit Karl-Muck-Platz hieß. Wenig später erst stellte sich heraus, dass Muck, ein heute weitgehend vergessener Kapellmeister, in <em>Bayreuth</em>"
+#> 
+#> $matches[[2]]$supertitle
+#> [1] "Straßennamen"
+#> 
+#> $matches[[2]]$teaser_text
+#> [1] "Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?"
+#> 
+#> $matches[[2]]$teaser_title
+#> [1] "Von Adolf-Hitler-Plätzen und Rosa-Luxemburg-Alleen"
+#> 
+#> 
+#> $matches[[3]]
+#> $matches[[3]]$subtitle
+#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
+#> 
+#> $matches[[3]]$uuid
+#> [1] "3Ed7KYJOO2MXu5SQtnudQA"
+#> 
+#> $matches[[3]]$title
+#> [1] "Und Recht und Freibier"
+#> 
+#> $matches[[3]]$href
+#> [1] "http://www.zeit.de/2015/40/3-10-1990-chronik-des-tages"
+#> 
+#> $matches[[3]]$release_date
+#> [1] "2015-10-01T13:30:49Z"
+#> 
+#> $matches[[3]]$uri
+#> [1] "http://api.zeit.de/content/3Ed7KYJOO2MXu5SQtnudQA"
+#> 
+#> $matches[[3]]$snippet
+#> [1] " Nachmittag einen Sitzstreik auf. In <em>Bayreuth</em> und Bernau am Chiemsee demonstrieren Gefängnisinsassen, im schwäbischen Kaisheim und in München-Stadelheim brechen kleinere Revolten aus. In der Hamburger"
+#> 
+#> $matches[[3]]$supertitle
+#> [1] "3. Oktober 1990"
+#> 
+#> $matches[[3]]$teaser_text
+#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
+#> 
+#> $matches[[3]]$teaser_title
+#> [1] "Und Recht und Freibier"
+#> 
+#> 
+#> $matches[[4]]
+#> $matches[[4]]$subtitle
+#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
+#> 
+#> $matches[[4]]$uuid
+#> [1] "3io4OEbgWI4BTXIrvQmCZD"
+#> 
+#> $matches[[4]]$title
+#> [1] "Verführer der Deutschen"
+#> 
+#> $matches[[4]]$href
+#> [1] "http://www.zeit.de/2015/38/herfried-muenkler-houston-stewart-chamberlain"
+#> 
+#> $matches[[4]]$release_date
+#> [1] "2015-10-01T01:34:01Z"
+#> 
+#> $matches[[4]]$uri
+#> [1] "http://api.zeit.de/content/3io4OEbgWI4BTXIrvQmCZD"
+#> 
+#> $matches[[4]]$snippet
+#> [1] " politikwissenschaftlicher Sicht in den letzten zwei Jahrzehnten mit Wagner beschäftigt hat, ist unübersehbar aus Chamberlains Verbindung mit <em>Bayreuth</em> und der dort nach Wagners Tod entwickelten Ideologie erwachsen. Nach"
+#> 
+#> $matches[[4]]$supertitle
+#> [1] "\"Houston Stewart Chamberlain\""
+#> 
+#> $matches[[4]]$teaser_text
+#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
+#> 
+#> $matches[[4]]$teaser_title
+#> [1] "Verführer der Deutschen"
+#> 
+#> 
+#> $matches[[5]]
+#> $matches[[5]]$subtitle
+#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
+#> 
+#> $matches[[5]]$uuid
+#> [1] "17OoeUkLg0YwKcyojdwLjp"
+#> 
+#> $matches[[5]]$title
+#> [1] "Mit Merkels Hubschrauber über Sachsen"
+#> 
+#> $matches[[5]]$href
+#> [1] "http://www.zeit.de/2015/36/moritz-rinke-sachsen-emmanuel-levinas"
+#> 
+#> $matches[[5]]$release_date
+#> [1] "2015-09-17T01:09:28Z"
+#> 
+#> $matches[[5]]$uri
+#> [1] "http://api.zeit.de/content/17OoeUkLg0YwKcyojdwLjp"
+#> 
+#> $matches[[5]]$snippet
+#> [1] " irritierten Bundeskanzlerin durch, die eigentlich mit ihrem Hubschrauber nach <em>Bayreuth</em> wollte. Je weniger Bildung, umso anfälliger sind die Menschen für schlichte Erklärungen, mache ich der Kanzlerin deutlich"
+#> 
+#> $matches[[5]]$supertitle
+#> [1] "Ethik"
+#> 
+#> $matches[[5]]$teaser_text
+#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
+#> 
+#> $matches[[5]]$teaser_title
+#> [1] "Mit Merkels Hubschrauber über Sachsen"
+#> 
+#> 
+#> $matches[[6]]
+#> $matches[[6]]$subtitle
+#> [1] "Eine Reise zu den Festspielen"
+#> 
+#> $matches[[6]]$uuid
+#> [1] "1azq6iOsx2DgMPdEjpvXkZ"
+#> 
+#> $matches[[6]]$title
+#> [1] "Bayreuther Assoziationen"
+#> 
+#> $matches[[6]]$href
+#> [1] "http://www.zeit.de/2015/32/bayreuth-wagner-festspiele-peter-sloterdijk"
+#> 
+#> $matches[[6]]$release_date
+#> [1] "2015-08-21T08:57:55Z"
+#> 
+#> $matches[[6]]$uri
+#> [1] "http://api.zeit.de/content/1azq6iOsx2DgMPdEjpvXkZ"
+#> 
+#> $matches[[6]]$snippet
+#> [1] " Außerordentliche an <em>Bayreuth</em> ist wohl, dass hier fast ausschließlich Vorbereitete das Festspielhaus betreten. Die erste Fanfare ertönt. Das Publikum strömt zu den Toiletten. Wagner und die physiologischen"
+#> 
+#> $matches[[6]]$supertitle
+#> [1] "Wagner-Festspiele"
+#> 
+#> $matches[[6]]$teaser_text
+#> [1] "Richard Wagners Opern sind natürlich eine Zumutung, seine Kultur ist die der Unterwerfung. Sie fordert Geduld, Kunstglauben und Mitmenschlichkeit heraus."
+#> 
+#> $matches[[6]]$teaser_title
+#> [1] "Bayreuther Assoziationen"
+#> 
+#> 
+#> $matches[[7]]
+#> $matches[[7]]$subtitle
+#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
+#> 
+#> $matches[[7]]$uuid
+#> [1] "7vMNqYPNewxaJdvOo0Ht0r"
+#> 
+#> $matches[[7]]$title
+#> [1] "Action! Mord! Blutbad!"
+#> 
+#> $matches[[7]]$href
+#> [1] "http://www.zeit.de/2015/32/nibelungen-festspiele-worms-gemetzel"
+#> 
+#> $matches[[7]]$release_date
+#> [1] "2015-08-20T01:45:02Z"
+#> 
+#> $matches[[7]]$uri
+#> [1] "http://api.zeit.de/content/7vMNqYPNewxaJdvOo0Ht0r"
+#> 
+#> $matches[[7]]$snippet
+#> [1] " breiten Bühne zwei hochragende Gestängetürme, martialisch bestückt mit Waffengerät, Beutegut, Leitern im Innern. Offenbar Kampfwagen. Erdacht hat sie Aleksandar Denić, der ja gerade in <em>Bayreuth</em> Frank"
+#> 
+#> $matches[[7]]$supertitle
+#> [1] "Nibelungen-Festspiele"
+#> 
+#> $matches[[7]]$teaser_text
+#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
+#> 
+#> $matches[[7]]$teaser_title
+#> [1] "Action! Mord! Blutbad!"
+#> 
+#> 
+#> $matches[[8]]
+#> $matches[[8]]$subtitle
+#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
+#> 
+#> $matches[[8]]$uuid
+#> [1] "6m8EMIolNkCqNFk6TCROIv"
+#> 
+#> $matches[[8]]$title
+#> [1] "Zelle mit Meeresblick"
+#> 
+#> $matches[[8]]$href
+#> [1] "http://www.zeit.de/2015/31/tristan-isolde-oper-bayreuth"
+#> 
+#> $matches[[8]]$release_date
+#> [1] "2015-08-13T01:27:33Z"
+#> 
+#> $matches[[8]]$uri
+#> [1] "http://api.zeit.de/content/6m8EMIolNkCqNFk6TCROIv"
+#> 
+#> $matches[[8]]$snippet
+#> [1] "Welches Auto der Dirigent fährt, welcher Handtasche die Regisseurin ihre Zigaretten entnimmt, das alles scheint wichtig zu sein in <em>Bayreuth</em>, und das türkisfarbene Kostüm der Bundeskanzlerin sowieso"
+#> 
+#> $matches[[8]]$supertitle
+#> [1] "Tristan und Isolde"
+#> 
+#> $matches[[8]]$teaser_text
+#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
+#> 
+#> $matches[[8]]$teaser_title
+#> [1] "Zelle mit Meeresblick"
+#> 
+#> 
+#> $matches[[9]]
+#> $matches[[9]]$subtitle
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch 1975 hielt der Regisseur Hans-Jürgen Syberberg Bilder daraus fest. Hier zeigen wir sie erstmals."
+#> 
+#> $matches[[9]]$uuid
+#> [1] "1sRgadMwUk0eO8AniNz9I"
+#> 
+#> $matches[[9]]$title
+#> [1] "Tee mit dem Biedermann"
+#> 
+#> $matches[[9]]$href
+#> [1] "http://www.zeit.de/2015/31/bayreuth-festspiele-hitler-winifred-film"
+#> 
+#> $matches[[9]]$release_date
+#> [1] "2015-08-13T00:24:03Z"
+#> 
+#> $matches[[9]]$uri
+#> [1] "http://api.zeit.de/content/1sRgadMwUk0eO8AniNz9I"
+#> 
+#> $matches[[9]]$snippet
+#> [1] "Adolf Hitler in <em>Bayreuth</em>, wie die Welt ihn noch nicht gesehen hat. Mit weichen, vor Zärtlichkeit fast verschwimmenden Gesichtszügen; im Tête-à-Tête mit Wieland Wagner, seinem erklärten Liebling unter"
+#> 
+#> $matches[[9]]$supertitle
+#> [1] "Bayreuth"
+#> 
+#> $matches[[9]]$teaser_text
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen."
+#> 
+#> $matches[[9]]$teaser_title
+#> [1] "Zum Tee mit Hitler"
+#> 
+#> 
+#> $matches[[10]]
+#> $matches[[10]]$subtitle
+#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
+#> 
+#> $matches[[10]]$uuid
+#> [1] "4MN9cCoAS05p5brCdufg45"
+#> 
+#> $matches[[10]]$title
+#> [1] "Kampfjet in Bayern abgestürzt"
+#> 
+#> $matches[[10]]$href
+#> [1] "http://www.zeit.de/gesellschaft/zeitgeschehen/2015-08/flugzeug-absturz-militaerjet-oberfranken"
+#> 
+#> $matches[[10]]$release_date
+#> [1] "2015-08-11T11:14:31Z"
+#> 
+#> $matches[[10]]$uri
+#> [1] "http://api.zeit.de/content/4MN9cCoAS05p5brCdufg45"
+#> 
+#> $matches[[10]]$snippet
+#> [1] "Ein US-amerikanischer Militärjet ist in Oberfranken abgestürzt. Das Flugzeug stürzte gegen 9.30 Uhr über einem Waldgebiet im Gemeindebereich von Creußen im Grenzgebiet der Landkreise <em>Bayreuth</em> und"
+#> 
+#> $matches[[10]]$supertitle
+#> [1] "US-Militär"
+#> 
+#> $matches[[10]]$teaser_text
+#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
+#> 
+#> $matches[[10]]$teaser_title
+#> [1] "Kampfjet in Bayern abgestürzt"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1567
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
 ```
 
 The search uses entire strings "as is".
 
-```{r}
+
+```r
 zeit_search("content", c("bayreuth", "festspiele"))
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$subtitle
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität"
+#> 
+#> $matches[[1]]$uuid
+#> [1] "6koVP1iuVDyvRkzWmSz2nG"
+#> 
+#> $matches[[1]]$title
+#> [1] "Köpfe ab!"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/2015/39/oper-skandal-urheberrecht-zensur"
+#> 
+#> $matches[[1]]$release_date
+#> [1] "2015-10-08T02:00:19Z"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/content/6koVP1iuVDyvRkzWmSz2nG"
+#> 
+#> $matches[[1]]$snippet
+#> [1] " geradezu ergebnisoffen, oft haben sie Geschichte gemacht wie die Ring-Inszenierung von Patrice Chéreau, 1976 in <em>Bayreuth</em> mit Wutgeheul und Morddrohungen begrüßt – und ein Jahr später schon Kult.\nEtlichen"
+#> 
+#> $matches[[1]]$supertitle
+#> [1] "Opernregie"
+#> 
+#> $matches[[1]]$teaser_text
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität."
+#> 
+#> $matches[[1]]$teaser_title
+#> [1] "Köpfe ab? Köpfe ab!"
+#> 
+#> 
+#> $matches[[2]]
+#> $matches[[2]]$subtitle
+#> [1] "Der heißlaufende Streit um Namenspatrone (nicht nur) in Deutschland – und was dahintersteckt. Beobachtungen"
+#> 
+#> $matches[[2]]$uuid
+#> [1] "5RQOFFRriS05dw4DfL2YEa"
+#> 
+#> $matches[[2]]$title
+#> [1] "Straßenkampf"
+#> 
+#> $matches[[2]]$href
+#> [1] "http://www.zeit.de/2015/38/deutschland-strassennamen-namenspatrone"
+#> 
+#> $matches[[2]]$release_date
+#> [1] "2015-10-06T08:33:09Z"
+#> 
+#> $matches[[2]]$uri
+#> [1] "http://api.zeit.de/content/5RQOFFRriS05dw4DfL2YEa"
+#> 
+#> $matches[[2]]$snippet
+#> [1] " weitläufigen Platz vor der alten Musikhalle zu widmen, der seit der Nazizeit Karl-Muck-Platz hieß. Wenig später erst stellte sich heraus, dass Muck, ein heute weitgehend vergessener Kapellmeister, in <em>Bayreuth</em>"
+#> 
+#> $matches[[2]]$supertitle
+#> [1] "Straßennamen"
+#> 
+#> $matches[[2]]$teaser_text
+#> [1] "Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?"
+#> 
+#> $matches[[2]]$teaser_title
+#> [1] "Von Adolf-Hitler-Plätzen und Rosa-Luxemburg-Alleen"
+#> 
+#> 
+#> $matches[[3]]
+#> $matches[[3]]$subtitle
+#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
+#> 
+#> $matches[[3]]$uuid
+#> [1] "3Ed7KYJOO2MXu5SQtnudQA"
+#> 
+#> $matches[[3]]$title
+#> [1] "Und Recht und Freibier"
+#> 
+#> $matches[[3]]$href
+#> [1] "http://www.zeit.de/2015/40/3-10-1990-chronik-des-tages"
+#> 
+#> $matches[[3]]$release_date
+#> [1] "2015-10-01T13:30:49Z"
+#> 
+#> $matches[[3]]$uri
+#> [1] "http://api.zeit.de/content/3Ed7KYJOO2MXu5SQtnudQA"
+#> 
+#> $matches[[3]]$snippet
+#> [1] " Nachmittag einen Sitzstreik auf. In <em>Bayreuth</em> und Bernau am Chiemsee demonstrieren Gefängnisinsassen, im schwäbischen Kaisheim und in München-Stadelheim brechen kleinere Revolten aus. In der Hamburger"
+#> 
+#> $matches[[3]]$supertitle
+#> [1] "3. Oktober 1990"
+#> 
+#> $matches[[3]]$teaser_text
+#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
+#> 
+#> $matches[[3]]$teaser_title
+#> [1] "Und Recht und Freibier"
+#> 
+#> 
+#> $matches[[4]]
+#> $matches[[4]]$subtitle
+#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
+#> 
+#> $matches[[4]]$uuid
+#> [1] "3io4OEbgWI4BTXIrvQmCZD"
+#> 
+#> $matches[[4]]$title
+#> [1] "Verführer der Deutschen"
+#> 
+#> $matches[[4]]$href
+#> [1] "http://www.zeit.de/2015/38/herfried-muenkler-houston-stewart-chamberlain"
+#> 
+#> $matches[[4]]$release_date
+#> [1] "2015-10-01T01:34:01Z"
+#> 
+#> $matches[[4]]$uri
+#> [1] "http://api.zeit.de/content/3io4OEbgWI4BTXIrvQmCZD"
+#> 
+#> $matches[[4]]$snippet
+#> [1] " politikwissenschaftlicher Sicht in den letzten zwei Jahrzehnten mit Wagner beschäftigt hat, ist unübersehbar aus Chamberlains Verbindung mit <em>Bayreuth</em> und der dort nach Wagners Tod entwickelten Ideologie erwachsen. Nach"
+#> 
+#> $matches[[4]]$supertitle
+#> [1] "\"Houston Stewart Chamberlain\""
+#> 
+#> $matches[[4]]$teaser_text
+#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
+#> 
+#> $matches[[4]]$teaser_title
+#> [1] "Verführer der Deutschen"
+#> 
+#> 
+#> $matches[[5]]
+#> $matches[[5]]$subtitle
+#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
+#> 
+#> $matches[[5]]$uuid
+#> [1] "17OoeUkLg0YwKcyojdwLjp"
+#> 
+#> $matches[[5]]$title
+#> [1] "Mit Merkels Hubschrauber über Sachsen"
+#> 
+#> $matches[[5]]$href
+#> [1] "http://www.zeit.de/2015/36/moritz-rinke-sachsen-emmanuel-levinas"
+#> 
+#> $matches[[5]]$release_date
+#> [1] "2015-09-17T01:09:28Z"
+#> 
+#> $matches[[5]]$uri
+#> [1] "http://api.zeit.de/content/17OoeUkLg0YwKcyojdwLjp"
+#> 
+#> $matches[[5]]$snippet
+#> [1] " irritierten Bundeskanzlerin durch, die eigentlich mit ihrem Hubschrauber nach <em>Bayreuth</em> wollte. Je weniger Bildung, umso anfälliger sind die Menschen für schlichte Erklärungen, mache ich der Kanzlerin deutlich"
+#> 
+#> $matches[[5]]$supertitle
+#> [1] "Ethik"
+#> 
+#> $matches[[5]]$teaser_text
+#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
+#> 
+#> $matches[[5]]$teaser_title
+#> [1] "Mit Merkels Hubschrauber über Sachsen"
+#> 
+#> 
+#> $matches[[6]]
+#> $matches[[6]]$subtitle
+#> [1] "Eine Reise zu den Festspielen"
+#> 
+#> $matches[[6]]$uuid
+#> [1] "1azq6iOsx2DgMPdEjpvXkZ"
+#> 
+#> $matches[[6]]$title
+#> [1] "Bayreuther Assoziationen"
+#> 
+#> $matches[[6]]$href
+#> [1] "http://www.zeit.de/2015/32/bayreuth-wagner-festspiele-peter-sloterdijk"
+#> 
+#> $matches[[6]]$release_date
+#> [1] "2015-08-21T08:57:55Z"
+#> 
+#> $matches[[6]]$uri
+#> [1] "http://api.zeit.de/content/1azq6iOsx2DgMPdEjpvXkZ"
+#> 
+#> $matches[[6]]$snippet
+#> [1] ", was nötig ist, um die Mutter aller <em>Festspiele</em> zu besuchen.\nDies eine Mal sollst du darauf verzichten, über die Verfestspielung der Kultur zu lästern, sosehr es auch an der Zeit wäre, zu diesem Ärgernis das"
+#> 
+#> $matches[[6]]$supertitle
+#> [1] "Wagner-Festspiele"
+#> 
+#> $matches[[6]]$teaser_text
+#> [1] "Richard Wagners Opern sind natürlich eine Zumutung, seine Kultur ist die der Unterwerfung. Sie fordert Geduld, Kunstglauben und Mitmenschlichkeit heraus."
+#> 
+#> $matches[[6]]$teaser_title
+#> [1] "Bayreuther Assoziationen"
+#> 
+#> 
+#> $matches[[7]]
+#> $matches[[7]]$subtitle
+#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
+#> 
+#> $matches[[7]]$uuid
+#> [1] "7vMNqYPNewxaJdvOo0Ht0r"
+#> 
+#> $matches[[7]]$title
+#> [1] "Action! Mord! Blutbad!"
+#> 
+#> $matches[[7]]$href
+#> [1] "http://www.zeit.de/2015/32/nibelungen-festspiele-worms-gemetzel"
+#> 
+#> $matches[[7]]$release_date
+#> [1] "2015-08-20T01:45:02Z"
+#> 
+#> $matches[[7]]$uri
+#> [1] "http://api.zeit.de/content/7vMNqYPNewxaJdvOo0Ht0r"
+#> 
+#> $matches[[7]]$snippet
+#> [1] " reich an Action, Mord und Blutbad jedenfalls.\nSeit im Jahr 2002 die Stadt Worms ihre Nibelungen-<em>Festspiele</em> etabliert hat – immer mit Film- und Bühnenstars –, war man kühn um Abwechslung bemüht: gleiches"
+#> 
+#> $matches[[7]]$supertitle
+#> [1] "Nibelungen-Festspiele"
+#> 
+#> $matches[[7]]$teaser_text
+#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
+#> 
+#> $matches[[7]]$teaser_title
+#> [1] "Action! Mord! Blutbad!"
+#> 
+#> 
+#> $matches[[8]]
+#> $matches[[8]]$subtitle
+#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
+#> 
+#> $matches[[8]]$uuid
+#> [1] "6m8EMIolNkCqNFk6TCROIv"
+#> 
+#> $matches[[8]]$title
+#> [1] "Zelle mit Meeresblick"
+#> 
+#> $matches[[8]]$href
+#> [1] "http://www.zeit.de/2015/31/tristan-isolde-oper-bayreuth"
+#> 
+#> $matches[[8]]$release_date
+#> [1] "2015-08-13T01:27:33Z"
+#> 
+#> $matches[[8]]$uri
+#> [1] "http://api.zeit.de/content/6m8EMIolNkCqNFk6TCROIv"
+#> 
+#> $matches[[8]]$snippet
+#> [1] "Welches Auto der Dirigent fährt, welcher Handtasche die Regisseurin ihre Zigaretten entnimmt, das alles scheint wichtig zu sein in <em>Bayreuth</em>, und das türkisfarbene Kostüm der Bundeskanzlerin sowieso"
+#> 
+#> $matches[[8]]$supertitle
+#> [1] "Tristan und Isolde"
+#> 
+#> $matches[[8]]$teaser_text
+#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
+#> 
+#> $matches[[8]]$teaser_title
+#> [1] "Zelle mit Meeresblick"
+#> 
+#> 
+#> $matches[[9]]
+#> $matches[[9]]$subtitle
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch 1975 hielt der Regisseur Hans-Jürgen Syberberg Bilder daraus fest. Hier zeigen wir sie erstmals."
+#> 
+#> $matches[[9]]$uuid
+#> [1] "1sRgadMwUk0eO8AniNz9I"
+#> 
+#> $matches[[9]]$title
+#> [1] "Tee mit dem Biedermann"
+#> 
+#> $matches[[9]]$href
+#> [1] "http://www.zeit.de/2015/31/bayreuth-festspiele-hitler-winifred-film"
+#> 
+#> $matches[[9]]$release_date
+#> [1] "2015-08-13T00:24:03Z"
+#> 
+#> $matches[[9]]$uri
+#> [1] "http://api.zeit.de/content/1sRgadMwUk0eO8AniNz9I"
+#> 
+#> $matches[[9]]$snippet
+#> [1] "Adolf Hitler in <em>Bayreuth</em>, wie die Welt ihn noch nicht gesehen hat. Mit weichen, vor Zärtlichkeit fast verschwimmenden Gesichtszügen; im Tête-à-Tête mit Wieland Wagner, seinem erklärten Liebling unter"
+#> 
+#> $matches[[9]]$supertitle
+#> [1] "Bayreuth"
+#> 
+#> $matches[[9]]$teaser_text
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen."
+#> 
+#> $matches[[9]]$teaser_title
+#> [1] "Zum Tee mit Hitler"
+#> 
+#> 
+#> $matches[[10]]
+#> $matches[[10]]$subtitle
+#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
+#> 
+#> $matches[[10]]$uuid
+#> [1] "4MN9cCoAS05p5brCdufg45"
+#> 
+#> $matches[[10]]$title
+#> [1] "Kampfjet in Bayern abgestürzt"
+#> 
+#> $matches[[10]]$href
+#> [1] "http://www.zeit.de/gesellschaft/zeitgeschehen/2015-08/flugzeug-absturz-militaerjet-oberfranken"
+#> 
+#> $matches[[10]]$release_date
+#> [1] "2015-08-11T11:14:31Z"
+#> 
+#> $matches[[10]]$uri
+#> [1] "http://api.zeit.de/content/4MN9cCoAS05p5brCdufg45"
+#> 
+#> $matches[[10]]$snippet
+#> [1] "Ein US-amerikanischer Militärjet ist in Oberfranken abgestürzt. Das Flugzeug stürzte gegen 9.30 Uhr über einem Waldgebiet im Gemeindebereich von Creußen im Grenzgebiet der Landkreise <em>Bayreuth</em> und"
+#> 
+#> $matches[[10]]$supertitle
+#> [1] "US-Militär"
+#> 
+#> $matches[[10]]$teaser_text
+#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
+#> 
+#> $matches[[10]]$teaser_title
+#> [1] "Kampfjet in Bayern abgestürzt"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 2624
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
 ```
 
 To search for multiple tokens use a vector of strings.
 
-```{r}
+
+```r
 zeit_search("content", "bayreuther festspiele")
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$subtitle
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch 1975 hielt der Regisseur Hans-Jürgen Syberberg Bilder daraus fest. Hier zeigen wir sie erstmals."
+#> 
+#> $matches[[1]]$uuid
+#> [1] "1sRgadMwUk0eO8AniNz9I"
+#> 
+#> $matches[[1]]$title
+#> [1] "Tee mit dem Biedermann"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/2015/31/bayreuth-festspiele-hitler-winifred-film"
+#> 
+#> $matches[[1]]$release_date
+#> [1] "2015-08-13T00:24:03Z"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/content/1sRgadMwUk0eO8AniNz9I"
+#> 
+#> $matches[[1]]$snippet
+#> [1] ", Requiem für einen jungfräulichen König (1972) oder Hitler, ein Film aus Deutschland (1977) früh an deutschen Mythen abgearbeitet hat. 1975, ein Jahr vor dem 100. Geburtstag der <em>Bayreuther</em> <em>Festspiele</em>, drehte"
+#> 
+#> $matches[[1]]$supertitle
+#> [1] "Bayreuth"
+#> 
+#> $matches[[1]]$teaser_text
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen."
+#> 
+#> $matches[[1]]$teaser_title
+#> [1] "Zum Tee mit Hitler"
+#> 
+#> 
+#> $matches[[2]]
+#> $matches[[2]]$subtitle
+#> [1] "Christian Thielemann darf sich mit einem neuen Titel schmücken. Dafür ist ihm seine Isolde abgesprungen. Und was hat das mit den Berliner Philharmonikern zu tun?"
+#> 
+#> $matches[[2]]$uuid
+#> [1] "1EsZprDHI0bIweeyEDcpG6"
+#> 
+#> $matches[[2]]$title
+#> [1] "Thielemann wird Musikdirektor in Bayreuth"
+#> 
+#> $matches[[2]]$href
+#> [1] "http://www.zeit.de/kultur/musik/2015-06/bayreuth-christian-thielemann-anja-kampe"
+#> 
+#> $matches[[2]]$release_date
+#> [1] "2015-06-29T15:50:30Z"
+#> 
+#> $matches[[2]]$uri
+#> [1] "http://api.zeit.de/content/1EsZprDHI0bIweeyEDcpG6"
+#> 
+#> $matches[[2]]$snippet
+#> [1] " geschlagen geben. Nun darf er sich immerhin offiziell Musikdirektor der <em>Bayreuther</em> <em>Festspiele</em> nennen. Die Gesellschafter der Festspiele hätten Thielemann kürzlich mit einem entsprechenden Vertrag ausgestattet"
+#> 
+#> $matches[[2]]$supertitle
+#> [1] "Wagner-Festspiele"
+#> 
+#> $matches[[2]]$teaser_text
+#> [1] "Christian Thielemann darf sich mit einem neuen Titel schmücken. Dafür ist ihm seine Isolde abgesprungen. Und was hat das mit den Berliner Philharmonikern zu tun?"
+#> 
+#> $matches[[2]]$teaser_title
+#> [1] "Thielemann wird Musikdirektor in Bayreuth"
+#> 
+#> 
+#> $matches[[3]]
+#> $matches[[3]]$subtitle
+#> [1] "Simon Rattles Nachfolger ist eine Überraschung: Der stille, feinsinnige, hochromantische Kirill Petrenko steigt aus dem Operngraben ans Chefpult der Philharmoniker."
+#> 
+#> $matches[[3]]$uuid
+#> [1] "6rqhZwFkwEIa7wtfLy0R6p"
+#> 
+#> $matches[[3]]$title
+#> [1] "Maestro ohne Mythos"
+#> 
+#> $matches[[3]]$href
+#> [1] "http://www.zeit.de/kultur/musik/2015-06/berliner-philharmoniker-kirill-petrenko-nachfolge-rattle"
+#> 
+#> $matches[[3]]$release_date
+#> [1] "2015-06-22T14:38:37Z"
+#> 
+#> $matches[[3]]$uri
+#> [1] "http://api.zeit.de/content/6rqhZwFkwEIa7wtfLy0R6p"
+#> 
+#> $matches[[3]]$snippet
+#> [1] " auch während der Proben nicht gern redet, \"den unprofessionellen und völlig würdelosen Umgang der <em>Bayreuther</em> <em>Festspiele</em> mit der Festspielleiterin Eva Wagner-Pasquier und dem Darsteller Lance Ryan"
+#> 
+#> $matches[[3]]$supertitle
+#> [1] "Berliner Philharmoniker"
+#> 
+#> $matches[[3]]$teaser_text
+#> [1] "Simon Rattles Nachfolger ist eine Überraschung: Der stille, feinsinnige, hochromantische Kirill Petrenko steigt aus dem Operngraben ans Chefpult der Philharmoniker."
+#> 
+#> $matches[[3]]$teaser_title
+#> [1] "Maestro ohne Mythos"
+#> 
+#> 
+#> $matches[[4]]
+#> $matches[[4]]$subtitle
+#> [1] "Die Berliner Philharmoniker haben sich für Kirill Petrenko als neuen Dirigenten entschieden. Der Chef der Bayerischen Staatsoper soll 2018 das Pult übernehmen."
+#> 
+#> $matches[[4]]$uuid
+#> [1] "CO0eiGJiLohGEfXuRnUE6"
+#> 
+#> $matches[[4]]$title
+#> [1] "Kirill Petrenko wird Nachfolger von Simon Rattle"
+#> 
+#> $matches[[4]]$href
+#> [1] "http://www.zeit.de/kultur/musik/2015-06/simon-rattle-nachfolger-kirill-petrenko"
+#> 
+#> $matches[[4]]$release_date
+#> [1] "2015-06-22T08:49:27Z"
+#> 
+#> $matches[[4]]$uri
+#> [1] "http://api.zeit.de/content/CO0eiGJiLohGEfXuRnUE6"
+#> 
+#> $matches[[4]]$snippet
+#> [1] " würdelosen\" Umgang der <em>Bayreuther</em> <em>Festspiele</em> mit ihrer künstlerischen Festspielleiterin Eva Wagner-Pasquier und dem Darsteller Lance Ryan \"zutiefst irritiert\" zeigte.\nPetrenko dirigiert in diesem Sommer zum"
+#> 
+#> $matches[[4]]$supertitle
+#> [1] "Berliner Philharmoniker"
+#> 
+#> $matches[[4]]$teaser_text
+#> [1] "Die Berliner Philharmoniker haben sich für Kirill Petrenko als neuen Dirigenten entschieden. Der Chef der Bayerischen Staatsoper soll 2018 das Pult übernehmen."
+#> 
+#> $matches[[4]]$teaser_title
+#> [1] "Kirill Petrenko wird Nachfolger von Simon Rattle"
+#> 
+#> 
+#> $matches[[5]]
+#> $matches[[5]]$subtitle
+#> [1] "Warum Bayreuth erneut einen Regisseur verliert"
+#> 
+#> $matches[[5]]$uuid
+#> [1] "6DwtoodYdrhKo0k8bqGQSo"
+#> 
+#> $matches[[5]]$title
+#> [1] "Miese durch Meese"
+#> 
+#> $matches[[5]]$href
+#> [1] "http://www.zeit.de/2014/48/bayreuther-festspiele-regisseur-jonathan-meese"
+#> 
+#> $matches[[5]]$release_date
+#> [1] "2014-12-04T02:20:26Z"
+#> 
+#> $matches[[5]]$uri
+#> [1] "http://api.zeit.de/content/6DwtoodYdrhKo0k8bqGQSo"
+#> 
+#> $matches[[5]]$snippet
+#> [1] "Die <em>Bayreuther</em> <em>Festspiele</em> des 21. Jahrhunderts engagieren Künstler nach dem Lotterieprinzip. Gern verpflichten sie fachfremde Regisseure und sorgen damit für das Raunen des Feuilletons (wie bei Lars"
+#> 
+#> $matches[[5]]$supertitle
+#> [1] "Bayreuther Festspiele"
+#> 
+#> $matches[[5]]$teaser_text
+#> [1] "Warum Bayreuth erneut einen Regisseur verliert"
+#> 
+#> $matches[[5]]$teaser_title
+#> [1] "Miese durch Meese"
+#> 
+#> 
+#> $matches[[6]]
+#> $matches[[6]]$subtitle
+#> [1] "Der Künstler wird nicht Wagners \"Parsifal\" in Bayreuth inszenieren. Seine Pläne für Bühnenbild und Kostüme waren der Festspielleitung zu teuer."
+#> 
+#> $matches[[6]]$uuid
+#> [1] "2HU3NqEKZoCid2DjhNQOSi"
+#> 
+#> $matches[[6]]$title
+#> [1] "Festspiele trennen sich von Jonathan Meese"
+#> 
+#> $matches[[6]]$href
+#> [1] "http://www.zeit.de/kultur/musik/2014-11/jonathan-meese-parsifal-vertragsbeendigung"
+#> 
+#> $matches[[6]]$release_date
+#> [1] "2014-11-14T16:40:48Z"
+#> 
+#> $matches[[6]]$uri
+#> [1] "http://api.zeit.de/content/2HU3NqEKZoCid2DjhNQOSi"
+#> 
+#> $matches[[6]]$snippet
+#> [1] "Die <em>Bayreuther</em> <em>Festspiele</em> trennen sich von Jonathan Meese. Das Konzept des Künstlers für die Neuinszenierung der Wagner-Oper Parsifal 2016 sei nicht finanzierbar, teilten die Festspiele mit. Der"
+#> 
+#> $matches[[6]]$supertitle
+#> [1] "Bayreuth"
+#> 
+#> $matches[[6]]$teaser_text
+#> [1] "Der Künstler wird nicht Wagners \"Parsifal\" in Bayreuth inszenieren. Seine Pläne für Bühnenbild und Kostüme waren der Festspielleitung zu teuer."
+#> 
+#> $matches[[6]]$teaser_title
+#> [1] "Festspiele trennen sich von Jonathan Meese"
+#> 
+#> 
+#> $matches[[7]]
+#> $matches[[7]]$subtitle
+#> [1] "Die Salzburger Festspiele beginnen mit einem einfallslosen \"Don Giovanni\" und der Uraufführung einer Oper über das Leben der jüdischen Künstlerin Charlotte Salomon."
+#> 
+#> $matches[[7]]$uuid
+#> [1] "2YtTt6khhgAONcU1jT5vKd"
+#> 
+#> $matches[[7]]$title
+#> [1] "Wozu noch singen?"
+#> 
+#> $matches[[7]]$href
+#> [1] "http://www.zeit.de/2014/32/salzburger-festspiele"
+#> 
+#> $matches[[7]]$release_date
+#> [1] "2014-07-31T06:00:00Z"
+#> 
+#> $matches[[7]]$uri
+#> [1] "http://api.zeit.de/content/2YtTt6khhgAONcU1jT5vKd"
+#> 
+#> $matches[[7]]$snippet
+#> [1] " <em>Bayreuther</em> <em>Festspiele</em> ihre in Sachen Wagner, daran ändern auch musikalische Höchstleistungen wenig.\nSängerisch ist dieser Don Giovanni exquisit besetzt. Ildebrando D’Arcangelo in der Titelpartie gibt mit"
+#> 
+#> $matches[[7]]$supertitle
+#> [1] "Salzburger Festspiele"
+#> 
+#> $matches[[7]]$teaser_text
+#> [1] "Die Salzburger Festspiele beginnen mit einem einfallslosen \"Don Giovanni\" und der Uraufführung einer Oper über das Leben der jüdischen Künstlerin Charlotte Salomon."
+#> 
+#> $matches[[7]]$teaser_title
+#> [1] "Wozu noch singen?"
+#> 
+#> 
+#> $matches[[8]]
+#> $matches[[8]]$subtitle
+#> [1] "Der verstorbene Dieter Hildebrandt wurde zum SPD-Sommerfest eingeladen. Böser E-Mail-Verteiler! Wir haben unseren aktiviert und erstaunliche Rücksendungen erhalten."
+#> 
+#> $matches[[8]]$uuid
+#> [1] "3gpCNFznDesM0eUq4Uq7cx"
+#> 
+#> $matches[[8]]$title
+#> [1] "Mit posthumen Grüßen"
+#> 
+#> $matches[[8]]$href
+#> [1] "http://www.zeit.de/zeit-magazin/leben/2014-07/dieter-hildebrandt-einladung-spd-fest"
+#> 
+#> $matches[[8]]$release_date
+#> [1] "2014-07-31T04:47:22Z"
+#> 
+#> $matches[[8]]$uri
+#> [1] "http://api.zeit.de/content/3gpCNFznDesM0eUq4Uq7cx"
+#> 
+#> $matches[[8]]$snippet
+#> [1] " Ihnen im Auftrag der Intendanz der <em>Bayreuther</em> <em>Festspiele</em>. Als wir gerade Ihre interessante DVD-Box Herr der Ringe I-III gesichtet haben, fragten wir uns, ob Sie nicht ein glühender Wagnerianer sind"
+#> 
+#> $matches[[8]]$supertitle
+#> [1] "Gesellschaftskritik"
+#> 
+#> $matches[[8]]$teaser_text
+#> [1] "Der verstorbene Dieter Hildebrandt wurde zum SPD-Sommerfest eingeladen. Böser E-Mail-Verteiler! Wir haben unseren aktiviert und erstaunliche Rücksendungen erhalten."
+#> 
+#> $matches[[8]]$teaser_title
+#> [1] "Mit posthumen Grüßen"
+#> 
+#> 
+#> $matches[[9]]
+#> $matches[[9]]$subtitle
+#> [1] "Er hat die Kunst niemals im Stich gelassen und war so kämpferisch wie klug: Zum Tod des großen Opernintendanten Gerard Mortier"
+#> 
+#> $matches[[9]]$uuid
+#> [1] "65TdPUFnCmDl3d7MUjtZlv"
+#> 
+#> $matches[[9]]$title
+#> [1] "Ein listenreicher Odysseus"
+#> 
+#> $matches[[9]]$href
+#> [1] "http://www.zeit.de/2014/12/nachruf-gerard-mortier"
+#> 
+#> $matches[[9]]$release_date
+#> [1] "2014-03-13T06:00:00Z"
+#> 
+#> $matches[[9]]$uri
+#> [1] "http://api.zeit.de/content/65TdPUFnCmDl3d7MUjtZlv"
+#> 
+#> $matches[[9]]$snippet
+#> [1] " Glauben an eine Menschwerdung durch Theaterkunst hielt er sogar dann die Treue, wenn ihm eine Träger-Institution dafür ungeeignet erschien – wie die <em>Bayreuther</em> <em>Festspiele</em>. Als 2008 die Entscheidung über die"
+#> 
+#> $matches[[9]]$supertitle
+#> [1] "Nachruf Gerard Mortier"
+#> 
+#> $matches[[9]]$teaser_text
+#> [1] "Er hat die Kunst niemals im Stich gelassen und war so kämpferisch wie klug: Zum Tod des großen Opernintendanten Gerard Mortier"
+#> 
+#> $matches[[9]]$teaser_title
+#> [1] "Ein listenreicher Odysseus"
+#> 
+#> 
+#> $matches[[10]]
+#> $matches[[10]]$subtitle
+#> [1] "Eva Wagner-Pasquier wird ihren Vertrag als Leiterin der Bayreuther Festspiele nicht verlängern. Sie teilt den Posten mit ihrer Schwester Katharina Wagner seit 2008."
+#> 
+#> $matches[[10]]$uuid
+#> [1] "149GnyB0lnpqr8ZvCzs5wc"
+#> 
+#> $matches[[10]]$title
+#> [1] "Wagner-Pasquier verlässt Festspielleitung"
+#> 
+#> $matches[[10]]$href
+#> [1] "http://www.zeit.de/kultur/2014-02/wagner-pasquier-bayreuth-festspiele"
+#> 
+#> $matches[[10]]$release_date
+#> [1] "2014-02-21T09:08:41Z"
+#> 
+#> $matches[[10]]$uri
+#> [1] "http://api.zeit.de/content/149GnyB0lnpqr8ZvCzs5wc"
+#> 
+#> $matches[[10]]$snippet
+#> [1] "Eva Wagner-Pasquier wird nach einem Bericht des Nordbayerischen Kuriers aus der Leitung der <em>Bayreuther</em> <em>Festspiele</em> ausscheiden. \"Ich habe die Gesellschafter gebeten, mich ab September 2015 als"
+#> 
+#> $matches[[10]]$supertitle
+#> [1] "Bayreuther Festspiele"
+#> 
+#> $matches[[10]]$teaser_text
+#> [1] "Eva Wagner-Pasquier wird ihren Vertrag als Leiterin der Bayreuther Festspiele nicht verlängern. Sie teilt den Posten mit ihrer Schwester Katharina Wagner seit 2008."
+#> 
+#> $matches[[10]]$teaser_title
+#> [1] "Wagner-Pasquier verlässt Festspielleitung"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 181
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
 ```
 
 All fields of an article can be queried individually by using `[field]:[search string]`.
 For example, to get articles that have the word "Bayreuth" in their headline, you would
 search for:
 
-```{r}
+
+```r
 zeit_search("content", "title:bayreuth")
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$subtitle
+#> [1] "Warum Eva Wagner-Pasquier vom Grünen Hügel verjagt werden soll."
+#> 
+#> $matches[[1]]$uuid
+#> [1] "5tFXlJZbtkuuNqDEQMGKWx"
+#> 
+#> $matches[[1]]$title
+#> [1] "Bayreuth, wie es leibt und lebt"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/2015/24/bayreuther-festspiele-eva-wagner-pasquier"
+#> 
+#> $matches[[1]]$release_date
+#> [1] "2015-07-10T13:24:08Z"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/content/5tFXlJZbtkuuNqDEQMGKWx"
+#> 
+#> $matches[[1]]$snippet
+#> [1] " Theater auf dem Grünen Hügel von <em>Bayreuth</em> 50 Tage vor Eröffnung der Festspiele gegeben wird. Erster Aufzug: Festspielleiterin Katharina Wagner und ihr Intimus, der Dirigent und Bayreuther Musikdirektor"
+#> 
+#> $matches[[1]]$supertitle
+#> [1] "Bayreuther Festspiele"
+#> 
+#> $matches[[1]]$teaser_text
+#> [1] "Warum Eva Wagner-Pasquier vom Grünen Hügel verjagt werden soll."
+#> 
+#> $matches[[1]]$teaser_title
+#> [1] "Bayreuth, wie es leibt und lebt"
+#> 
+#> 
+#> $matches[[2]]
+#> $matches[[2]]$subtitle
+#> [1] "Christian Thielemann darf sich mit einem neuen Titel schmücken. Dafür ist ihm seine Isolde abgesprungen. Und was hat das mit den Berliner Philharmonikern zu tun?"
+#> 
+#> $matches[[2]]$uuid
+#> [1] "1EsZprDHI0bIweeyEDcpG6"
+#> 
+#> $matches[[2]]$title
+#> [1] "Thielemann wird Musikdirektor in Bayreuth"
+#> 
+#> $matches[[2]]$href
+#> [1] "http://www.zeit.de/kultur/musik/2015-06/bayreuth-christian-thielemann-anja-kampe"
+#> 
+#> $matches[[2]]$release_date
+#> [1] "2015-06-29T15:50:30Z"
+#> 
+#> $matches[[2]]$uri
+#> [1] "http://api.zeit.de/content/1EsZprDHI0bIweeyEDcpG6"
+#> 
+#> $matches[[2]]$snippet
+#> [1] ", Evelyn Herlitzius springt ein und wurde am Montag zu den ersten Proben in <em>Bayreuth</em> erwartet.\nDer Wechsel in der Titelpartie wenige Wochen vor der Premiere wurde von heftigen Spekulationen begleitet, da die"
+#> 
+#> $matches[[2]]$supertitle
+#> [1] "Wagner-Festspiele"
+#> 
+#> $matches[[2]]$teaser_text
+#> [1] "Christian Thielemann darf sich mit einem neuen Titel schmücken. Dafür ist ihm seine Isolde abgesprungen. Und was hat das mit den Berliner Philharmonikern zu tun?"
+#> 
+#> $matches[[2]]$teaser_title
+#> [1] "Thielemann wird Musikdirektor in Bayreuth"
+#> 
+#> 
+#> $matches[[3]]
+#> $matches[[3]]$subtitle
+#> [1] "Unser Wagnerblogger muss den \"Holländer\" erstmal verarbeiten – im Zug zurück nach Berlin. Jetzt wollen die letzten mittelgroßen Fragen beantwortet werden."
+#> 
+#> $matches[[3]]$uuid
+#> [1] "3Dcbm6NDm7JK9aXF4Clatp"
+#> 
+#> $matches[[3]]$title
+#> [1] "Ein Rollkoffer verlässt Bayreuth"
+#> 
+#> $matches[[3]]$href
+#> [1] "http://www.zeit.de/kultur/musik/2014-07/bayreuther-festspiele-2014-live"
+#> 
+#> $matches[[3]]$release_date
+#> [1] "2014-07-25T16:11:57Z"
+#> 
+#> $matches[[3]]$uri
+#> [1] "http://api.zeit.de/content/3Dcbm6NDm7JK9aXF4Clatp"
+#> 
+#> $matches[[3]]$snippet
+#> [1] "Über Richard Wagner kann man ja schon gar nichts mehr sagen. Aber jetzt ist man hier: <em>Bayreuth</em>. Stadt des Meisters, wie ihn seine Fans nennen, die sich wiederum Wagnerianer nennen, was im"
+#> 
+#> $matches[[3]]$supertitle
+#> [1] "Bayreuther Festspiele"
+#> 
+#> $matches[[3]]$teaser_text
+#> [1] "Unser Wagnerblogger muss den \"Holländer\" erstmal verarbeiten – im Zug zurück nach Berlin. Jetzt wollen die letzten mittelgroßen Fragen beantwortet werden."
+#> 
+#> $matches[[3]]$teaser_title
+#> [1] "Ein Rollkoffer verlässt Bayreuth"
+#> 
+#> 
+#> $matches[[4]]
+#> $matches[[4]]$uuid
+#> [1] "5LaDxNSsPcstnVfb608m02"
+#> 
+#> $matches[[4]]$title
+#> [1] "Bayreuth"
+#> 
+#> $matches[[4]]$release_date
+#> [1] "2013-11-22T11:29:24Z"
+#> 
+#> $matches[[4]]$uri
+#> [1] "http://api.zeit.de/content/5LaDxNSsPcstnVfb608m02"
+#> 
+#> $matches[[4]]$snippet
+#> [1] " Holländer zum Beispiel oder Tristan und Isolde. Um seine Werke richtig in Szene zu setzen, ließ Wagner in <em>Bayreuth</em> ein Festspielhaus bauen. 1876 wurde es eingeweiht, und noch heute gibt es dort in jedem"
+#> 
+#> $matches[[4]]$href
+#> [1] "http://www.zeit.de/2008/31/KI-31-wochenstichwort"
+#> 
+#> 
+#> $matches[[5]]
+#> $matches[[5]]$subtitle
+#> [1] "Die Festspiele sind verkommen zur Mimikry ihrer selbst. Wagner präsentiert sich 2013 wie eine Mischung aus Gartenzwerg und Denkmal, findet Christine Lemke-Matwey."
+#> 
+#> $matches[[5]]$uuid
+#> [1] "52gj3PQLlUTFT9ivaqwG5S"
+#> 
+#> $matches[[5]]$title
+#> [1] "Bröckelndes Bayreuth"
+#> 
+#> $matches[[5]]$href
+#> [1] "http://www.zeit.de/kultur/musik/2013-07/wagner-festspiele-bayreuth"
+#> 
+#> $matches[[5]]$release_date
+#> [1] "2013-07-26T05:38:52Z"
+#> 
+#> $matches[[5]]$uri
+#> [1] "http://api.zeit.de/content/52gj3PQLlUTFT9ivaqwG5S"
+#> 
+#> $matches[[5]]$snippet
+#> [1] "<em>Bayreuth</em> ist traditionell der Ort, an dem der Besucher nicht lange um die Erklärung der Welt ringen muss: Die passenden Metaphern dazu fallen ihm wie reife Zwetschgen in den Schoß.\n2013 fängt das mit"
+#> 
+#> $matches[[5]]$supertitle
+#> [1] "Kolumne Fünf vor 8:00"
+#> 
+#> $matches[[5]]$teaser_text
+#> [1] "Die Festspiele sind verkommen zur Mimikry ihrer selbst. Wagner präsentiert sich 2013 wie eine Mischung aus Gartenzwerg und Denkmal, findet Christine Lemke-Matwey."
+#> 
+#> $matches[[5]]$teaser_title
+#> [1] "Bröckelndes Bayreuth"
+#> 
+#> 
+#> $matches[[6]]
+#> $matches[[6]]$subtitle
+#> [1] "Jeden Sommer das gleiche Ritual: Großes Schaulaufen der Prominenten vor dem Festspielhaus. Wir haben einige Stammgäste gefragt, was sie auf den roten Teppich führt."
+#> 
+#> $matches[[6]]$uuid
+#> [1] "4JLV60SFjX4An6yxVhGKbj"
+#> 
+#> $matches[[6]]$title
+#> [1] "Warum Bayreuth?"
+#> 
+#> $matches[[6]]$href
+#> [1] "http://www.zeit.de/2013/02/Richard-Wagner-Bayreuth-Prominente"
+#> 
+#> $matches[[6]]$release_date
+#> [1] "2013-01-03T06:00:00Z"
+#> 
+#> $matches[[6]]$uri
+#> [1] "http://api.zeit.de/content/4JLV60SFjX4An6yxVhGKbj"
+#> 
+#> $matches[[6]]$snippet
+#> [1] " Ehrenvorsitzender der FDP\nIm vergangenen Jahr hatten mich die Einladung meines bayerischen Amtskollegen Horst Seehofer und Der Fliegende Holländer nach <em>Bayreuth</em> geführt. Ich habe damals alle Vorurteile über die"
+#> 
+#> $matches[[6]]$supertitle
+#> [1] "Bayreuther Festspiele"
+#> 
+#> $matches[[6]]$teaser_text
+#> [1] "Jeden Sommer das gleiche Ritual: Großes Schaulaufen vor dem Bayreuther Festspielhaus. Prominente Gäste erzählen, was sie auch 2013 wieder auf den roten Teppich führt."
+#> 
+#> $matches[[6]]$teaser_title
+#> [1] "Warum Bayreuth, Herr Genscher?"
+#> 
+#> 
+#> $matches[[7]]
+#> $matches[[7]]$subtitle
+#> [1] "Damit die Festspiele das Versprechen einlösen, das die Musik Wagners gibt, genügt es nicht, an dieser oder jener Inszenierungsschraube zu drehen. Die Aufführungspraxis muss sich ändern."
+#> 
+#> $matches[[7]]$uuid
+#> [1] "4b6r427qPv40nIvETL3bYH"
+#> 
+#> $matches[[7]]$title
+#> [1] "Befreit Bayreuth!"
+#> 
+#> $matches[[7]]$href
+#> [1] "http://www.zeit.de/kultur/musik/2012-08/navid-kermani-bayreuth"
+#> 
+#> $matches[[7]]$release_date
+#> [1] "2012-08-16T16:31:05Z"
+#> 
+#> $matches[[7]]$uri
+#> [1] "http://api.zeit.de/content/4b6r427qPv40nIvETL3bYH"
+#> 
+#> $matches[[7]]$snippet
+#> [1] "Um meinen Eindruck von den Festspielen zu schildern, muss ich mit der Vorgeschichte meines Besuchs beginnen. Zu nichts Geringerem ruft der vorliegende Text nämlich auf, als <em>Bayreuth</em> von den Ketten zu"
+#> 
+#> $matches[[7]]$supertitle
+#> [1] "Navid Kermani"
+#> 
+#> $matches[[7]]$teaser_text
+#> [1] "Können die Wagner-Festspiele ewig so weitermachen? Der Schriftsteller Navid Kermani ärgert sich über die Afferei auf der Bühne und fordert eine neue Aufführungspraxis."
+#> 
+#> $matches[[7]]$teaser_title
+#> [1] "Befreit Bayreuth!"
+#> 
+#> 
+#> $matches[[8]]
+#> $matches[[8]]$subtitle
+#> [1] "Nach Jonathan Meese, Michel Houellebecq und Patti Smith hat der Schriftsteller Navid Kermani in diesem Jahr für uns die Bayreuther Festspiele besucht. Und eine Erfahrung gemacht: Die Musik ist gewaltig, das Schauspiel auf der Bühne kann aber nicht mit ihr mithalten. Wann lösen sich die Wagner- Aufführungen endlich von ihren eingefahrenen Dogmen?"
+#> 
+#> $matches[[8]]$uuid
+#> [1] "77i5H8QSSTcWitIyvRDzOy"
+#> 
+#> $matches[[8]]$title
+#> [1] "Befreit Bayreuth!"
+#> 
+#> $matches[[8]]$href
+#> [1] "http://www.zeit.de/2012/34/Bayreuther-Festspiele-Navid-Kermani"
+#> 
+#> $matches[[8]]$release_date
+#> [1] "2012-08-16T06:00:00Z"
+#> 
+#> $matches[[8]]$uri
+#> [1] "http://api.zeit.de/content/77i5H8QSSTcWitIyvRDzOy"
+#> 
+#> $matches[[8]]$snippet
+#> [1] "Um meinen Eindruck von den Festspielen zu schildern, muss ich mit der Vorgeschichte meines Besuchs beginnen. Zu nichts Geringerem ruft der vorliegende Text nämlich auf, als <em>Bayreuth</em> von den Ketten zu"
+#> 
+#> $matches[[8]]$supertitle
+#> [1] "Festspiele"
+#> 
+#> $matches[[8]]$teaser_text
+#> [1] "Nach Jonathan Meese, Michel Houellebecq und Patti Smith hat der Schriftsteller Navid Kermani in diesem Jahr für uns die Bayreuther Festspiele besucht."
+#> 
+#> $matches[[8]]$teaser_title
+#> [1] "Befreit Bayreuth!"
+#> 
+#> 
+#> $matches[[9]]
+#> $matches[[9]]$subtitle
+#> [1] "Kurz vor der Eröffnung der diesjährigen Wagner-Festspiele gibt die Leitung die Pläne für 2016 bekannt. Und weist Kritik an ihrer Vergangenheitsbewältigung zurück."
+#> 
+#> $matches[[9]]$uuid
+#> [1] "3W1ILDThwI1CBxigwXf6Kh"
+#> 
+#> $matches[[9]]$title
+#> [1] "Jonathan Meese führt Regie in Bayreuth"
+#> 
+#> $matches[[9]]$href
+#> [1] "http://www.zeit.de/kultur/2012-07/bayreuth-meese-inszenierung"
+#> 
+#> $matches[[9]]$release_date
+#> [1] "2012-07-25T15:18:34Z"
+#> 
+#> $matches[[9]]$uri
+#> [1] "http://api.zeit.de/content/3W1ILDThwI1CBxigwXf6Kh"
+#> 
+#> $matches[[9]]$snippet
+#> [1] "Der viel diskutierte Künstler Jonathan Meese soll 2016 in <em>Bayreuth</em> die Oper Parsifal inszenieren. Die Festspielleiterinnen Katharina Wagner und Eva Wagner-Pasquier verkündeten die überraschende"
+#> 
+#> $matches[[9]]$supertitle
+#> [1] "Wagner-Festspiele"
+#> 
+#> $matches[[9]]$teaser_text
+#> [1] "Kurz vor der Eröffnung der diesjährigen Wagner-Festspiele gibt die Leitung die Pläne für 2016 bekannt. Und weist Kritik an ihrer Vergangenheitsbewältigung zurück."
+#> 
+#> $matches[[9]]$teaser_title
+#> [1] "Jonathan Meese führt Regie in Bayreuth"
+#> 
+#> 
+#> $matches[[10]]
+#> $matches[[10]]$subtitle
+#> [1] "Samuel Youn übernimmt die Titelpartie der Oper \"Der fliegende Holländer\" in Bayreuth. Er ersetzt Evgeny Nikitin, der wegen einer Hakenkreuz-Tätowierung verzichten musste."
+#> 
+#> $matches[[10]]$uuid
+#> [1] "7FNKGhVfX3DihsvL2jqjCb"
+#> 
+#> $matches[[10]]$title
+#> [1] "Bayreuth nominiert Ersatz für russischen Skandal-Sänger"
+#> 
+#> $matches[[10]]$href
+#> [1] "http://www.zeit.de/kultur/musik/2012-07/nikitin-hakenkreuz-bayreuth"
+#> 
+#> $matches[[10]]$release_date
+#> [1] "2012-07-22T11:55:32Z"
+#> 
+#> $matches[[10]]$uri
+#> [1] "http://api.zeit.de/content/7FNKGhVfX3DihsvL2jqjCb"
+#> 
+#> $matches[[10]]$snippet
+#> [1] " in <em>Bayreuth</em> bis zum 24. August eingeplant. Er war am Samstag bereits bei der Generalprobe eingesprungen.\nDer Beitrag in Aspekte hatte Evgeny Nikitin in Archiv-Filmaufnahmen aus den 90er-Jahren als Schlagzeuger"
+#> 
+#> $matches[[10]]$supertitle
+#> [1] "Wagner-Festspiele"
+#> 
+#> $matches[[10]]$teaser_text
+#> [1] "Samuel Youn übernimmt die Titelpartie der Oper \"Der fliegende Holländer\" in Bayreuth. Er ersetzt Evgeny Nikitin, der wegen einer Hakenkreuz-Tätowierung verzichten musste."
+#> 
+#> $matches[[10]]$teaser_title
+#> [1] "Bayreuth nominiert Ersatz für russischen Skandal-Sänger"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 65
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
 ```
 
 By default, the API returns all available fields for your request. To speed things up, you can 
 specify which fields the server should return using the `fields` paramter.
 
-```{r}
+
+```r
 zeit_search("content", "bayreuth", fields=c("title", "teaser_text"))
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$title
+#> [1] "Köpfe ab!"
+#> 
+#> $matches[[1]]$teaser_text
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität."
+#> 
+#> 
+#> $matches[[2]]
+#> $matches[[2]]$title
+#> [1] "Straßenkampf"
+#> 
+#> $matches[[2]]$teaser_text
+#> [1] "Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?"
+#> 
+#> 
+#> $matches[[3]]
+#> $matches[[3]]$title
+#> [1] "Und Recht und Freibier"
+#> 
+#> $matches[[3]]$teaser_text
+#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
+#> 
+#> 
+#> $matches[[4]]
+#> $matches[[4]]$title
+#> [1] "Verführer der Deutschen"
+#> 
+#> $matches[[4]]$teaser_text
+#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
+#> 
+#> 
+#> $matches[[5]]
+#> $matches[[5]]$title
+#> [1] "Mit Merkels Hubschrauber über Sachsen"
+#> 
+#> $matches[[5]]$teaser_text
+#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
+#> 
+#> 
+#> $matches[[6]]
+#> $matches[[6]]$title
+#> [1] "Bayreuther Assoziationen"
+#> 
+#> $matches[[6]]$teaser_text
+#> [1] "Richard Wagners Opern sind natürlich eine Zumutung, seine Kultur ist die der Unterwerfung. Sie fordert Geduld, Kunstglauben und Mitmenschlichkeit heraus."
+#> 
+#> 
+#> $matches[[7]]
+#> $matches[[7]]$title
+#> [1] "Action! Mord! Blutbad!"
+#> 
+#> $matches[[7]]$teaser_text
+#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
+#> 
+#> 
+#> $matches[[8]]
+#> $matches[[8]]$title
+#> [1] "Zelle mit Meeresblick"
+#> 
+#> $matches[[8]]$teaser_text
+#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
+#> 
+#> 
+#> $matches[[9]]
+#> $matches[[9]]$title
+#> [1] "Tee mit dem Biedermann"
+#> 
+#> $matches[[9]]$teaser_text
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen."
+#> 
+#> 
+#> $matches[[10]]
+#> $matches[[10]]$title
+#> [1] "Kampfjet in Bayern abgestürzt"
+#> 
+#> $matches[[10]]$teaser_text
+#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1567
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
 ```
 
 Search results are limited to 10 matches by default. You can increase this value with the `limit` 
 parameter. To iterate over the resultset, repeat your request with the `offset` parameter set to 
 multiples of the `limit.
 
-```{r}
+
+```r
 zeit_search("content", "bayreuth", limit=1) # just one match
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$subtitle
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität"
+#> 
+#> $matches[[1]]$uuid
+#> [1] "6koVP1iuVDyvRkzWmSz2nG"
+#> 
+#> $matches[[1]]$title
+#> [1] "Köpfe ab!"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/2015/39/oper-skandal-urheberrecht-zensur"
+#> 
+#> $matches[[1]]$release_date
+#> [1] "2015-10-08T02:00:19Z"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/content/6koVP1iuVDyvRkzWmSz2nG"
+#> 
+#> $matches[[1]]$snippet
+#> [1] " geradezu ergebnisoffen, oft haben sie Geschichte gemacht wie die Ring-Inszenierung von Patrice Chéreau, 1976 in <em>Bayreuth</em> mit Wutgeheul und Morddrohungen begrüßt – und ein Jahr später schon Kult.\nEtlichen"
+#> 
+#> $matches[[1]]$supertitle
+#> [1] "Opernregie"
+#> 
+#> $matches[[1]]$teaser_text
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität."
+#> 
+#> $matches[[1]]$teaser_title
+#> [1] "Köpfe ab? Köpfe ab!"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1567
+#> 
+#> $limit
+#> [1] 1
+#> 
+#> $offset
+#> [1] 0
 zeit_search("content", "bayreuth", limit=1, offset=1) # just the second match
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$subtitle
+#> [1] "Der heißlaufende Streit um Namenspatrone (nicht nur) in Deutschland – und was dahintersteckt. Beobachtungen"
+#> 
+#> $matches[[1]]$uuid
+#> [1] "5RQOFFRriS05dw4DfL2YEa"
+#> 
+#> $matches[[1]]$title
+#> [1] "Straßenkampf"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/2015/38/deutschland-strassennamen-namenspatrone"
+#> 
+#> $matches[[1]]$release_date
+#> [1] "2015-10-06T08:33:09Z"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/content/5RQOFFRriS05dw4DfL2YEa"
+#> 
+#> $matches[[1]]$snippet
+#> [1] " weitläufigen Platz vor der alten Musikhalle zu widmen, der seit der Nazizeit Karl-Muck-Platz hieß. Wenig später erst stellte sich heraus, dass Muck, ein heute weitgehend vergessener Kapellmeister, in <em>Bayreuth</em>"
+#> 
+#> $matches[[1]]$supertitle
+#> [1] "Straßennamen"
+#> 
+#> $matches[[1]]$teaser_text
+#> [1] "Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?"
+#> 
+#> $matches[[1]]$teaser_title
+#> [1] "Von Adolf-Hitler-Plätzen und Rosa-Luxemburg-Alleen"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1567
+#> 
+#> $limit
+#> [1] 1
+#> 
+#> $offset
+#> [1] 1
 ```
 
 Search results, namely those of the /content endpoint, can be sorted using the `sort` parameter. 
 Any of the returned fields are sortable. Direction keywords are `asc` and `desc` for an ascending 
 or descending sort order respectively. Multiple sort orders are accepted as a comma-separated list.
 
-```{r}
+
+```r
 zeit_search("content", "bayreuth", 
   sort=c("release_date", "asc")) # sort by date
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$uuid
+#> [1] "4UE3wNiy574fYRgzE047Te"
+#> 
+#> $matches[[1]]$title
+#> [1] "Kurze Wirtschaftsmeldungen"
+#> 
+#> $matches[[1]]$release_date
+#> [1] "1946-10-31T06:00:00Z"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/content/4UE3wNiy574fYRgzE047Te"
+#> 
+#> $matches[[1]]$snippet
+#> [1] " Breslau befinden sich jetzt bei der Landesversicherungsanstalt in <em>Bayreuth</em>.\nIn Bayern wurden bei allen Geflügelhaltern 50 v. H. der Gänse, Enten und Puten zur Versorgung der Krankenhäuser, Alters- und"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/1946/37/kurze-wirtschaftsmeldungen"
+#> 
+#> $matches[[1]]$teaser_text
+#> [1] "Die mittelrheinische Konservenindustrie kann Infolge des Gemüse- und Obstmangels ihr Kontingent, das sich auf ein Drittel der Kapazität beläuft, nicht ausnutzen."
+#> 
+#> $matches[[1]]$teaser_title
+#> [1] "Kurze Wirtschaftsmeldungen"
+#> 
+#> 
+#> $matches[[2]]
+#> $matches[[2]]$uuid
+#> [1] "7hgLz9BjRdfotanVCdvSVN"
+#> 
+#> $matches[[2]]$title
+#> [1] "Ein Besuch bei Jean Paul"
+#> 
+#> $matches[[2]]$release_date
+#> [1] "1946-12-12T06:00:00Z"
+#> 
+#> $matches[[2]]$uri
+#> [1] "http://api.zeit.de/content/7hgLz9BjRdfotanVCdvSVN"
+#> 
+#> $matches[[2]]$snippet
+#> [1] " veröffentlichen daraus die Begegnung des schwedischen Dichters mit Jean Paul.\nAm26 November 1817, abends 8Uhr, erreichten wir <em>Bayreuth</em> und restaurierten uns nach vielen Muhen und Nachtwachen: mit einem"
+#> 
+#> $matches[[2]]$href
+#> [1] "http://www.zeit.de/1946/43/ein-besuch-bei-jean-paul"
+#> 
+#> $matches[[2]]$teaser_text
+#> [1] "Bei Hans Dulk in Hamburg erscheint demnächst von Christel Matthias Schröder neu herausgegeben das Buch „Menschen und Städte\" des schwedischen Romantikers Per Daniel Amadeus Atterbom (1790 1855)."
+#> 
+#> $matches[[2]]$teaser_title
+#> [1] "Ein Besuch bei Jean Paul"
+#> 
+#> 
+#> $matches[[3]]
+#> $matches[[3]]$subtitle
+#> [1] "Ein Vermächtnis Gerhart Hauptmanns"
+#> 
+#> $matches[[3]]$uuid
+#> [1] "2DkoeQbv6EJCBxqqJ3ylo5"
+#> 
+#> $matches[[3]]$title
+#> [1] "Prosperos Wiederkehr"
+#> 
+#> $matches[[3]]$release_date
+#> [1] "1947-01-23T06:00:00Z"
+#> 
+#> $matches[[3]]$uri
+#> [1] "http://api.zeit.de/content/2DkoeQbv6EJCBxqqJ3ylo5"
+#> 
+#> $matches[[3]]$snippet
+#> [1] ". Erich Ebermayer auf Schloß Körnitz bei <em>Bayreuth</em> und Hauptmanns letzter Privatsekretär Dr. C. F. W. Behl, der seit dem vorigen Jahr Landgerichtspräsident von Schweinfurth ist und gegenwärtig, wie übrigens"
+#> 
+#> $matches[[3]]$href
+#> [1] "http://www.zeit.de/1947/04/prosperos-wiederkehr"
+#> 
+#> $matches[[3]]$teaser_text
+#> [1] "Ein Teil von Gerhart Hauptmanns Nachlaß, der gegen Ende 1944 nach Dresden gebracht worden war, wo er bei einem Luftangriff schweren Schaden erlitt, ist zur Zeit auf drei Orte verteilt, während sich das Wiesensteiner Archiv in Müggelheim bei Berlin unter der Obhut der Schriftsteller Gertraut Pohl und Johannes R."
+#> 
+#> $matches[[3]]$teaser_title
+#> [1] "Prosperos Wiederkehr"
+#> 
+#> 
+#> $matches[[4]]
+#> $matches[[4]]$uuid
+#> [1] "1kU0RKV7mce4JxGSPx2jDf"
+#> 
+#> $matches[[4]]$title
+#> [1] "Gablonz in Kauf beuren"
+#> 
+#> $matches[[4]]$release_date
+#> [1] "1947-01-30T06:00:00Z"
+#> 
+#> $matches[[4]]$uri
+#> [1] "http://api.zeit.de/content/1kU0RKV7mce4JxGSPx2jDf"
+#> 
+#> $matches[[4]]$snippet
+#> [1] " deutschen Markt erobert und erzielte alleinim Dezember 1946 einen Umsatz von 1,5 Millionen RM.\nDas Bestreben der Kaufbeuren-Gablonzer wie des im Raum <em>Bayreuth</em> untergebrachten Sudetendeutschen richtet sich"
+#> 
+#> $matches[[4]]$href
+#> [1] "http://www.zeit.de/1947/05/bablonz-in-kauf-beuren"
+#> 
+#> $matches[[4]]$teaser_text
+#> [1] "Die Tschechoslowakei traf mit ihrer Ausweisung der Deutschen auch 7000 Gablonzer Bijouteriewaren-Arbeiter. Diese sahen sich als Vertriebene, gemeinsam mit den übrigen Ausgewiesenen, all ihrer Habe und Produktionsmittel beraubt, Ihre handwerklichen Fähigkeiten jedoch, das künstlerische Können und Organisations."
+#> 
+#> $matches[[4]]$teaser_title
+#> [1] "Gablonz in Kauf beuren"
+#> 
+#> 
+#> $matches[[5]]
+#> $matches[[5]]$subtitle
+#> [1] "Versuch eines musikalischen Läuterungsverfahrens"
+#> 
+#> $matches[[5]]$uuid
+#> [1] "mBocuIt6BQlRul8cmsMdM"
+#> 
+#> $matches[[5]]$title
+#> [1] "Richard Wagner in uns sellbst"
+#> 
+#> $matches[[5]]$release_date
+#> [1] "1947-03-27T06:00:00Z"
+#> 
+#> $matches[[5]]$uri
+#> [1] "http://api.zeit.de/content/mBocuIt6BQlRul8cmsMdM"
+#> 
+#> $matches[[5]]$snippet
+#> [1] "Von Josef Marein\nDas Grab des großen Mannes von <em>Bayreuth</em> ist lange, lange schön geschlossen. Und all die Jahre nach des Künstlers Erdenwallen wie bei seinen Lebzeiten schon, sind soviele Bücher über"
+#> 
+#> $matches[[5]]$href
+#> [1] "http://www.zeit.de/1947/13/richard-wagner-in-uns-selbst"
+#> 
+#> $matches[[5]]$teaser_text
+#> [1] "Das Grab des großen Mannes von Bayreuth ist lange, lange schön geschlossen. Und all die Jahre nach des Künstlers Erdenwallen wie bei seinen Lebzeiten schon, sind soviele Bücher über Wesen und Werk der Meisters geschrieben und gedruckt worden, daß man ganze Straßen damit pflastern könnte."
+#> 
+#> $matches[[5]]$teaser_title
+#> [1] "Richard Wagner in uns sellbst"
+#> 
+#> 
+#> $matches[[6]]
+#> $matches[[6]]$uuid
+#> [1] "GntpMhpyjnTP3qdYH6IiZ"
+#> 
+#> $matches[[6]]$title
+#> [1] "Die Gablonzer – ein Aktivposten"
+#> 
+#> $matches[[6]]$release_date
+#> [1] "1947-08-21T06:00:00Z"
+#> 
+#> $matches[[6]]$uri
+#> [1] "http://api.zeit.de/content/GntpMhpyjnTP3qdYH6IiZ"
+#> 
+#> $matches[[6]]$snippet
+#> [1] ", in der amerikanischen Zone in Kaufbeuren, <em>Bayreuth</em>-Warmensteinach, Homburg/Hessen, Burgtann, Vohenstrauß und Neustadt/Zwiesel sowie auch in der russischen Besatzungszone neue Zentren von Fachkräften"
+#> 
+#> $matches[[6]]$href
+#> [1] "http://www.zeit.de/1947/34/die-gablonzer-ein-aktivposten"
+#> 
+#> $matches[[6]]$teaser_text
+#> [1] "Die Gablonzer und Haida-Steinschönauer Exportindustrien nahmen sowohl innerhalb der Tschechoslowakei als auch später in der deutschen Wirtschaft eine Sonderstellung ein."
+#> 
+#> $matches[[6]]$teaser_title
+#> [1] "Die Gablonzer – ein Aktivposten"
+#> 
+#> 
+#> $matches[[7]]
+#> $matches[[7]]$subtitle
+#> [1] "Betrachtungen zu einem Memoirenbuch"
+#> 
+#> $matches[[7]]$uuid
+#> [1] "5kNIMAwMKSUeHiYaCUoI5n"
+#> 
+#> $matches[[7]]$title
+#> [1] "Politik als Schicksal des Geistes"
+#> 
+#> $matches[[7]]$release_date
+#> [1] "1948-01-29T06:00:00Z"
+#> 
+#> $matches[[7]]$uri
+#> [1] "http://api.zeit.de/content/5kNIMAwMKSUeHiYaCUoI5n"
+#> 
+#> $matches[[7]]$snippet
+#> [1] " seiner Konzertfahrt durch Deutschland und bei seinen Besuchen in <em>Bayreuth</em> genügsam über das Wesen der Subalternisierung des Geistes belehrt, echter Vertreter künstlerischer Souveränität jenen Schatten zu"
+#> 
+#> $matches[[7]]$href
+#> [1] "http://www.zeit.de/1948/05/politik-als-schicksal-des-geistes"
+#> 
+#> $matches[[7]]$teaser_text
+#> [1] "Zweifellos war es der Geist eines neuen Zeitalters der durch den Mund Napoleons I. sprach, als dieser den Begriff des Schicksals spöttisch verwarf und feststellte: „Die Politik ist das Schicksal."
+#> 
+#> $matches[[7]]$teaser_title
+#> [1] "Politik als Schicksal des Geistes"
+#> 
+#> 
+#> $matches[[8]]
+#> $matches[[8]]$uuid
+#> [1] "3RZtKCFpK1qaXf66xyEFt3"
+#> 
+#> $matches[[8]]$title
+#> [1] "Bayreuth heute und morgen?"
+#> 
+#> $matches[[8]]$release_date
+#> [1] "1948-03-18T06:00:00Z"
+#> 
+#> $matches[[8]]$uri
+#> [1] "http://api.zeit.de/content/3RZtKCFpK1qaXf66xyEFt3"
+#> 
+#> $matches[[8]]$snippet
+#> [1] " <em>Bayreuth</em> wieder zur Stadt der guten Theater- und Musikpflege und zur Stadt des Fremdenverkehrs zu machen bestrebt ist. Erste Aufführungen Mozartscher Opern im MarkgräflichenOpernhaus, diesem vielleicht"
+#> 
+#> $matches[[8]]$href
+#> [1] "http://www.zeit.de/1948/12/bayreuth-heute-und-morgen"
+#> 
+#> $matches[[8]]$teaser_text
+#> [1] "Schon auf dem Bahnhofsplatz umfaßt der Blick schmerzhaft das Alltägliche, Wüste, Erwartungslose: die häßliche Monotonie der Zerstörung In Schutt lange Häuserzeilen und Fabriken, das ehemalige markgräfliche Jägerhaus; und die ehemalige markgräfliche Reiterkaserne."
+#> 
+#> $matches[[8]]$teaser_title
+#> [1] "Bayreuth heute und morgen?"
+#> 
+#> 
+#> $matches[[9]]
+#> $matches[[9]]$uuid
+#> [1] "708g3vOyBS7Ksc2eTrv3rQ"
+#> 
+#> $matches[[9]]$title
+#> [1] "Notizen"
+#> 
+#> $matches[[9]]$release_date
+#> [1] "1948-03-25T06:00:00Z"
+#> 
+#> $matches[[9]]$uri
+#> [1] "http://api.zeit.de/content/708g3vOyBS7Ksc2eTrv3rQ"
+#> 
+#> $matches[[9]]$snippet
+#> [1] " in <em>Bayreuth</em> vorgesehen ist, hat der Komponist seine Teilnahme zugesugt. Igor Strawinskij, der seit vielen Jahren nicht mehr in Europa war, wird außerdem Gastspiele in Frankreich, Italien, Belgien, Holland"
+#> 
+#> $matches[[9]]$href
+#> [1] "http://www.zeit.de/1948/13/notizen"
+#> 
+#> $matches[[9]]$teaser_text
+#> [1] "Der bisherige Lehrbeauftragte an der Universität Halle Dr. phil. Leo Koller, wurde jetzt zum Professor mit vollem Lehrauftrag für den neugeschaffenen Lehrstuhl für Geschichtsphilosophie in Halle ernannt."
+#> 
+#> $matches[[9]]$teaser_title
+#> [1] "Notizen"
+#> 
+#> 
+#> $matches[[10]]
+#> $matches[[10]]$subtitle
+#> [1] ""
+#> 
+#> $matches[[10]]$uuid
+#> [1] "1oz5hdVbZKm4f734wTpUAt"
+#> 
+#> $matches[[10]]$title
+#> [1] "Berliner Musiktage 1948"
+#> 
+#> $matches[[10]]$release_date
+#> [1] "1948-06-03T06:00:00Z"
+#> 
+#> $matches[[10]]$uri
+#> [1] "http://api.zeit.de/content/1oz5hdVbZKm4f734wTpUAt"
+#> 
+#> $matches[[10]]$snippet
+#> [1] " Fortschrittlichkeit kundzutun: Donaueschingen, Godesberg, Sondershausen, <em>Bayreuth</em>, Darmstadt, Krefeld, Frankfurt, Köln, Münster. Auch Berlin befindet sich mit den vom Magistrat zum zweitenmal veranstalteten „Musiktagen"
+#> 
+#> $matches[[10]]$href
+#> [1] "http://www.zeit.de/1948/23/berliner-musiktage-1948"
+#> 
+#> $matches[[10]]$teaser_text
+#> [1] "Die neue deutsche Musik kann sich in diesem Sommer in zahlreiche Nester setzen, die ihr in allen Zonen bereitet werden. Städte aller Größenordnungen rivalisieren miteinander, ihre musikalische Fortschrittlichkeit kundzutun: Donaueschingen, Godesberg, Sondershausen, Bayreuth, Darmstadt, Krefeld, Frankfurt, Köln, Münster."
+#> 
+#> $matches[[10]]$teaser_title
+#> [1] "Berliner Musiktage 1948"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1567
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
 zeit_search("content", "bayreuth", 
   sort=list(c("release_date", "desc"), c("title", "asc"))) # sort by date and title
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$subtitle
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität"
+#> 
+#> $matches[[1]]$uuid
+#> [1] "6koVP1iuVDyvRkzWmSz2nG"
+#> 
+#> $matches[[1]]$title
+#> [1] "Köpfe ab!"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/2015/39/oper-skandal-urheberrecht-zensur"
+#> 
+#> $matches[[1]]$release_date
+#> [1] "2015-10-08T02:00:19Z"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/content/6koVP1iuVDyvRkzWmSz2nG"
+#> 
+#> $matches[[1]]$snippet
+#> [1] " geradezu ergebnisoffen, oft haben sie Geschichte gemacht wie die Ring-Inszenierung von Patrice Chéreau, 1976 in <em>Bayreuth</em> mit Wutgeheul und Morddrohungen begrüßt – und ein Jahr später schon Kult.\nEtlichen"
+#> 
+#> $matches[[1]]$supertitle
+#> [1] "Opernregie"
+#> 
+#> $matches[[1]]$teaser_text
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität."
+#> 
+#> $matches[[1]]$teaser_title
+#> [1] "Köpfe ab? Köpfe ab!"
+#> 
+#> 
+#> $matches[[2]]
+#> $matches[[2]]$subtitle
+#> [1] "Der heißlaufende Streit um Namenspatrone (nicht nur) in Deutschland – und was dahintersteckt. Beobachtungen"
+#> 
+#> $matches[[2]]$uuid
+#> [1] "5RQOFFRriS05dw4DfL2YEa"
+#> 
+#> $matches[[2]]$title
+#> [1] "Straßenkampf"
+#> 
+#> $matches[[2]]$href
+#> [1] "http://www.zeit.de/2015/38/deutschland-strassennamen-namenspatrone"
+#> 
+#> $matches[[2]]$release_date
+#> [1] "2015-10-06T08:33:09Z"
+#> 
+#> $matches[[2]]$uri
+#> [1] "http://api.zeit.de/content/5RQOFFRriS05dw4DfL2YEa"
+#> 
+#> $matches[[2]]$snippet
+#> [1] " weitläufigen Platz vor der alten Musikhalle zu widmen, der seit der Nazizeit Karl-Muck-Platz hieß. Wenig später erst stellte sich heraus, dass Muck, ein heute weitgehend vergessener Kapellmeister, in <em>Bayreuth</em>"
+#> 
+#> $matches[[2]]$supertitle
+#> [1] "Straßennamen"
+#> 
+#> $matches[[2]]$teaser_text
+#> [1] "Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?"
+#> 
+#> $matches[[2]]$teaser_title
+#> [1] "Von Adolf-Hitler-Plätzen und Rosa-Luxemburg-Alleen"
+#> 
+#> 
+#> $matches[[3]]
+#> $matches[[3]]$subtitle
+#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
+#> 
+#> $matches[[3]]$uuid
+#> [1] "3Ed7KYJOO2MXu5SQtnudQA"
+#> 
+#> $matches[[3]]$title
+#> [1] "Und Recht und Freibier"
+#> 
+#> $matches[[3]]$href
+#> [1] "http://www.zeit.de/2015/40/3-10-1990-chronik-des-tages"
+#> 
+#> $matches[[3]]$release_date
+#> [1] "2015-10-01T13:30:49Z"
+#> 
+#> $matches[[3]]$uri
+#> [1] "http://api.zeit.de/content/3Ed7KYJOO2MXu5SQtnudQA"
+#> 
+#> $matches[[3]]$snippet
+#> [1] " Nachmittag einen Sitzstreik auf. In <em>Bayreuth</em> und Bernau am Chiemsee demonstrieren Gefängnisinsassen, im schwäbischen Kaisheim und in München-Stadelheim brechen kleinere Revolten aus. In der Hamburger"
+#> 
+#> $matches[[3]]$supertitle
+#> [1] "3. Oktober 1990"
+#> 
+#> $matches[[3]]$teaser_text
+#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
+#> 
+#> $matches[[3]]$teaser_title
+#> [1] "Und Recht und Freibier"
+#> 
+#> 
+#> $matches[[4]]
+#> $matches[[4]]$subtitle
+#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
+#> 
+#> $matches[[4]]$uuid
+#> [1] "3io4OEbgWI4BTXIrvQmCZD"
+#> 
+#> $matches[[4]]$title
+#> [1] "Verführer der Deutschen"
+#> 
+#> $matches[[4]]$href
+#> [1] "http://www.zeit.de/2015/38/herfried-muenkler-houston-stewart-chamberlain"
+#> 
+#> $matches[[4]]$release_date
+#> [1] "2015-10-01T01:34:01Z"
+#> 
+#> $matches[[4]]$uri
+#> [1] "http://api.zeit.de/content/3io4OEbgWI4BTXIrvQmCZD"
+#> 
+#> $matches[[4]]$snippet
+#> [1] " politikwissenschaftlicher Sicht in den letzten zwei Jahrzehnten mit Wagner beschäftigt hat, ist unübersehbar aus Chamberlains Verbindung mit <em>Bayreuth</em> und der dort nach Wagners Tod entwickelten Ideologie erwachsen. Nach"
+#> 
+#> $matches[[4]]$supertitle
+#> [1] "\"Houston Stewart Chamberlain\""
+#> 
+#> $matches[[4]]$teaser_text
+#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
+#> 
+#> $matches[[4]]$teaser_title
+#> [1] "Verführer der Deutschen"
+#> 
+#> 
+#> $matches[[5]]
+#> $matches[[5]]$subtitle
+#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
+#> 
+#> $matches[[5]]$uuid
+#> [1] "17OoeUkLg0YwKcyojdwLjp"
+#> 
+#> $matches[[5]]$title
+#> [1] "Mit Merkels Hubschrauber über Sachsen"
+#> 
+#> $matches[[5]]$href
+#> [1] "http://www.zeit.de/2015/36/moritz-rinke-sachsen-emmanuel-levinas"
+#> 
+#> $matches[[5]]$release_date
+#> [1] "2015-09-17T01:09:28Z"
+#> 
+#> $matches[[5]]$uri
+#> [1] "http://api.zeit.de/content/17OoeUkLg0YwKcyojdwLjp"
+#> 
+#> $matches[[5]]$snippet
+#> [1] " irritierten Bundeskanzlerin durch, die eigentlich mit ihrem Hubschrauber nach <em>Bayreuth</em> wollte. Je weniger Bildung, umso anfälliger sind die Menschen für schlichte Erklärungen, mache ich der Kanzlerin deutlich"
+#> 
+#> $matches[[5]]$supertitle
+#> [1] "Ethik"
+#> 
+#> $matches[[5]]$teaser_text
+#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
+#> 
+#> $matches[[5]]$teaser_title
+#> [1] "Mit Merkels Hubschrauber über Sachsen"
+#> 
+#> 
+#> $matches[[6]]
+#> $matches[[6]]$subtitle
+#> [1] "Eine Reise zu den Festspielen"
+#> 
+#> $matches[[6]]$uuid
+#> [1] "1azq6iOsx2DgMPdEjpvXkZ"
+#> 
+#> $matches[[6]]$title
+#> [1] "Bayreuther Assoziationen"
+#> 
+#> $matches[[6]]$href
+#> [1] "http://www.zeit.de/2015/32/bayreuth-wagner-festspiele-peter-sloterdijk"
+#> 
+#> $matches[[6]]$release_date
+#> [1] "2015-08-21T08:57:55Z"
+#> 
+#> $matches[[6]]$uri
+#> [1] "http://api.zeit.de/content/1azq6iOsx2DgMPdEjpvXkZ"
+#> 
+#> $matches[[6]]$snippet
+#> [1] " Außerordentliche an <em>Bayreuth</em> ist wohl, dass hier fast ausschließlich Vorbereitete das Festspielhaus betreten. Die erste Fanfare ertönt. Das Publikum strömt zu den Toiletten. Wagner und die physiologischen"
+#> 
+#> $matches[[6]]$supertitle
+#> [1] "Wagner-Festspiele"
+#> 
+#> $matches[[6]]$teaser_text
+#> [1] "Richard Wagners Opern sind natürlich eine Zumutung, seine Kultur ist die der Unterwerfung. Sie fordert Geduld, Kunstglauben und Mitmenschlichkeit heraus."
+#> 
+#> $matches[[6]]$teaser_title
+#> [1] "Bayreuther Assoziationen"
+#> 
+#> 
+#> $matches[[7]]
+#> $matches[[7]]$subtitle
+#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
+#> 
+#> $matches[[7]]$uuid
+#> [1] "7vMNqYPNewxaJdvOo0Ht0r"
+#> 
+#> $matches[[7]]$title
+#> [1] "Action! Mord! Blutbad!"
+#> 
+#> $matches[[7]]$href
+#> [1] "http://www.zeit.de/2015/32/nibelungen-festspiele-worms-gemetzel"
+#> 
+#> $matches[[7]]$release_date
+#> [1] "2015-08-20T01:45:02Z"
+#> 
+#> $matches[[7]]$uri
+#> [1] "http://api.zeit.de/content/7vMNqYPNewxaJdvOo0Ht0r"
+#> 
+#> $matches[[7]]$snippet
+#> [1] " breiten Bühne zwei hochragende Gestängetürme, martialisch bestückt mit Waffengerät, Beutegut, Leitern im Innern. Offenbar Kampfwagen. Erdacht hat sie Aleksandar Denić, der ja gerade in <em>Bayreuth</em> Frank"
+#> 
+#> $matches[[7]]$supertitle
+#> [1] "Nibelungen-Festspiele"
+#> 
+#> $matches[[7]]$teaser_text
+#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
+#> 
+#> $matches[[7]]$teaser_title
+#> [1] "Action! Mord! Blutbad!"
+#> 
+#> 
+#> $matches[[8]]
+#> $matches[[8]]$subtitle
+#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
+#> 
+#> $matches[[8]]$uuid
+#> [1] "6m8EMIolNkCqNFk6TCROIv"
+#> 
+#> $matches[[8]]$title
+#> [1] "Zelle mit Meeresblick"
+#> 
+#> $matches[[8]]$href
+#> [1] "http://www.zeit.de/2015/31/tristan-isolde-oper-bayreuth"
+#> 
+#> $matches[[8]]$release_date
+#> [1] "2015-08-13T01:27:33Z"
+#> 
+#> $matches[[8]]$uri
+#> [1] "http://api.zeit.de/content/6m8EMIolNkCqNFk6TCROIv"
+#> 
+#> $matches[[8]]$snippet
+#> [1] "Welches Auto der Dirigent fährt, welcher Handtasche die Regisseurin ihre Zigaretten entnimmt, das alles scheint wichtig zu sein in <em>Bayreuth</em>, und das türkisfarbene Kostüm der Bundeskanzlerin sowieso"
+#> 
+#> $matches[[8]]$supertitle
+#> [1] "Tristan und Isolde"
+#> 
+#> $matches[[8]]$teaser_text
+#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
+#> 
+#> $matches[[8]]$teaser_title
+#> [1] "Zelle mit Meeresblick"
+#> 
+#> 
+#> $matches[[9]]
+#> $matches[[9]]$subtitle
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch 1975 hielt der Regisseur Hans-Jürgen Syberberg Bilder daraus fest. Hier zeigen wir sie erstmals."
+#> 
+#> $matches[[9]]$uuid
+#> [1] "1sRgadMwUk0eO8AniNz9I"
+#> 
+#> $matches[[9]]$title
+#> [1] "Tee mit dem Biedermann"
+#> 
+#> $matches[[9]]$href
+#> [1] "http://www.zeit.de/2015/31/bayreuth-festspiele-hitler-winifred-film"
+#> 
+#> $matches[[9]]$release_date
+#> [1] "2015-08-13T00:24:03Z"
+#> 
+#> $matches[[9]]$uri
+#> [1] "http://api.zeit.de/content/1sRgadMwUk0eO8AniNz9I"
+#> 
+#> $matches[[9]]$snippet
+#> [1] "Adolf Hitler in <em>Bayreuth</em>, wie die Welt ihn noch nicht gesehen hat. Mit weichen, vor Zärtlichkeit fast verschwimmenden Gesichtszügen; im Tête-à-Tête mit Wieland Wagner, seinem erklärten Liebling unter"
+#> 
+#> $matches[[9]]$supertitle
+#> [1] "Bayreuth"
+#> 
+#> $matches[[9]]$teaser_text
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen."
+#> 
+#> $matches[[9]]$teaser_title
+#> [1] "Zum Tee mit Hitler"
+#> 
+#> 
+#> $matches[[10]]
+#> $matches[[10]]$subtitle
+#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
+#> 
+#> $matches[[10]]$uuid
+#> [1] "4MN9cCoAS05p5brCdufg45"
+#> 
+#> $matches[[10]]$title
+#> [1] "Kampfjet in Bayern abgestürzt"
+#> 
+#> $matches[[10]]$href
+#> [1] "http://www.zeit.de/gesellschaft/zeitgeschehen/2015-08/flugzeug-absturz-militaerjet-oberfranken"
+#> 
+#> $matches[[10]]$release_date
+#> [1] "2015-08-11T11:14:31Z"
+#> 
+#> $matches[[10]]$uri
+#> [1] "http://api.zeit.de/content/4MN9cCoAS05p5brCdufg45"
+#> 
+#> $matches[[10]]$snippet
+#> [1] "Ein US-amerikanischer Militärjet ist in Oberfranken abgestürzt. Das Flugzeug stürzte gegen 9.30 Uhr über einem Waldgebiet im Gemeindebereich von Creußen im Grenzgebiet der Landkreise <em>Bayreuth</em> und"
+#> 
+#> $matches[[10]]$supertitle
+#> [1] "US-Militär"
+#> 
+#> $matches[[10]]$teaser_text
+#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
+#> 
+#> $matches[[10]]$teaser_title
+#> [1] "Kampfjet in Bayern abgestürzt"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1567
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
 ```
 
 You may hide the search output by setting `print` to `FALSE`.
 
-```{r}
+
+```r
 bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
 ```
 
@@ -115,7 +2206,8 @@ bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
 
 Prepare the vectors of state capital names, latitude and longitude.
 
-```{r}
+
+```r
 cap <- c("Berlin", "Bremen", "Dresden", "Düsseldorf", "Erfurt",
   "Hamburg", "Hannover", "Kiel", "Magdeburg", "Mainz", "München",
   "Potsdam", "Saarbrücken", "Schwerin", "Stuttgart", "Wiesbaden")
@@ -129,32 +2221,38 @@ lon <- c(13.383333, 8.8, 13.733333, 6.783333, 11.033333,
 
 Get data from DIE ZEIT. Search for ZEIT articles containing just "Berlin".
 
-```{r}
+
+```r
 berlin <- zeit_search("content", "Berlin", print=FALSE)
 ```
 
 Get the number of articles found:
 
-```{r}
+
+```r
 berlin$found
+#> [1] 67025
 ```
 
 And now the same for all state capitals.
 
-```{r}
+
+```r
 found.l <- lapply(cap, function(x) zeit_search("content", x, print=FALSE)$found)
 found <- unlist(found.l)
 ```
 
 Normalize the numbers.
 
-```{r}
+
+```r
 found.norm <- found/max(found)
 ```
 
 Finally plot a bubble chart.
 
-```{r}
+
+```r
 cols <- rainbow(16, alpha=.8)
 symbols(lon, lat, circles=8*found.norm, fg=cols, lwd=2, 
 	main="Occurrences of German State Capitals in DIE ZEIT",
