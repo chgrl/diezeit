@@ -43,12 +43,12 @@ zeit_client <- function(print=TRUE) {
 #' 
 #' The API is structured into several endpoints that provide specific functionalities:
 #' \tabular{lll}{
-#' \tab author \tab search all authors \cr
-#' \tab content \tab search for content \cr
-#' \tab department \tab search all departments \cr
-#' \tab keyword \tab search all keywords \cr
-#' \tab product \tab search all products \cr
-#' \tab series \tab search all series
+#' \tab \code{author} \tab search all authors \cr
+#' \tab \code{content} \tab search for content \cr
+#' \tab \code{department} \tab search all departments \cr
+#' \tab \code{keyword} \tab search all keywords \cr
+#' \tab \code{product} \tab search all products \cr
+#' \tab \code{series} \tab search all series
 #' }
 #'
 #' \emph{Query syntax}
@@ -97,7 +97,7 @@ zeit_client <- function(print=TRUE) {
 #' bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
 #'
 #' # author search
-#' zeit_search(endpoint="author", query="max")
+#' zeit_search(endpoint="author", query="Stefan Locke")
 #' }
 zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print=TRUE) {
 	# prepare endpoint
@@ -154,9 +154,8 @@ zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print
 }
 
 
-#' @title Get content from the ZEIT archive
-#' @description \code{zeit_get} will get you all available data for an article,
-#' or provide a pre-filtered search for all articles.
+#' @title Get detailled content from the ZEIT archive
+#' @description \code{zeit_get} will get you all available metadata for a specific item.
 #'
 #' @param endpoint one of \code{author}, \code{content}, \code{department}, \code{keyword}, 
 #' \code{product} or \code{series} -- see \code{\link{zeit_search}}.
@@ -174,18 +173,26 @@ zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print
 #' 
 #' The API is structured into several endpoints that provide specific functionalities:
 #' \tabular{lll}{
-#' \tab author \tab content by this author \cr
-#' \tab content \tab get content by ID \cr
-#' \tab department \tab content from this department \cr
-#' \tab keyword \tab content about this keyword \cr
-#' \tab product \tab content from this product \cr
-#' \tab series \tab content in this series
+#' \tab \code{author} \tab content by this author \cr
+#' \tab \code{content} \tab get content by ID \cr
+#' \tab \code{department} \tab content from this department \cr
+#' \tab \code{keyword} \tab content about this keyword \cr
+#' \tab \code{product} \tab content from this product \cr
+#' \tab \code{series} \tab content in this series
 #' }
 #' @source \url{http://developer.zeit.de/docs/}
 #' @export
 #' @examples
 #' \dontrun{
-#' zeit_get("")
+#' # get article metadata by ID
+#' zeit_get("content", "3Ed7KYJOO2MXu5SQtnudQA")
+#' 
+#' # partial selection of output fields
+#' zeit_get("content", "3Ed7KYJOO2MXu5SQtnudQA", 
+#'   fields=c("title", "release_date", "href"))
+#' 
+#' # hide result
+#' article.meta <- zeit_get("content", "3Ed7KYJOO2MXu5SQtnudQA", print=FALSE)
 #' }
 zeit_get <- function(endpoint, id, fields, limit=10, offset=0, sort, print=TRUE) {
 	# prepare endpoint

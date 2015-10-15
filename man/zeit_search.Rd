@@ -43,12 +43,12 @@ a reduced set of meta data.
 
 The API is structured into several endpoints that provide specific functionalities:
 \tabular{lll}{
-\tab author \tab search all authors \cr
-\tab content \tab search for content \cr
-\tab department \tab search all departments \cr
-\tab keyword \tab search all keywords \cr
-\tab product \tab search all products \cr
-\tab series \tab search all series
+\tab \code{author} \tab search all authors \cr
+\tab \code{content} \tab search for content \cr
+\tab \code{department} \tab search all departments \cr
+\tab \code{keyword} \tab search all keywords \cr
+\tab \code{product} \tab search all products \cr
+\tab \code{series} \tab search all series
 }
 
 \emph{Query syntax}
@@ -96,7 +96,7 @@ zeit_search("content", "bayreuth",
 bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
 
 # author search
-zeit_search(endpoint="author", query="max")
+zeit_search(endpoint="author", query="Stefan Locke")
 }
 }
 

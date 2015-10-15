@@ -7,7 +7,7 @@
 \url{http://developer.zeit.de/docs/}
 }
 \usage{
-zeit_get(endpoint, id, fields, limit = 10, offset = 0, sort, print = TRUE)
+zeit_get(endpoint, id, fields, print = TRUE)
 }
 \arguments{
 \item{endpoint}{one of \code{author}, \code{content}, \code{department}, \code{keyword},
@@ -17,16 +17,7 @@ zeit_get(endpoint, id, fields, limit = 10, offset = 0, sort, print = TRUE)
 
 \item{fields}{partially select output fields, as string value or vector of strings for multiple fields.}
 
-\item{limit}{limit the amount of matches to return; set to \code{10} by default.}
-
-\item{offset}{offset for the list of matches; set to \code{0} by default.}
-
-\item{sort}{sort search results by any of the returned \code{fields}.
-Vector of two (\code{c([field], [direction])}), giving field and direction keyword.
-Direction keywords are \code{asc} and \code{desc} for an ascending or descending
-sort order respectively. Multiple sort orders are accepted as \code{list} of such vectors.}
-
-\item{print}{if \code{TRUE} (default) the search results are printed.}
+\item{print}{if \code{TRUE} (default) the meta data are printed.}
 }
 \value{
 Article content or list of articles.
