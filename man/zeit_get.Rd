@@ -2,7 +2,7 @@
 % Please edit documentation in R/gets.R
 \name{zeit_get}
 \alias{zeit_get}
-\title{Get content from the ZEIT archive}
+\title{Get detailled content from the ZEIT archive}
 \source{
 \url{http://developer.zeit.de/docs/}
 }
@@ -20,28 +20,35 @@ zeit_get(endpoint, id, fields, print = TRUE)
 \item{print}{if \code{TRUE} (default) the meta data are printed.}
 }
 \value{
-Article content or list of articles.
+Article content.
 }
 \description{
-\code{zeit_get} will get you all available data for an article,
-or provide a pre-filtered search for all articles.
+\code{zeit_get} will get you all available metadata for a specific item.
 }
 \details{
 \emph{Endpoints}
 
 The API is structured into several endpoints that provide specific functionalities:
 \tabular{lll}{
-\tab author \tab content by this author \cr
-\tab content \tab get content by ID \cr
-\tab department \tab content from this department \cr
-\tab keyword \tab content about this keyword \cr
-\tab product \tab content from this product \cr
-\tab series \tab content in this series
+\tab \code{author} \tab content by this author \cr
+\tab \code{content} \tab get content by ID \cr
+\tab \code{department} \tab content from this department \cr
+\tab \code{keyword} \tab content about this keyword \cr
+\tab \code{product} \tab content from this product \cr
+\tab \code{series} \tab content in this series
 }
 }
 \examples{
 \dontrun{
-zeit_get("")
+# get article metadata by ID
+zeit_get("content", "3Ed7KYJOO2MXu5SQtnudQA")
+
+# partial selection of output fields
+zeit_get("content", "3Ed7KYJOO2MXu5SQtnudQA",
+  fields=c("title", "release_date", "href"))
+
+# hide result
+article.meta <- zeit_get("content", "3Ed7KYJOO2MXu5SQtnudQA", print=FALSE)
 }
 }
 

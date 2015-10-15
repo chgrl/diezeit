@@ -161,14 +161,8 @@ zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print
 #' \code{product} or \code{series} -- see \code{\link{zeit_search}}.
 #' @param id item id.
 #' @param fields partially select output fields, as string value or vector of strings for multiple fields.
-#' @param limit limit the amount of matches to return; set to \code{10} by default.
-#' @param offset offset for the list of matches; set to \code{0} by default.
-#' @param sort sort search results by any of the returned \code{fields}. 
-#' Vector of two (\code{c([field], [direction])}), giving field and direction keyword. 
-#' Direction keywords are \code{asc} and \code{desc} for an ascending or descending 
-#' sort order respectively. Multiple sort orders are accepted as \code{list} of such vectors.
-#' @param print if \code{TRUE} (default) the search results are printed.
-#' @return Article content or list of articles.
+#' @param print if \code{TRUE} (default) the meta data are printed.
+#' @return Article content.
 #' @details \emph{Endpoints}
 #' 
 #' The API is structured into several endpoints that provide specific functionalities:
@@ -194,7 +188,7 @@ zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print
 #' # hide result
 #' article.meta <- zeit_get("content", "3Ed7KYJOO2MXu5SQtnudQA", print=FALSE)
 #' }
-zeit_get <- function(endpoint, id, fields, limit=10, offset=0, sort, print=TRUE) {
+zeit_get <- function(endpoint, id, fields, print=TRUE) {
 	# prepare endpoint
 	avail.endpoints <- c("author", "content", "department", "keyword", "product", "series")
 	endpoint <- avail.endpoints[pmatch(endpoint, avail.endpoints)]
@@ -214,31 +208,9 @@ zeit_get <- function(endpoint, id, fields, limit=10, offset=0, sort, print=TRUE)
 	# prepare path
 	path <- paste0(endpoint, "/", id)
 	
-	# prepare sort
-	if(!missing(sort)) {
-		if(is.list(sort)) {
-			# check sort fields and direction
-			if(!all(sapply(sort, length) == 2)) stop("Cannot resolve sort parameter. Please specify sort as vector 'c([field], [direction])' or list of such vectors.")
-			sort.fields <- sapply(1:length(sort), function(x) sort[[x]][1])
-			check.fields <- match(sort.fields, avail.fields)
-			if(any(is.na(check.fields))) stop("Sort field(s) not available for \'", endpoint, "\': ", sort.fields[which(is.na(check.fields))])
-			sort.dir <- sapply(1:length(sort), function(x) sort[[x]][2])
-			check.dir <- match(sort.dir, c("asc", "desc"))
-			if(any(is.na(check.dir))) stop("Sort direction(s) not available: ", sort.dir[which(is.na(check.dir))])
-			sort <- paste(lapply(sort, function(x) paste(x, collapse=" ")), collapse=", ")
-		} else {
-			
-		}
-	} else sort <- NULL
-	
 	# make request
-  if(is.null(fields)) {
-  	if(is.null(sort)) req <- zeit_get_url(path=path, limit=limit, offset=offset)
-  	else req <- zeit_get_url(path=path, limit=limit, offset=offset, sort=sort)
-  } else {
-  	if(is.null(sort)) req <- zeit_get_url(path=path, fields=fields, limit=limit, offset=offset)
-  	else req <- zeit_get_url(path=path, fields=fields, limit=limit, offset=offset, sort=sort)
-  }
+  if(is.null(fields)) req <- zeit_get_url(path=path)
+  else req <- zeit_get_url(path=path, fields=fields)
   raw <- zeit_parse(req)
   
   # return
