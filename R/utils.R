@@ -3,7 +3,7 @@ zeit_get_url <- function(path, ..., key=zeit_key()) {
 	#req <- GET("http://api.zeit.de/", path=path, auth, query=list(...))
 	req <- GET("http://api.zeit.de/", path=path, query=list(api_key = key, ...))
 	zeit_check(req)
-	message("Request: ", req$url) # for debugging
+	#message("Request: ", req$url) # for debugging
 	return(req)
 }
 

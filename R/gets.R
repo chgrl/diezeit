@@ -162,7 +162,7 @@ zeit_search <- function(endpoint, query, fields, limit=10, offset=0, sort, print
 #' @param id item id.
 #' @param fields partially select output fields, as string value or vector of strings for multiple fields.
 #' @param print if \code{TRUE} (default) the meta data are printed.
-#' @return Article content.
+#' @return List of metadata items.
 #' @details \emph{Endpoints}
 #' 
 #' The API is structured into several endpoints that provide specific functionalities:

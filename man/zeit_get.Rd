@@ -20,7 +20,7 @@ zeit_get(endpoint, id, fields, print = TRUE)
 \item{print}{if \code{TRUE} (default) the meta data are printed.}
 }
 \value{
-Article content.
+List of metadata items.
 }
 \description{
 \code{zeit_get} will get you all available metadata for a specific item.
