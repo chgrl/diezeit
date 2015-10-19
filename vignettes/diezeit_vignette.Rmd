@@ -1,12 +1,5 @@
----
-title: "Introduction to diezeit"
-date: "2015-10-15"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Introduction to diezeit}
-  %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
----
+# Introduction to diezeit
+`r Sys.Date()`  
 
 
 
@@ -29,7 +22,11 @@ If you do not want to enter your key for each R session, put the following in yo
 
 ### Package install
 
-`diezeit` is available on GitHub. To install it directly from R the `devtools`-package is required.
+`diezeit` is available on CRAN and GitHub. Install from CRAN:
+
+`install.packages("diezeit")
+
+To install the development version from GitHub the `devtools`-package is required.
 
 
 ```r
@@ -49,9 +46,9 @@ library(diezeit)
 
 ### Search the ZEIT archive
 
-You can search the entire article text and all meta data simply by setting the `query` parameter
-to your search phrase.
+#### Content search
 
+The `content`-endpoint exposes an unfiltered search for articles. You can set search queries, paginate, sort and partially select the fields, that should be returned. Articles, that match your query, are returned with a reduced set of meta data.
 
 
 ```r
@@ -392,343 +389,6 @@ The search uses entire strings "as is".
 
 
 ```r
-zeit_search("content", c("bayreuth", "festspiele"))
-#> $matches
-#> $matches[[1]]
-#> $matches[[1]]$subtitle
-#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität"
-#> 
-#> $matches[[1]]$uuid
-#> [1] "6koVP1iuVDyvRkzWmSz2nG"
-#> 
-#> $matches[[1]]$title
-#> [1] "Köpfe ab!"
-#> 
-#> $matches[[1]]$href
-#> [1] "http://www.zeit.de/2015/39/oper-skandal-urheberrecht-zensur"
-#> 
-#> $matches[[1]]$release_date
-#> [1] "2015-10-08T02:00:19Z"
-#> 
-#> $matches[[1]]$uri
-#> [1] "http://api.zeit.de/content/6koVP1iuVDyvRkzWmSz2nG"
-#> 
-#> $matches[[1]]$snippet
-#> [1] " geradezu ergebnisoffen, oft haben sie Geschichte gemacht wie die Ring-Inszenierung von Patrice Chéreau, 1976 in <em>Bayreuth</em> mit Wutgeheul und Morddrohungen begrüßt – und ein Jahr später schon Kult.\nEtlichen"
-#> 
-#> $matches[[1]]$supertitle
-#> [1] "Opernregie"
-#> 
-#> $matches[[1]]$teaser_text
-#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität."
-#> 
-#> $matches[[1]]$teaser_title
-#> [1] "Köpfe ab? Köpfe ab!"
-#> 
-#> 
-#> $matches[[2]]
-#> $matches[[2]]$subtitle
-#> [1] "Der heißlaufende Streit um Namenspatrone (nicht nur) in Deutschland – und was dahintersteckt. Beobachtungen"
-#> 
-#> $matches[[2]]$uuid
-#> [1] "5RQOFFRriS05dw4DfL2YEa"
-#> 
-#> $matches[[2]]$title
-#> [1] "Straßenkampf"
-#> 
-#> $matches[[2]]$href
-#> [1] "http://www.zeit.de/2015/38/deutschland-strassennamen-namenspatrone"
-#> 
-#> $matches[[2]]$release_date
-#> [1] "2015-10-06T08:33:09Z"
-#> 
-#> $matches[[2]]$uri
-#> [1] "http://api.zeit.de/content/5RQOFFRriS05dw4DfL2YEa"
-#> 
-#> $matches[[2]]$snippet
-#> [1] " weitläufigen Platz vor der alten Musikhalle zu widmen, der seit der Nazizeit Karl-Muck-Platz hieß. Wenig später erst stellte sich heraus, dass Muck, ein heute weitgehend vergessener Kapellmeister, in <em>Bayreuth</em>"
-#> 
-#> $matches[[2]]$supertitle
-#> [1] "Straßennamen"
-#> 
-#> $matches[[2]]$teaser_text
-#> [1] "Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?"
-#> 
-#> $matches[[2]]$teaser_title
-#> [1] "Von Adolf-Hitler-Plätzen und Rosa-Luxemburg-Alleen"
-#> 
-#> 
-#> $matches[[3]]
-#> $matches[[3]]$subtitle
-#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
-#> 
-#> $matches[[3]]$uuid
-#> [1] "3Ed7KYJOO2MXu5SQtnudQA"
-#> 
-#> $matches[[3]]$title
-#> [1] "Und Recht und Freibier"
-#> 
-#> $matches[[3]]$href
-#> [1] "http://www.zeit.de/2015/40/3-10-1990-chronik-des-tages"
-#> 
-#> $matches[[3]]$release_date
-#> [1] "2015-10-01T13:30:49Z"
-#> 
-#> $matches[[3]]$uri
-#> [1] "http://api.zeit.de/content/3Ed7KYJOO2MXu5SQtnudQA"
-#> 
-#> $matches[[3]]$snippet
-#> [1] " Nachmittag einen Sitzstreik auf. In <em>Bayreuth</em> und Bernau am Chiemsee demonstrieren Gefängnisinsassen, im schwäbischen Kaisheim und in München-Stadelheim brechen kleinere Revolten aus. In der Hamburger"
-#> 
-#> $matches[[3]]$supertitle
-#> [1] "3. Oktober 1990"
-#> 
-#> $matches[[3]]$teaser_text
-#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
-#> 
-#> $matches[[3]]$teaser_title
-#> [1] "Und Recht und Freibier"
-#> 
-#> 
-#> $matches[[4]]
-#> $matches[[4]]$subtitle
-#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
-#> 
-#> $matches[[4]]$uuid
-#> [1] "3io4OEbgWI4BTXIrvQmCZD"
-#> 
-#> $matches[[4]]$title
-#> [1] "Verführer der Deutschen"
-#> 
-#> $matches[[4]]$href
-#> [1] "http://www.zeit.de/2015/38/herfried-muenkler-houston-stewart-chamberlain"
-#> 
-#> $matches[[4]]$release_date
-#> [1] "2015-10-01T01:34:01Z"
-#> 
-#> $matches[[4]]$uri
-#> [1] "http://api.zeit.de/content/3io4OEbgWI4BTXIrvQmCZD"
-#> 
-#> $matches[[4]]$snippet
-#> [1] " politikwissenschaftlicher Sicht in den letzten zwei Jahrzehnten mit Wagner beschäftigt hat, ist unübersehbar aus Chamberlains Verbindung mit <em>Bayreuth</em> und der dort nach Wagners Tod entwickelten Ideologie erwachsen. Nach"
-#> 
-#> $matches[[4]]$supertitle
-#> [1] "\"Houston Stewart Chamberlain\""
-#> 
-#> $matches[[4]]$teaser_text
-#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
-#> 
-#> $matches[[4]]$teaser_title
-#> [1] "Verführer der Deutschen"
-#> 
-#> 
-#> $matches[[5]]
-#> $matches[[5]]$subtitle
-#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
-#> 
-#> $matches[[5]]$uuid
-#> [1] "17OoeUkLg0YwKcyojdwLjp"
-#> 
-#> $matches[[5]]$title
-#> [1] "Mit Merkels Hubschrauber über Sachsen"
-#> 
-#> $matches[[5]]$href
-#> [1] "http://www.zeit.de/2015/36/moritz-rinke-sachsen-emmanuel-levinas"
-#> 
-#> $matches[[5]]$release_date
-#> [1] "2015-09-17T01:09:28Z"
-#> 
-#> $matches[[5]]$uri
-#> [1] "http://api.zeit.de/content/17OoeUkLg0YwKcyojdwLjp"
-#> 
-#> $matches[[5]]$snippet
-#> [1] " irritierten Bundeskanzlerin durch, die eigentlich mit ihrem Hubschrauber nach <em>Bayreuth</em> wollte. Je weniger Bildung, umso anfälliger sind die Menschen für schlichte Erklärungen, mache ich der Kanzlerin deutlich"
-#> 
-#> $matches[[5]]$supertitle
-#> [1] "Ethik"
-#> 
-#> $matches[[5]]$teaser_text
-#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
-#> 
-#> $matches[[5]]$teaser_title
-#> [1] "Mit Merkels Hubschrauber über Sachsen"
-#> 
-#> 
-#> $matches[[6]]
-#> $matches[[6]]$subtitle
-#> [1] "Eine Reise zu den Festspielen"
-#> 
-#> $matches[[6]]$uuid
-#> [1] "1azq6iOsx2DgMPdEjpvXkZ"
-#> 
-#> $matches[[6]]$title
-#> [1] "Bayreuther Assoziationen"
-#> 
-#> $matches[[6]]$href
-#> [1] "http://www.zeit.de/2015/32/bayreuth-wagner-festspiele-peter-sloterdijk"
-#> 
-#> $matches[[6]]$release_date
-#> [1] "2015-08-21T08:57:55Z"
-#> 
-#> $matches[[6]]$uri
-#> [1] "http://api.zeit.de/content/1azq6iOsx2DgMPdEjpvXkZ"
-#> 
-#> $matches[[6]]$snippet
-#> [1] ", was nötig ist, um die Mutter aller <em>Festspiele</em> zu besuchen.\nDies eine Mal sollst du darauf verzichten, über die Verfestspielung der Kultur zu lästern, sosehr es auch an der Zeit wäre, zu diesem Ärgernis das"
-#> 
-#> $matches[[6]]$supertitle
-#> [1] "Wagner-Festspiele"
-#> 
-#> $matches[[6]]$teaser_text
-#> [1] "Richard Wagners Opern sind natürlich eine Zumutung, seine Kultur ist die der Unterwerfung. Sie fordert Geduld, Kunstglauben und Mitmenschlichkeit heraus."
-#> 
-#> $matches[[6]]$teaser_title
-#> [1] "Bayreuther Assoziationen"
-#> 
-#> 
-#> $matches[[7]]
-#> $matches[[7]]$subtitle
-#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
-#> 
-#> $matches[[7]]$uuid
-#> [1] "7vMNqYPNewxaJdvOo0Ht0r"
-#> 
-#> $matches[[7]]$title
-#> [1] "Action! Mord! Blutbad!"
-#> 
-#> $matches[[7]]$href
-#> [1] "http://www.zeit.de/2015/32/nibelungen-festspiele-worms-gemetzel"
-#> 
-#> $matches[[7]]$release_date
-#> [1] "2015-08-20T01:45:02Z"
-#> 
-#> $matches[[7]]$uri
-#> [1] "http://api.zeit.de/content/7vMNqYPNewxaJdvOo0Ht0r"
-#> 
-#> $matches[[7]]$snippet
-#> [1] " reich an Action, Mord und Blutbad jedenfalls.\nSeit im Jahr 2002 die Stadt Worms ihre Nibelungen-<em>Festspiele</em> etabliert hat – immer mit Film- und Bühnenstars –, war man kühn um Abwechslung bemüht: gleiches"
-#> 
-#> $matches[[7]]$supertitle
-#> [1] "Nibelungen-Festspiele"
-#> 
-#> $matches[[7]]$teaser_text
-#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
-#> 
-#> $matches[[7]]$teaser_title
-#> [1] "Action! Mord! Blutbad!"
-#> 
-#> 
-#> $matches[[8]]
-#> $matches[[8]]$subtitle
-#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
-#> 
-#> $matches[[8]]$uuid
-#> [1] "6m8EMIolNkCqNFk6TCROIv"
-#> 
-#> $matches[[8]]$title
-#> [1] "Zelle mit Meeresblick"
-#> 
-#> $matches[[8]]$href
-#> [1] "http://www.zeit.de/2015/31/tristan-isolde-oper-bayreuth"
-#> 
-#> $matches[[8]]$release_date
-#> [1] "2015-08-13T01:27:33Z"
-#> 
-#> $matches[[8]]$uri
-#> [1] "http://api.zeit.de/content/6m8EMIolNkCqNFk6TCROIv"
-#> 
-#> $matches[[8]]$snippet
-#> [1] "Welches Auto der Dirigent fährt, welcher Handtasche die Regisseurin ihre Zigaretten entnimmt, das alles scheint wichtig zu sein in <em>Bayreuth</em>, und das türkisfarbene Kostüm der Bundeskanzlerin sowieso"
-#> 
-#> $matches[[8]]$supertitle
-#> [1] "Tristan und Isolde"
-#> 
-#> $matches[[8]]$teaser_text
-#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
-#> 
-#> $matches[[8]]$teaser_title
-#> [1] "Zelle mit Meeresblick"
-#> 
-#> 
-#> $matches[[9]]
-#> $matches[[9]]$subtitle
-#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch 1975 hielt der Regisseur Hans-Jürgen Syberberg Bilder daraus fest. Hier zeigen wir sie erstmals."
-#> 
-#> $matches[[9]]$uuid
-#> [1] "1sRgadMwUk0eO8AniNz9I"
-#> 
-#> $matches[[9]]$title
-#> [1] "Tee mit dem Biedermann"
-#> 
-#> $matches[[9]]$href
-#> [1] "http://www.zeit.de/2015/31/bayreuth-festspiele-hitler-winifred-film"
-#> 
-#> $matches[[9]]$release_date
-#> [1] "2015-08-13T00:24:03Z"
-#> 
-#> $matches[[9]]$uri
-#> [1] "http://api.zeit.de/content/1sRgadMwUk0eO8AniNz9I"
-#> 
-#> $matches[[9]]$snippet
-#> [1] "Adolf Hitler in <em>Bayreuth</em>, wie die Welt ihn noch nicht gesehen hat. Mit weichen, vor Zärtlichkeit fast verschwimmenden Gesichtszügen; im Tête-à-Tête mit Wieland Wagner, seinem erklärten Liebling unter"
-#> 
-#> $matches[[9]]$supertitle
-#> [1] "Bayreuth"
-#> 
-#> $matches[[9]]$teaser_text
-#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen."
-#> 
-#> $matches[[9]]$teaser_title
-#> [1] "Zum Tee mit Hitler"
-#> 
-#> 
-#> $matches[[10]]
-#> $matches[[10]]$subtitle
-#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
-#> 
-#> $matches[[10]]$uuid
-#> [1] "4MN9cCoAS05p5brCdufg45"
-#> 
-#> $matches[[10]]$title
-#> [1] "Kampfjet in Bayern abgestürzt"
-#> 
-#> $matches[[10]]$href
-#> [1] "http://www.zeit.de/gesellschaft/zeitgeschehen/2015-08/flugzeug-absturz-militaerjet-oberfranken"
-#> 
-#> $matches[[10]]$release_date
-#> [1] "2015-08-11T11:14:31Z"
-#> 
-#> $matches[[10]]$uri
-#> [1] "http://api.zeit.de/content/4MN9cCoAS05p5brCdufg45"
-#> 
-#> $matches[[10]]$snippet
-#> [1] "Ein US-amerikanischer Militärjet ist in Oberfranken abgestürzt. Das Flugzeug stürzte gegen 9.30 Uhr über einem Waldgebiet im Gemeindebereich von Creußen im Grenzgebiet der Landkreise <em>Bayreuth</em> und"
-#> 
-#> $matches[[10]]$supertitle
-#> [1] "US-Militär"
-#> 
-#> $matches[[10]]$teaser_text
-#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
-#> 
-#> $matches[[10]]$teaser_title
-#> [1] "Kampfjet in Bayern abgestürzt"
-#> 
-#> 
-#> 
-#> $found
-#> [1] 2624
-#> 
-#> $limit
-#> [1] 10
-#> 
-#> $offset
-#> [1] 0
-```
-
-To search for multiple tokens use a vector of strings.
-
-
-```r
 zeit_search("content", "bayreuther festspiele")
 #> $matches
 #> $matches[[1]]
@@ -1062,9 +722,344 @@ zeit_search("content", "bayreuther festspiele")
 #> [1] 0
 ```
 
-All fields of an article can be queried individually by using `[field]:[search string]`.
-For example, to get articles that have the word "Bayreuth" in their headline, you would
-search for:
+To search for multiple tokens use a vector of strings.
+
+
+```r
+zeit_search("content", c("bayreuth", "festspiele"))
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$subtitle
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität"
+#> 
+#> $matches[[1]]$uuid
+#> [1] "6koVP1iuVDyvRkzWmSz2nG"
+#> 
+#> $matches[[1]]$title
+#> [1] "Köpfe ab!"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/2015/39/oper-skandal-urheberrecht-zensur"
+#> 
+#> $matches[[1]]$release_date
+#> [1] "2015-10-08T02:00:19Z"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/content/6koVP1iuVDyvRkzWmSz2nG"
+#> 
+#> $matches[[1]]$snippet
+#> [1] " geradezu ergebnisoffen, oft haben sie Geschichte gemacht wie die Ring-Inszenierung von Patrice Chéreau, 1976 in <em>Bayreuth</em> mit Wutgeheul und Morddrohungen begrüßt – und ein Jahr später schon Kult.\nEtlichen"
+#> 
+#> $matches[[1]]$supertitle
+#> [1] "Opernregie"
+#> 
+#> $matches[[1]]$teaser_text
+#> [1] "Wird auf der Opernbühne wieder mehr verboten, interveniert und zensiert? Die Angst vor einem Skandal ist ein feiner Indikator für unsere gesellschaftliche Realität."
+#> 
+#> $matches[[1]]$teaser_title
+#> [1] "Köpfe ab? Köpfe ab!"
+#> 
+#> 
+#> $matches[[2]]
+#> $matches[[2]]$subtitle
+#> [1] "Der heißlaufende Streit um Namenspatrone (nicht nur) in Deutschland – und was dahintersteckt. Beobachtungen"
+#> 
+#> $matches[[2]]$uuid
+#> [1] "5RQOFFRriS05dw4DfL2YEa"
+#> 
+#> $matches[[2]]$title
+#> [1] "Straßenkampf"
+#> 
+#> $matches[[2]]$href
+#> [1] "http://www.zeit.de/2015/38/deutschland-strassennamen-namenspatrone"
+#> 
+#> $matches[[2]]$release_date
+#> [1] "2015-10-06T08:33:09Z"
+#> 
+#> $matches[[2]]$uri
+#> [1] "http://api.zeit.de/content/5RQOFFRriS05dw4DfL2YEa"
+#> 
+#> $matches[[2]]$snippet
+#> [1] " weitläufigen Platz vor der alten Musikhalle zu widmen, der seit der Nazizeit Karl-Muck-Platz hieß. Wenig später erst stellte sich heraus, dass Muck, ein heute weitgehend vergessener Kapellmeister, in <em>Bayreuth</em>"
+#> 
+#> $matches[[2]]$supertitle
+#> [1] "Straßennamen"
+#> 
+#> $matches[[2]]$teaser_text
+#> [1] "Seit Straßen in Deutschland Namen haben, hat sich die Geschichte auf ihren Schildern niedergeschlagen. Bis heute gibt es regelmäßig Streit darum. Wie wäre es mit Nummern?"
+#> 
+#> $matches[[2]]$teaser_title
+#> [1] "Von Adolf-Hitler-Plätzen und Rosa-Luxemburg-Alleen"
+#> 
+#> 
+#> $matches[[3]]
+#> $matches[[3]]$subtitle
+#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
+#> 
+#> $matches[[3]]$uuid
+#> [1] "3Ed7KYJOO2MXu5SQtnudQA"
+#> 
+#> $matches[[3]]$title
+#> [1] "Und Recht und Freibier"
+#> 
+#> $matches[[3]]$href
+#> [1] "http://www.zeit.de/2015/40/3-10-1990-chronik-des-tages"
+#> 
+#> $matches[[3]]$release_date
+#> [1] "2015-10-01T13:30:49Z"
+#> 
+#> $matches[[3]]$uri
+#> [1] "http://api.zeit.de/content/3Ed7KYJOO2MXu5SQtnudQA"
+#> 
+#> $matches[[3]]$snippet
+#> [1] " Nachmittag einen Sitzstreik auf. In <em>Bayreuth</em> und Bernau am Chiemsee demonstrieren Gefängnisinsassen, im schwäbischen Kaisheim und in München-Stadelheim brechen kleinere Revolten aus. In der Hamburger"
+#> 
+#> $matches[[3]]$supertitle
+#> [1] "3. Oktober 1990"
+#> 
+#> $matches[[3]]$teaser_text
+#> [1] "Jeder weiß, dass sich am 3. Oktober 1990 Deutschland vereinigte. Aber was geschah an diesem Tag eigentlich genau? Eine Chronik verrückter Stunden"
+#> 
+#> $matches[[3]]$teaser_title
+#> [1] "Und Recht und Freibier"
+#> 
+#> 
+#> $matches[[4]]
+#> $matches[[4]]$subtitle
+#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
+#> 
+#> $matches[[4]]$uuid
+#> [1] "3io4OEbgWI4BTXIrvQmCZD"
+#> 
+#> $matches[[4]]$title
+#> [1] "Verführer der Deutschen"
+#> 
+#> $matches[[4]]$href
+#> [1] "http://www.zeit.de/2015/38/herfried-muenkler-houston-stewart-chamberlain"
+#> 
+#> $matches[[4]]$release_date
+#> [1] "2015-10-01T01:34:01Z"
+#> 
+#> $matches[[4]]$uri
+#> [1] "http://api.zeit.de/content/3io4OEbgWI4BTXIrvQmCZD"
+#> 
+#> $matches[[4]]$snippet
+#> [1] " politikwissenschaftlicher Sicht in den letzten zwei Jahrzehnten mit Wagner beschäftigt hat, ist unübersehbar aus Chamberlains Verbindung mit <em>Bayreuth</em> und der dort nach Wagners Tod entwickelten Ideologie erwachsen. Nach"
+#> 
+#> $matches[[4]]$supertitle
+#> [1] "\"Houston Stewart Chamberlain\""
+#> 
+#> $matches[[4]]$teaser_text
+#> [1] "Udo Bermbachs Studie über Houston Stewart Chamberlain – den Mann, der den Weg für Hitler bereitete."
+#> 
+#> $matches[[4]]$teaser_title
+#> [1] "Verführer der Deutschen"
+#> 
+#> 
+#> $matches[[5]]
+#> $matches[[5]]$subtitle
+#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
+#> 
+#> $matches[[5]]$uuid
+#> [1] "17OoeUkLg0YwKcyojdwLjp"
+#> 
+#> $matches[[5]]$title
+#> [1] "Mit Merkels Hubschrauber über Sachsen"
+#> 
+#> $matches[[5]]$href
+#> [1] "http://www.zeit.de/2015/36/moritz-rinke-sachsen-emmanuel-levinas"
+#> 
+#> $matches[[5]]$release_date
+#> [1] "2015-09-17T01:09:28Z"
+#> 
+#> $matches[[5]]$uri
+#> [1] "http://api.zeit.de/content/17OoeUkLg0YwKcyojdwLjp"
+#> 
+#> $matches[[5]]$snippet
+#> [1] " irritierten Bundeskanzlerin durch, die eigentlich mit ihrem Hubschrauber nach <em>Bayreuth</em> wollte. Je weniger Bildung, umso anfälliger sind die Menschen für schlichte Erklärungen, mache ich der Kanzlerin deutlich"
+#> 
+#> $matches[[5]]$supertitle
+#> [1] "Ethik"
+#> 
+#> $matches[[5]]$teaser_text
+#> [1] "Wie mir träumte, ich sei Ethik- und Achtungsminister."
+#> 
+#> $matches[[5]]$teaser_title
+#> [1] "Mit Merkels Hubschrauber über Sachsen"
+#> 
+#> 
+#> $matches[[6]]
+#> $matches[[6]]$subtitle
+#> [1] "Eine Reise zu den Festspielen"
+#> 
+#> $matches[[6]]$uuid
+#> [1] "1azq6iOsx2DgMPdEjpvXkZ"
+#> 
+#> $matches[[6]]$title
+#> [1] "Bayreuther Assoziationen"
+#> 
+#> $matches[[6]]$href
+#> [1] "http://www.zeit.de/2015/32/bayreuth-wagner-festspiele-peter-sloterdijk"
+#> 
+#> $matches[[6]]$release_date
+#> [1] "2015-08-21T08:57:55Z"
+#> 
+#> $matches[[6]]$uri
+#> [1] "http://api.zeit.de/content/1azq6iOsx2DgMPdEjpvXkZ"
+#> 
+#> $matches[[6]]$snippet
+#> [1] ", was nötig ist, um die Mutter aller <em>Festspiele</em> zu besuchen.\nDies eine Mal sollst du darauf verzichten, über die Verfestspielung der Kultur zu lästern, sosehr es auch an der Zeit wäre, zu diesem Ärgernis das"
+#> 
+#> $matches[[6]]$supertitle
+#> [1] "Wagner-Festspiele"
+#> 
+#> $matches[[6]]$teaser_text
+#> [1] "Richard Wagners Opern sind natürlich eine Zumutung, seine Kultur ist die der Unterwerfung. Sie fordert Geduld, Kunstglauben und Mitmenschlichkeit heraus."
+#> 
+#> $matches[[6]]$teaser_title
+#> [1] "Bayreuther Assoziationen"
+#> 
+#> 
+#> $matches[[7]]
+#> $matches[[7]]$subtitle
+#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
+#> 
+#> $matches[[7]]$uuid
+#> [1] "7vMNqYPNewxaJdvOo0Ht0r"
+#> 
+#> $matches[[7]]$title
+#> [1] "Action! Mord! Blutbad!"
+#> 
+#> $matches[[7]]$href
+#> [1] "http://www.zeit.de/2015/32/nibelungen-festspiele-worms-gemetzel"
+#> 
+#> $matches[[7]]$release_date
+#> [1] "2015-08-20T01:45:02Z"
+#> 
+#> $matches[[7]]$uri
+#> [1] "http://api.zeit.de/content/7vMNqYPNewxaJdvOo0Ht0r"
+#> 
+#> $matches[[7]]$snippet
+#> [1] " reich an Action, Mord und Blutbad jedenfalls.\nSeit im Jahr 2002 die Stadt Worms ihre Nibelungen-<em>Festspiele</em> etabliert hat – immer mit Film- und Bühnenstars –, war man kühn um Abwechslung bemüht: gleiches"
+#> 
+#> $matches[[7]]$supertitle
+#> [1] "Nibelungen-Festspiele"
+#> 
+#> $matches[[7]]$teaser_text
+#> [1] "Albert Ostermaiers Nibelungen-Dichtung \"Gemetzel\" wird vor dem Wormser Dom aufgeführt."
+#> 
+#> $matches[[7]]$teaser_title
+#> [1] "Action! Mord! Blutbad!"
+#> 
+#> 
+#> $matches[[8]]
+#> $matches[[8]]$subtitle
+#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
+#> 
+#> $matches[[8]]$uuid
+#> [1] "6m8EMIolNkCqNFk6TCROIv"
+#> 
+#> $matches[[8]]$title
+#> [1] "Zelle mit Meeresblick"
+#> 
+#> $matches[[8]]$href
+#> [1] "http://www.zeit.de/2015/31/tristan-isolde-oper-bayreuth"
+#> 
+#> $matches[[8]]$release_date
+#> [1] "2015-08-13T01:27:33Z"
+#> 
+#> $matches[[8]]$uri
+#> [1] "http://api.zeit.de/content/6m8EMIolNkCqNFk6TCROIv"
+#> 
+#> $matches[[8]]$snippet
+#> [1] "Welches Auto der Dirigent fährt, welcher Handtasche die Regisseurin ihre Zigaretten entnimmt, das alles scheint wichtig zu sein in <em>Bayreuth</em>, und das türkisfarbene Kostüm der Bundeskanzlerin sowieso"
+#> 
+#> $matches[[8]]$supertitle
+#> [1] "Tristan und Isolde"
+#> 
+#> $matches[[8]]$teaser_text
+#> [1] "Christian Thielemann und Katharina Wagner bescheren Bayreuth einen disparaten \"Tristan\"."
+#> 
+#> $matches[[8]]$teaser_title
+#> [1] "Zelle mit Meeresblick"
+#> 
+#> 
+#> $matches[[9]]
+#> $matches[[9]]$subtitle
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch 1975 hielt der Regisseur Hans-Jürgen Syberberg Bilder daraus fest. Hier zeigen wir sie erstmals."
+#> 
+#> $matches[[9]]$uuid
+#> [1] "1sRgadMwUk0eO8AniNz9I"
+#> 
+#> $matches[[9]]$title
+#> [1] "Tee mit dem Biedermann"
+#> 
+#> $matches[[9]]$href
+#> [1] "http://www.zeit.de/2015/31/bayreuth-festspiele-hitler-winifred-film"
+#> 
+#> $matches[[9]]$release_date
+#> [1] "2015-08-13T00:24:03Z"
+#> 
+#> $matches[[9]]$uri
+#> [1] "http://api.zeit.de/content/1sRgadMwUk0eO8AniNz9I"
+#> 
+#> $matches[[9]]$snippet
+#> [1] "Adolf Hitler in <em>Bayreuth</em>, wie die Welt ihn noch nicht gesehen hat. Mit weichen, vor Zärtlichkeit fast verschwimmenden Gesichtszügen; im Tête-à-Tête mit Wieland Wagner, seinem erklärten Liebling unter"
+#> 
+#> $matches[[9]]$supertitle
+#> [1] "Bayreuth"
+#> 
+#> $matches[[9]]$teaser_text
+#> [1] "Als Adolf Hitler Bayreuth besuchte, filmte das der junge Wolfgang Wagner. Der Streifen gilt als verschollen – doch es gibt Fotos, die wir hier erstmals zeigen."
+#> 
+#> $matches[[9]]$teaser_title
+#> [1] "Zum Tee mit Hitler"
+#> 
+#> 
+#> $matches[[10]]
+#> $matches[[10]]$subtitle
+#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
+#> 
+#> $matches[[10]]$uuid
+#> [1] "4MN9cCoAS05p5brCdufg45"
+#> 
+#> $matches[[10]]$title
+#> [1] "Kampfjet in Bayern abgestürzt"
+#> 
+#> $matches[[10]]$href
+#> [1] "http://www.zeit.de/gesellschaft/zeitgeschehen/2015-08/flugzeug-absturz-militaerjet-oberfranken"
+#> 
+#> $matches[[10]]$release_date
+#> [1] "2015-08-11T11:14:31Z"
+#> 
+#> $matches[[10]]$uri
+#> [1] "http://api.zeit.de/content/4MN9cCoAS05p5brCdufg45"
+#> 
+#> $matches[[10]]$snippet
+#> [1] "Ein US-amerikanischer Militärjet ist in Oberfranken abgestürzt. Das Flugzeug stürzte gegen 9.30 Uhr über einem Waldgebiet im Gemeindebereich von Creußen im Grenzgebiet der Landkreise <em>Bayreuth</em> und"
+#> 
+#> $matches[[10]]$supertitle
+#> [1] "US-Militär"
+#> 
+#> $matches[[10]]$teaser_text
+#> [1] "Ein Militärflugzeug vom Typ F-16 ist über einem Waldgebiet in Oberfranken abgestürzt. Vermutlich hatte es Munition an Bord. Der Pilot rettete sich mit dem Fallschirm."
+#> 
+#> $matches[[10]]$teaser_title
+#> [1] "Kampfjet in Bayern abgestürzt"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 2624
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
+```
+
+All fields of an article can be queried individually by using `[field]:[search string]`. For example, to get articles that have the word "Bayreuth" in their headline, you would search for:
 
 
 ```r
@@ -1389,8 +1384,7 @@ zeit_search("content", "title:bayreuth")
 #> [1] 0
 ```
 
-By default, the API returns all available fields for your request. To speed things up, you can 
-specify which fields the server should return using the `fields` paramter.
+By default, the API returns all available fields for your request. To speed things up, you can specify which fields the server should return using the `fields` paramter.
 
 
 ```r
@@ -1487,9 +1481,7 @@ zeit_search("content", "bayreuth", fields=c("title", "teaser_text"))
 #> [1] 0
 ```
 
-Search results are limited to 10 matches by default. You can increase this value with the `limit` 
-parameter. To iterate over the resultset, repeat your request with the `offset` parameter set to 
-multiples of the `limit.
+Search results are limited to 10 matches by default. You can increase this value with the `limit` parameter. To iterate over the resultset, repeat your request with the `offset` parameter set to multiples of the `limit.
 
 
 ```r
@@ -1581,9 +1573,7 @@ zeit_search("content", "bayreuth", limit=1, offset=1) # just the second match
 #> [1] 1
 ```
 
-Search results, namely those of the /content endpoint, can be sorted using the `sort` parameter. 
-Any of the returned fields are sortable. Direction keywords are `asc` and `desc` for an ascending 
-or descending sort order respectively. Multiple sort orders are accepted as a comma-separated list.
+Search results, namely those of the /content endpoint, can be sorted using the `sort` parameter. Any of the returned fields are sortable. Direction keywords are `asc` and `desc` for an ascending or descending sort order respectively. Multiple sort orders are accepted as a comma-separated list.
 
 
 ```r
@@ -2212,6 +2202,188 @@ You may hide the search output by setting `print` to `FALSE`.
 bt.matches <- zeit_search("content", "bayreuth", print=FALSE)
 ```
 
+#### Author search
+
+To search for authors by their name use the `author`-endpoint. The result is a list of possible matches with a displayable value, a URI to an article overview within the API and, if available, a link to all articles by this author on http://www.zeit.de.
+
+
+```r
+zeit_search(endpoint="author", query="stefan*locke")
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$href
+#> [1] ""
+#> 
+#> $matches[[1]]$type
+#> [1] "author"
+#> 
+#> $matches[[1]]$id
+#> [1] "Stefan-Locke"
+#> 
+#> $matches[[1]]$value
+#> [1] "Stefan Locke"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/author/Stefan-Locke"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
+```
+
+#### Department search
+
+Departments correlate to the sections of the ZEIT homepage and to those of the printed issues. There are top level departments and sub-departments. Both are accessible via the `department`-endpoint. Sub-departments have a link to their parent attached to them. The query expects an astisk for wildcards and whitespaces.
+
+
+```r
+zeit_search(endpoint="department", query="wissen")
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$value
+#> [1] "Wissen"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/wissen/index"
+#> 
+#> $matches[[1]]$id
+#> [1] "wissen"
+#> 
+#> $matches[[1]]$parent
+#> [1] ""
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/department/wissen"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
+```
+
+#### Keyword search
+
+The `keyword`-endpoint lets you search for keywords that semantically summarize articles. An asterisk can serve as a wildcard or whitespace in your search query. Keywords are weighted by their overall frequency with a score from 0 to 100. Possible keyword types are: location, person, organisation or issue.
+
+
+```r
+zeit_search(endpoint="keyword", query="wiedervereinigung")
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/schlagworte/themen/wiedervereinigung/index"
+#> 
+#> $matches[[1]]$lexical
+#> [1] "Wiedervereinigung"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/keyword/wiedervereinigung"
+#> 
+#> $matches[[1]]$value
+#> [1] "Wiedervereinigung"
+#> 
+#> $matches[[1]]$score
+#> [1] 61
+#> 
+#> $matches[[1]]$type
+#> [1] "subject"
+#> 
+#> $matches[[1]]$id
+#> [1] "wiedervereinigung"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
+```
+
+#### Product search
+
+The `product`-endpoint lets you search for publication products by name. The product field of an article provides information about where the article was first published. An asterisk can serve as a wildcard or whitespace in your search query.
+
+
+```r
+zeit_search(endpoint="product", query="zeit*magazin")
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/zeit-magazin/index"
+#> 
+#> $matches[[1]]$id
+#> [1] "zmlb"
+#> 
+#> $matches[[1]]$value
+#> [1] "ZEITmagazin"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/product/zmlb"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
+```
+
+#### Series search
+
+The `series`-endpoint lets you search for journalistic series by name. An asterisk can serve as a wildcard or whitespace in your search query.
+
+
+```r
+zeit_search(endpoint="series", query="deutschlandkarte")
+#> $matches
+#> $matches[[1]]
+#> $matches[[1]]$value
+#> [1] "Deutschlandkarte"
+#> 
+#> $matches[[1]]$href
+#> [1] "http://www.zeit.de/serie/deutschlandkarte"
+#> 
+#> $matches[[1]]$id
+#> [1] "deutschlandkarte"
+#> 
+#> $matches[[1]]$uri
+#> [1] "http://api.zeit.de/series/deutschlandkarte"
+#> 
+#> $matches[[1]]$name
+#> [1] "Deutschlandkarte"
+#> 
+#> 
+#> 
+#> $found
+#> [1] 1
+#> 
+#> $limit
+#> [1] 10
+#> 
+#> $offset
+#> [1] 0
+```
 
 ### Get detailled metadata from the ZEIT archive 
 
@@ -2437,7 +2609,7 @@ Get the number of articles found:
 
 ```r
 berlin$found
-#> [1] 67045
+#> [1] 67070
 ```
 
 And now the same for all state capitals.
@@ -2462,7 +2634,7 @@ Finally plot a bubble chart.
 cols <- rainbow(16, alpha=.8)
 symbols(lon, lat, circles=8*found.norm, fg=cols, lwd=2, 
 	main="Occurrences of German State Capitals in DIE ZEIT",
-  xlim=c(6, 16), ylim=c(46, 56), xlab="", ylab="", bty="n")
+  xlim=c(6, 16), ylim=c(46, 56), xlab="Longitude", ylab="Latitude", bty="n")
 h <- c(1,2,3,4,6,7,8,11,15)	# high occurrence capitals - just for readability
 text(lon[h], lat[h], cap[h], col=cols[h])
 text(lon[-c(h,16)], lat[-c(h,16)], cap[-c(h,16)], col=cols[-c(h,16)], pos=1)
