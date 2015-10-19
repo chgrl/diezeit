@@ -12,3 +12,9 @@ if(packageVersion("devtools") < 1.6) {
 }
 devtools::install_github("chgrl/diezeit")
 ```
+
+## Install from CRAN
+`install.packages("diezeit")`
+
+## Howto
+Take a look at the vignette here: https://github.com/chgrl/diezeit/blob/master/vignettes/diezeit_vignette.Rmd
