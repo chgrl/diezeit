@@ -1,5 +1,12 @@
-# Introduction to diezeit
-`r Sys.Date()`  
+---
+title: "Introduction to diezeit"
+date: "2015-10-15"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to diezeit}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
 
 
 
