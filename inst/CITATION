@@ -4,9 +4,9 @@ citEntry(entry = "Manual",
          title = "diezeit: R Interface to the ZEIT ONLINE Content API",
          author = "Christian Graul",
          year = "2015",
-         url = "https://github.com/chgrl/diezeit",
-         note = "R package version 0.1-0",
-         textVersion = "Graul, Christian (2015): diezeit: R Interface to the ZEIT ONLINE Content API. R package version 0.1-0, https://github.com/chgrl/diezeit.")
+         url = "https://cran.r-project.org/package=diezeit",
+         note = "R package",
+         textVersion = "Graul, Christian (2015): diezeit: R Interface to the ZEIT ONLINE Content API. R package, https://cran.r-project.org/package=diezeit.")
 
 citFooter("Please cite both 'diezeit' and R when using 'diezeit'.",
           "For R citation, see ", sQuote("citation()"))
